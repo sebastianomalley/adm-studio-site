@@ -288,7 +288,15 @@ footer a:hover{ color:var(--tally); }
   footer{ flex-direction:column; align-items:flex-start; text-align:left; }
   footer .col + .col{ text-align:left; }
   .dial-item:not(:last-child)::after{ display:none; }
-  .dial{ gap:8px 14px; }
+  .dial{
+    display:grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content:center;
+    gap:14px 28px;
+  }
+  .dial-item{ padding:0; text-align:center; }
+  .dial-item:nth-child(5){ grid-column: 1 / -1; }
+
 }
 
 /* ---------- contact modal ---------- */
