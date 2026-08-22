@@ -293,8 +293,12 @@ footer a:hover{ color:var(--tally); }
     justify-content:center;
     row-gap:8px;
   }
-  .dial-item{ padding:0 12px; }
-  .dial-item:not(:last-child)::after{ position:static; content:' ·'; }
+    .dial-item{ padding:0; }
+  .dial-item:not(:last-child)::after{
+    content:'·';
+    position:static;
+    margin:0 8px;
+  }
 }
 
 /* ---------- contact modal ---------- */
