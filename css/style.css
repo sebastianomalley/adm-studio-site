@@ -403,6 +403,7 @@ footer a:hover{ color:var(--tally); }
   color:var(--ink-faint);
   margin-top:12px;
   line-height:1.5;
+  text-align:center;
 }
 
 .form-status{
