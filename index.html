@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Digital Media Studio — Washington, DC</title>
+<meta name="description" content="A Digital Media Studio helps small businesses and organizations grow through web design, app design, photography, and video. Based in Washington, DC. Site launching soon.">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,460;9..144,560&family=Work+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="iris" id="iris"></div>
+<div class="grain"></div>
+
+<div class="hud">
+  <div class="hud-row">
+    <div style="display:flex; gap:14px; align-items:flex-start;">
+      <div class="corner tl"></div>
+      <span class="hud-label mono">A DIGITAL MEDIA STUDIO<br>WASHINGTON, DC</span>
+    </div>
+    <div style="display:flex; gap:14px; align-items:flex-start;">
+      <span class="hud-label right mono">EST. DC · EIN FILED<br>35MM · ƒ/2.8 · 1/125</span>
+      <div class="corner tr"></div>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <img src="images/logo.png" alt="A Digital Media Studio" class="logo-img">
+
+    <h1>Helping small businesses grow, <em>in focus.</em></h1>
+
+    <p class="lede">Web design, app design, photography, videography, and drone cinematography — for small businesses and organizations building something worth showing up well for.</p>
+
+    <div class="status">
+      <span class="dot"></span>
+      <span class="mono">SITE IN DEVELOPMENT — LAUNCHING SOON</span>
+    </div>
+
+    <div class="cta-row">
+      <button type="button" class="btn primary" id="openContact">Start a project</button>
+    </div>
+  </div>
+
+  <div class="hud-row">
+    <div style="display:flex; gap:14px; align-items:flex-end;">
+      <div class="corner bl"></div>
+      <span class="hud-label mono">SUGARRAT PRODUCTIONS<br>DOCUMENTARY DIVISION</span>
+    </div>
+    <div style="display:flex; gap:14px; align-items:flex-end;">
+      <span class="hud-label right mono">FRAME 001 / 001<br>© 2026</span>
+      <div class="corner br"></div>
+    </div>
+  </div>
+
+  <div class="crosshair" aria-hidden="true"></div>
+</div>
+
+<nav class="dial" aria-label="Services">
+  <span class="dial-item">Web Design</span>
+  <span class="dial-item">App Design</span>
+  <span class="dial-item">Photography</span>
+  <span class="dial-item">Videography</span>
+  <span class="dial-item">Drone Cinematography</span>
+</nav>
+
+<footer>
+  <div class="col">
+    <p>A Digital Media Studio<br>
+    Full site on the way — reach out directly to get started.</p>
+  </div>
+  <div class="col">
+    <p><a href="mailto:adigitalmediastudio@gmail.com">adigitalmediastudio@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- ---------- contact modal ---------- -->
+<div class="modal-overlay" id="contactOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="closeContact" aria-label="Close">✕</button>
+
+    <div id="formView">
+      <h2 id="modalTitle">Start a project</h2>
+      <p class="modal-sub">Tell us a bit about what you need — we'll get back to you shortly.</p>
+
+      <form id="contactForm">
+        <!-- Get a free access key at https://web3forms.com and paste it below -->
+        <input type="hidden" name="access_key" value="19f84a20-0e99-46cd-95c0-8a7e95db971e">
+        <input type="hidden" name="subject" value="New inquiry from adigitalmediastudio.com">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="message">What are you looking to build?</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">Send message</button>
+        <p class="form-status" id="formStatus"></p>
+        <p class="form-note">Prefer email? Reach us directly at adigitalmediastudio@gmail.com.</p>
+      </form>
+    </div>
+
+    <div id="successView" class="success-view" hidden>
+      <div class="success-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="40" height="40">
+          <circle cx="20" cy="20" r="19" fill="none" stroke="#333F52" stroke-width="1.5"/>
+          <path d="M12 20.5l5.5 5.5L29 14" fill="none" stroke="#333F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Message sent</h2>
+      <p class="modal-sub">Thanks for reaching out — someone from the studio will be in touch soon.</p>
+      <button type="button" class="btn" id="successClose">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
