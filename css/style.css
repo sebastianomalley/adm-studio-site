@@ -321,6 +321,9 @@ footer a:hover{ color:var(--tally); }
   width:100%;
   padding:34px;
   position:relative;
+  max-height:85vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
 
 .modal-close{
