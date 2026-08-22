@@ -98,6 +98,10 @@ a{ color:inherit; }
 .hud-label{ max-width:150px; }
 .hud-label.right{ text-align:right; margin-left:auto; }
 
+.focus-target{
+  position:relative;
+  display:inline-block;
+}
 .crosshair{
   position:absolute; top:50%; left:50%;
   transform:translate(-50%,-50%);
