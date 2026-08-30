@@ -4,8 +4,8 @@ window.addEventListener('load', function(){
   requestAnimationFrame(function(){
     setTimeout(function(){
       iris.classList.add('closed');
-      setTimeout(function(){ iris.classList.add('done'); }, 1200);
-    }, 150);
+      setTimeout(function(){ iris.classList.add('done'); }, 250);
+    }, 20);
   });
 });
 
