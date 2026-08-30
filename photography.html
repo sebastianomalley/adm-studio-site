@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography Rates — A Digital Media Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#EAE4D4;
+    --ink-dim:#9FAAAE;
+    --ink-faint:#5F6C71;
+    --bg:#1E2830;
+    --panel:#26323B;
+    --line:#3B4A52;
+    --blue:#7FA3C0;
+    --blue-deep:#4E7291;
+    --green:#93AC7C;
+    --green-deep:#69824F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:0.1;
+    mix-blend-mode:screen;
+    pointer-events:none;
+    z-index:1;
+  }
+  .site-frame{position:relative; z-index:2;}
+  .serif{font-family:'Fraunces',serif;}
+  .script{font-family:'Caveat',cursive;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  header{ display:flex; justify-content:space-between; align-items:center; padding:30px 40px; border-bottom:1px solid var(--line); }
+  .brand-block{font-family:'Fraunces',serif; font-weight:500; font-size:19px; color:var(--ink);}
+  .meta-block{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-dim); letter-spacing:0.08em; text-transform:uppercase;}
+
+  .hero{ padding:8vh 6vw 8vh; text-align:center; border-bottom:1px solid var(--line); }
+  .hero .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; color:var(--green); text-transform:uppercase; margin-bottom:20px; }
+
+  .photo-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .photo-slot{
+    aspect-ratio:3/4; background:var(--panel);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.03em;
+    padding:0 14px;
+  }
+  .pet-photo{ aspect-ratio:4/3; border:1px solid var(--line); }
+
+  .hero h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(36px,5.4vw,62px); line-height:1.1; max-width:16ch; margin:20px auto 0; }
+  .hero .caption{ font-family:'Caveat',cursive; font-size:28px; color:var(--green); margin-top:12px; }
+  .hero p{ max-width:48ch; margin:24px auto 0; font-size:16.5px; color:var(--ink-dim); font-weight:300; }
+  .hero-tag{ display:inline-block; margin-top:28px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-dim); border:1px solid var(--line); padding:9px 18px; }
+
+  section{ padding:8vh 6vw; border-bottom:1px solid var(--line); }
+
+  .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:46px; }
+  .sec-tag{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--blue); letter-spacing:0.02em; margin-bottom:10px;}
+  .sec-head h2{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.4vw,36px);}
+  .sec-desc{max-width:36ch; color:var(--ink-dim); font-size:14px;}
+
+  .grid{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .grid-3{ grid-template-columns:repeat(3,1fr); }
+  .card{ position:relative; background:var(--panel); padding:32px 28px; display:flex; flex-direction:column; gap:14px; }
+  .card.featured{ background:#2C3A44; }
+  .card.featured::before{
+    content:"Most booked"; position:absolute; top:14px; right:14px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--green); border:1px solid var(--green-deep); padding:4px 9px;
+  }
+  .card-name{font-family:'Fraunces',serif; font-weight:500; font-size:19px;}
+  .card-sub{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); margin-top:4px;}
+  .price{font-family:'Fraunces',serif; font-size:32px; font-weight:500; color:var(--blue);}
+  .card-details{font-size:13px; color:var(--ink-dim); border-top:1px solid var(--line); padding-top:14px;}
+
+  .note-strip{margin-top:26px; font-size:13px; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace; line-height:1.9;}
+  .note-strip b{color:var(--ink); font-weight:500;}
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .tag-row span{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; padding:7px 14px; border:1px solid var(--line); color:var(--ink-dim); }
+
+  .event-table{width:100%; border-collapse:collapse;}
+  .event-table tr{border-bottom:1px solid var(--line);}
+  .event-table tr:last-child{border-bottom:none;}
+  .event-table td{padding:20px 0; font-size:14.5px;}
+  .event-table td:first-child{color:var(--ink-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;}
+  .event-table td:last-child{text-align:right; font-family:'Fraunces',serif; font-size:20px; color:var(--green);}
+
+  .pet-section{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:50px; align-items:center; }
+  .pet-art{ width:100%; max-width:220px; margin:0 auto; }
+
+  footer{ padding:8vh 6vw 6vh; text-align:center; }
+  footer h3{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(28px,4.4vw,46px); }
+  footer .script-line{ font-family:'Caveat',cursive; font-size:26px; color:var(--green); margin-top:8px; }
+  footer .btn{ display:inline-block; margin-top:30px; background:var(--blue-deep); color:#12181C; font-family:'IBM Plex Mono',monospace; font-size:13px; padding:15px 30px; }
+  .foot-meta{ margin-top:50px; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); }
+
+  @media (max-width:760px){
+    header{flex-direction:column; gap:12px;}
+    .meta-block{text-align:left;}
+    .pet-section{grid-template-columns:1fr;}
+    .grid-3{grid-template-columns:1fr;}
+    .photo-strip{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="site-frame">
+
+  <header>
+    <div class="brand-block">A Digital Media Studio</div>
+    <div class="meta-block">Photography</div>
+  </header>
+
+  <main>
+
+    <section class="hero" style="border-top:none;">
+      <h1>Portraits, event photography, and<br>the occasional four-legged client.</h1>
+      <p>Every session is shot, culled, and color-corrected by hand — delivered through a private gallery, ready to download.</p>
+    </section>
+
+    <section id="portraits">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">By the look</div>
+          <h2>Portraits &amp; headshots</h2>
+        </div>
+        <p class="sec-desc">Priced per look, not per hour. A look is one wardrobe change — swapping a jacket or accessory within the same outfit is free.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-name">1 Look</div>
+          <div class="price">$549</div>
+          <div class="card-details">10 retouched, color-corrected images delivered via private gallery.</div>
+        </div>
+        <div class="card featured">
+          <div class="card-name">2 Looks</div>
+          <div class="price">$699</div>
+          <div class="card-details">20 retouched images. The go-to for headshots with a casual and a formal look.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">3+ Looks</div>
+          <div class="price">$799</div>
+          <div class="card-details">30 retouched images. Best for actors, models, and personal branding sets.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sessions">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Unlimited looks</div>
+          <h2>Timed sessions</h2>
+        </div>
+        <p class="sec-desc">Wardrobe changes are unlimited within the window. Built for people who move fast and know what they want.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-name">30 Minutes</div>
+          <div class="price">$599</div>
+          <div class="card-details">Tight, efficient — a single-purpose shoot or an update to an existing set.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">60 Minutes</div>
+          <div class="price">$699</div>
+          <div class="card-details">Room to shoot a few distinct looks and directions without rushing.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">90 Minutes</div>
+          <div class="price">$799</div>
+          <div class="card-details">Full creative session — multiple looks, locations, or setups in one booking.</div>
+        </div>
+      </div>
+      <div class="note-strip"><b>Hair &amp; makeup —</b> $200 for up to 4 looks, $50 per additional look.</div>
+    </section>
+
+    <section id="pets">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">A favorite</div>
+          <h2>Pet &amp; dog portraits</h2>
+        </div>
+        <p class="sec-desc">On-location or studio sessions for dogs, cats, and the rest of the household. Same by-the-look pricing as human portraits — treats and patience included.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-name">1 Look</div>
+          <div class="price">$549</div>
+          <div class="card-details">10 retouched images. Studio or on-location, your choice.</div>
+        </div>
+        <div class="card featured">
+          <div class="card-name">2 Looks</div>
+          <div class="price">$699</div>
+          <div class="card-details">20 retouched images. Good for indoor and outdoor looks in one session.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">3+ Looks</div>
+          <div class="price">$799</div>
+          <div class="card-details">30 retouched images. For multi-pet households or a full outfit change or two.</div>
+        </div>
+      </div>
+      <div class="note-strip"><b>Treats provided.</b> Patience included at no extra charge.</div>
+    </section>
+
+    <section id="events">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Day rates</div>
+          <h2>Event photography</h2>
+        </div>
+        <p class="sec-desc">Unlimited shots within the booked window, delivered through a private gallery.</p>
+      </div>
+
+      <table class="event-table">
+        <tr><td>Hourly (2 hr min)</td><td>$400 / hr</td></tr>
+        <tr><td>Half Day — up to 4 hrs</td><td>$1,250</td></tr>
+        <tr><td>Full Day — up to 8 hrs</td><td>$2,000</td></tr>
+      </table>
+
+      <div class="note-strip">
+        <b>Included —</b> high-resolution edited images, private online gallery, 3–5 business day turnaround.<br>
+        <b>Add-ons —</b> second photographer +$150/hr · express 24-hr editing +$500 · same-day social delivery +$250.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>Let's make something<br>worth showing up for.</h3>
+    <a class="btn" href="mailto:adigitalmediastudio@gmail.com">Start a project</a>
+    <div class="foot-meta">
+      <span>SUGAR RAT PRODUCTIONS<br>FILM DIVISION</span>
+      <span>© 2026 A DIGITAL MEDIA STUDIO</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

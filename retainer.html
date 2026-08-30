@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retainer Rates — A Digital Media Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#EAE4D4;
+    --ink-dim:#9FAAAE;
+    --ink-faint:#5F6C71;
+    --bg:#1E2830;
+    --panel:#26323B;
+    --line:#3B4A52;
+    --blue:#7FA3C0;
+    --blue-deep:#4E7291;
+    --green:#93AC7C;
+    --green-deep:#69824F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:0.1;
+    mix-blend-mode:screen;
+    pointer-events:none;
+    z-index:1;
+  }
+  .site-frame{position:relative; z-index:2;}
+  .serif{font-family:'Fraunces',serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  header{ display:flex; justify-content:space-between; align-items:center; padding:30px 40px; border-bottom:1px solid var(--line); }
+  .brand-block{font-family:'Fraunces',serif; font-weight:500; font-size:19px; color:var(--ink);}
+  .meta-block{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-dim); letter-spacing:0.08em; text-transform:uppercase;}
+
+  .hero{ padding:8vh 6vw 8vh; text-align:center; border-bottom:1px solid var(--line); }
+  .hero h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(36px,5.4vw,62px); line-height:1.1; max-width:18ch; margin:0 auto; }
+  .hero p{ max-width:50ch; margin:24px auto 0; font-size:16.5px; color:var(--ink-dim); font-weight:300; }
+
+  section{ padding:8vh 6vw; border-bottom:1px solid var(--line); }
+
+  .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:46px; }
+  .sec-tag{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--blue); letter-spacing:0.02em; margin-bottom:10px;}
+  .sec-head h2{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.4vw,36px);}
+  .sec-desc{max-width:38ch; color:var(--ink-dim); font-size:14px;}
+
+  .retainer-card{
+    background:var(--panel); border:1px solid var(--line);
+    padding:48px 44px; display:flex; flex-direction:column; gap:22px;
+    max-width:640px;
+  }
+  .retainer-card .name{font-family:'Fraunces',serif; font-weight:500; font-size:24px;}
+  .retainer-card .price{font-family:'Fraunces',serif; font-size:52px; font-weight:600; color:var(--blue);}
+  .retainer-card .price span{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--ink-dim); font-weight:400;}
+  .retainer-card .term{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--green); letter-spacing:0.02em;}
+
+  .includes{ list-style:none; display:flex; flex-direction:column; gap:14px; margin-top:6px; }
+  .includes li{ display:flex; gap:14px; font-size:15px; color:var(--ink); align-items:flex-start; }
+  .includes li::before{ content:"—"; color:var(--green); flex-shrink:0; }
+
+  .note-strip{margin-top:6px; font-size:13px; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace; line-height:1.9;}
+  .note-strip b{color:var(--ink); font-weight:500;}
+
+  .compare-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px; }
+  .compare-card{ background:var(--panel); padding:30px 26px; }
+  .compare-card .cname{font-family:'Fraunces',serif; font-weight:500; font-size:17px; margin-bottom:8px;}
+  .compare-card .cdesc{font-size:13px; color:var(--ink-dim);}
+
+  footer{ padding:8vh 6vw 6vh; text-align:center; }
+  footer h3{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(28px,4.4vw,46px); }
+  footer .btn{ display:inline-block; margin-top:30px; background:var(--blue-deep); color:#12181C; font-family:'IBM Plex Mono',monospace; font-size:13px; padding:15px 30px; }
+  .foot-meta{ margin-top:50px; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint); }
+
+  @media (max-width:760px){
+    header{flex-direction:column; gap:12px;}
+    .retainer-card{padding:34px 26px;}
+    .compare-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="site-frame">
+
+  <header>
+    <div class="brand-block">A Digital Media Studio</div>
+    <div class="meta-block">Retainer</div>
+  </header>
+
+  <main>
+
+    <section class="hero" style="border-top:none;">
+      <h1>One partner for your web, video, and content — all year.</h1>
+      <p>A monthly retainer keeps your site current, your content flowing, and a team on call — without hiring, managing, or re-briefing a new freelancer every time something needs doing.</p>
+    </section>
+
+    <section id="retainer">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Monthly retainer</div>
+          <h2>The partnership package</h2>
+        </div>
+        <p class="sec-desc">One flat monthly rate. Cancel anytime with 30 days' notice — no long-term lock-in beyond that.</p>
+      </div>
+
+      <div class="retainer-card">
+        <div class="name">Growth Retainer</div>
+        <div class="price">$5,000<span> / month</span></div>
+        <div class="term">12-month agreement · 30-day notice to cancel</div>
+
+        <ul class="includes">
+          <li>Ongoing website updates, fixes, and improvements</li>
+          <li>Monthly content shoot — photo or video, your choice</li>
+          <li>Social media content edited and delivered, ready to post</li>
+          <li>Priority turnaround on requests — no re-quoting each time</li>
+          <li>A single point of contact who already knows your brand</li>
+        </ul>
+
+        <div class="note-strip"><b>Note —</b> exact scope and deliverables are set together at kickoff based on what your business actually needs each month.</div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Is this the right fit?</div>
+          <h2>Retainer vs. one-off</h2>
+        </div>
+        <p class="sec-desc">Not every project needs an ongoing partner. Here's the honest breakdown.</p>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-card">
+          <div class="cname">Choose retainer if</div>
+          <div class="cdesc">You need content and site updates regularly — not just once — and want one team who already knows your brand handling it.</div>
+        </div>
+        <div class="compare-card">
+          <div class="cname">Choose one-off if</div>
+          <div class="cdesc">You need a single shoot, a one-time site build, or a project with a clear start and end.</div>
+        </div>
+        <div class="compare-card">
+          <div class="cname">Not sure?</div>
+          <div class="cdesc">Start with a one-off project. If it's a good fit on both sides, moving to a retainer later is easy.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>Let's talk about<br>what you need.</h3>
+    <a class="btn" href="mailto:adigitalmediastudio@gmail.com">Start a project</a>
+    <div class="foot-meta">
+      <span>SUGAR RAT PRODUCTIONS<br>FILM DIVISION</span>
+      <span>© 2026 A DIGITAL MEDIA STUDIO</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
