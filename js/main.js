@@ -1,14 +1,3 @@
-// ---------- iris intro ----------
-window.addEventListener('load', function(){
-  var iris = document.getElementById('iris');
-  requestAnimationFrame(function(){
-    setTimeout(function(){
-      iris.classList.add('closed');
-      setTimeout(function(){ iris.classList.add('done'); }, 1200);
-    }, 150);
-  });
-});
-
 // ---------- contact modal open/close ----------
 var overlay = document.getElementById('contactOverlay');
 var openBtn = document.getElementById('openContact');
