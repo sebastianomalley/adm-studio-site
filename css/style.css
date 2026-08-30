@@ -550,7 +550,7 @@ footer a:hover{ color:var(--tally); }
 .site-frame .retainer-card{
   background:var(--rt-panel); border:1px solid var(--rt-line);
   padding:48px 44px; display:flex; flex-direction:column; gap:22px;
-  max-width:640px;
+  max-width:100%;
 }
 .site-frame .retainer-card .name{font-family:'Fraunces',serif; font-weight:500; font-size:24px;}
 .site-frame .retainer-card .price{font-family:'Fraunces',serif; font-size:52px; font-weight:600; color:var(--rt-blue);}
