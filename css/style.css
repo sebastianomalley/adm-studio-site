@@ -545,7 +545,7 @@ footer a:hover{ color:var(--tally); }
 .site-frame .event-table tr:last-child{border-bottom:none;}
 .site-frame .event-table td{padding:20px 0; font-size:14.5px;}
 .site-frame .event-table td:first-child{color:var(--rt-ink-dim); font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;}
-.site-frame .event-table td:last-child{text-align:right; font-family:'Fraunces',serif; font-size:20px; color:var(--rt-green);}
+.site-frame .event-table td:last-child{text-align:right; font-family:'Fraunces',serif; font-size:20px; color:var(--rt-blue);}
 
 .site-frame .retainer-card{
   background:var(--rt-panel); border:1px solid var(--rt-line);
