@@ -576,14 +576,15 @@ footer a:hover{ color:var(--tally); }
 .site-frame .foot-meta{ margin-top:50px; width:100%; display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--rt-ink-faint); }
 
 /* ---------- contact modal (rates pages) ---------- */
-body.rates-page .modal{ background:#26323B; border:1px solid #3B4A52; }
+body.rates-page .modal{ background:#2C3944; border:1px solid #4E5D68; }
 body.rates-page .modal h2{ color:#EAE4D4; }
 body.rates-page .modal-sub{ color:#9FAAAE; }
 body.rates-page .field label{ color:#9FAAAE; }
-body.rates-page .field input, body.rates-page .field textarea{ background:#1E2830; border:1px solid #3B4A52; color:#EAE4D4; }
+body.rates-page .field input, body.rates-page .field textarea{ background:#1E2830; border:1px solid #4E5D68; color:#EAE4D4; }
+body.rates-page .field input:focus, body.rates-page .field textarea:focus{ outline:2px solid #7FA3C0; outline-offset:1px; }
 body.rates-page .modal .btn{ background:#4E7291; color:#12181C; border-color:#4E7291; }
 body.rates-page .modal .btn:hover{ background:#7FA3C0; border-color:#7FA3C0; }
-body.rates-page .modal-close{ border-color:#3B4A52; color:#EAE4D4; }
+body.rates-page .modal-close{ border-color:#4E5D68; color:#EAE4D4; }
 body.rates-page .modal-close:hover{ background:#EAE4D4; color:#1E2830; }
 body.rates-page .form-note{ color:#5F6C71; }
 
