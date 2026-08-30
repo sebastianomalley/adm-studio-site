@@ -200,7 +200,7 @@ a{ color:inherit; }
   text-align:center;
   gap:clamp(20px, 3vw, 30px);
   padding:40px 0;
-  transform:translateY(-3vh);
+  transform:translateY(-1.5vh);
 }
 
 .logo-img{
