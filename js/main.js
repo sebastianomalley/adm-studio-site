@@ -1,3 +1,14 @@
+// ---------- reveal once everything is truly ready ----------
+Promise.all([
+  new Promise(function(resolve){
+    if (document.readyState === 'complete') resolve();
+    else window.addEventListener('load', resolve);
+  }),
+  document.fonts ? document.fonts.ready : Promise.resolve()
+]).then(function(){
+  document.body.classList.add('ready');
+});
+
 // ---------- contact modal open/close ----------
 var overlay = document.getElementById('contactOverlay');
 var openBtn = document.getElementById('openContact');
