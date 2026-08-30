@@ -518,10 +518,10 @@ footer a:hover{ color:var(--tally); }
 
 .site-frame section{ padding:8vh 6vw; border-bottom:1px solid var(--rt-line); position:relative; z-index:2; }
 
-.site-frame .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:46px; }
+.site-frame .sec-head{ max-width:640px; margin-bottom:40px; }
 .site-frame .sec-tag{font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; color:var(--rt-blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;}
-.site-frame .sec-head h2{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.4vw,36px); color:var(--rt-ink);}
-.site-frame .sec-desc{max-width:38ch; color:var(--rt-ink-dim); font-size:14px;}
+.site-frame .sec-head h2{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.4vw,36px); color:var(--rt-ink); margin-bottom:14px;}
+.site-frame .sec-desc{max-width:56ch; color:var(--rt-ink-dim); font-size:14.5px; line-height:1.6;}
 
 .site-frame .grid{ display:grid; gap:1px; background:var(--rt-line); border:1px solid var(--rt-line);}
 .site-frame .grid-3{ grid-template-columns:repeat(3,1fr); }
@@ -552,7 +552,7 @@ footer a:hover{ color:var(--tally); }
 .site-frame .retainer-card{
   background:var(--rt-panel); border:1px solid var(--rt-line);
   padding:48px 44px; display:flex; flex-direction:column; gap:22px;
-  max-width:100%;
+  max-width:700px;
 }
 
 .site-frame #retainer .sec-head, .site-frame #retainer .retainer-card{ max-width:760px; margin-left:auto; margin-right:auto; }
