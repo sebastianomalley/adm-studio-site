@@ -42,6 +42,9 @@ body{
   overflow-x:hidden;
 }
 
+body:not(.ready) .hud, body:not(.ready) .sitenav{ opacity:0; }
+body.ready .hud, body.ready .sitenav{ opacity:1; transition:opacity 0.5s ease; }
+
 body.rates-page{ background:#1E2830; }
 
 ::selection{ background:var(--tally); color:var(--paper); }
