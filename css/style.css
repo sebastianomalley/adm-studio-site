@@ -157,9 +157,11 @@ a{ color:inherit; }
 .sitenav{
   display:flex;
   justify-content:center;
-  align-items:flex-end;
+  align-items:center;
   gap:28px;
-  padding:14px var(--hud-gap) 0;
+  height:56px;
+  padding:0 var(--hud-gap);
+  box-sizing:border-box;
 }
 
 .sitenav a{
