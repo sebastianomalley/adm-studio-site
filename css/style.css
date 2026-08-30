@@ -157,11 +157,8 @@ a{ color:inherit; }
 .sitenav{
   display:flex;
   justify-content:center;
-  align-items:center;
   gap:28px;
-  height:56px;
-  padding:0 var(--hud-gap);
-  box-sizing:border-box;
+  padding:14px var(--hud-gap) 0;
 }
 
 .sitenav a{
