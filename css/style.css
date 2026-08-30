@@ -540,7 +540,7 @@ footer a:hover{ color:var(--tally); }
 .site-frame .brand-block{font-family:'Fraunces',serif; font-weight:500; font-size:19px; color:var(--rt-ink);}
 .site-frame .meta-block{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:500; color:var(--rt-blue); letter-spacing:0.14em; text-transform:uppercase;}
 .site-frame .sitenav{ display:flex; justify-content:center; gap:36px; padding:24px 40px 28px; border-bottom:1px solid var(--rt-line); position:relative; z-index:2; }
-.site-frame .sitenav a{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rt-ink-dim); padding-bottom:4px; border-bottom:1px solid transparent; }
+.site-frame .sitenav a{ transform:translateY(-4px); font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rt-ink-dim); padding-bottom:4px; border-bottom:1px solid transparent; }
 .site-frame .sitenav a.active{ color:var(--rt-blue); border-bottom-color:var(--rt-blue); }
 
 .site-frame .page-name{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:clamp(28px,4vw,44px); color:var(--rt-blue); margin-bottom:18px; }
