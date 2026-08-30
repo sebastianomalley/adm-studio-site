@@ -70,22 +70,14 @@ a{ color:inherit; }
 
 /* ---------- iris intro ---------- */
 .iris{
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   background:var(--ink);
   z-index:100;
   clip-path:circle(150% at 50% 50%);
-  transition:clip-path 0.28s cubic-bezier(.7,0,.3,1);
-  pointer-events:none;
+  transition:clip-path 1.1s cubic-bezier(.65,0,.35,1);
 }
-
-.iris.closed{
-  clip-path:circle(0% at 50% 50%);
-}
-
-.iris.done{
-  display:none;
-}
+.iris.closed{ clip-path:circle(0% at 50% 50%); }
+.iris.done{ display:none; }
 
 @media (prefers-reduced-motion: reduce){
   .iris{ display:none; }
