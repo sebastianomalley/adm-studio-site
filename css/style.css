@@ -115,6 +115,9 @@ a{ color:inherit; }
 }
 .tl::before{ top:0;left:0;width:2px;height:100%; }
 .tl::after{ top:0;left:0;height:2px;width:100%; }
+.tl::after{
+  background:var(--tally);
+}
 .tr::before{ top:0;right:0;width:2px;height:100%; }
 .tr::after{ top:0;right:0;height:2px;width:100%; }
 .bl::before{ bottom:0;left:0;width:2px;height:100%; }
@@ -189,6 +192,7 @@ a{ color:inherit; }
   text-align:center;
   gap:clamp(20px, 3vw, 30px);
   padding:40px 0;
+  transform:translateY(-3vh);
 }
 
 .logo-img{
@@ -431,6 +435,13 @@ footer a:hover{ color:var(--tally); }
 }
 
 .field textarea{ resize:vertical; min-height:90px; }
+
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus{
+  -webkit-box-shadow:0 0 0 1000px var(--paper-dim) inset !important;
+  -webkit-text-fill-color:var(--ink) !important;
+}
 
 .field input:focus, .field textarea:focus{
   outline:2px solid var(--tally);
