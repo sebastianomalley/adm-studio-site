@@ -71,25 +71,16 @@ a{ color:inherit; }
 /* ---------- iris intro ---------- */
 .iris{
   position:fixed;
-  width:180px;
-  height:180px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%, -50%);
+  inset:0;
   background:var(--ink);
-  border-radius:50%;
   z-index:100;
-  transition:
-    width 0.22s ease-in,
-    height 0.22s ease-in,
-    opacity 0.08s ease-in 0.14s;
+  clip-path:circle(150% at 50% 50%);
+  transition:clip-path 0.28s cubic-bezier(.7,0,.3,1);
   pointer-events:none;
 }
 
 .iris.closed{
-  width:0;
-  height:0;
-  opacity:0;
+  clip-path:circle(0% at 50% 50%);
 }
 
 .iris.done{
