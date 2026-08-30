@@ -105,6 +105,10 @@ a{ color:inherit; }
 
 .hud-row--bottom{
   align-items:flex-end;
+  border-top:none;
+  border-bottom:1px solid rgba(25,24,22,0.12);
+  padding-top:0;
+  padding-bottom:10px;
 }
 
 .hud-row span{ display:block; }
@@ -113,17 +117,21 @@ a{ color:inherit; }
 .corner::before, .corner::after{
   content:''; position:absolute; background:rgba(25,24,22,0.18);
 }
-.tl::before{ top:0;left:0;width:2px;height:100%; }
+.tl::before{ top:0;left:0;width:2px;height:32px; }
 .tl::after{ top:0;left:0;height:2px;width:100%; }
 .tl::after{
   background:var(--tally);
 }
-.tr::before{ top:0;right:0;width:2px;height:100%; }
+.tr::before{ top:0;right:0;width:2px;height:32px; }
 .tr::after{ top:0;right:0;height:2px;width:100%; }
-.bl::before{ bottom:0;left:0;width:2px;height:100%; }
+.bl::before{ bottom:0;left:0;width:2px;height:32px; }
 .bl::after{ bottom:0;left:0;height:2px;width:100%; }
-.br::before{ bottom:0;right:0;width:2px;height:100%; }
+.br::before{ bottom:0;right:0;width:2px;height:32px; }
 .br::after{ bottom:0;right:0;height:2px;width:100%; }
+
+.br::after{
+  background:var(--slate);
+}
 
 .hud-label{
   max-width:150px;
