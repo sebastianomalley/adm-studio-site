@@ -584,8 +584,9 @@ body.rates-page .field input, body.rates-page .field textarea{ background:#1E283
 body.rates-page .field input:-webkit-autofill,
 body.rates-page .field input:-webkit-autofill:hover,
 body.rates-page .field input:-webkit-autofill:focus{
-  -webkit-text-fill-color:#EAE4D4;
-  -webkit-box-shadow:0 0 0px 1000px #1E2830 inset;
+  -webkit-text-fill-color:#EAE4D4 !important;
+  -webkit-box-shadow:0 0 0px 1000px #1E2830 inset !important;
+  box-shadow:0 0 0px 1000px #1E2830 inset !important;
   transition:background-color 9999s ease-in-out 0s;
 }
 body.rates-page .field input:focus, body.rates-page .field textarea:focus{ outline:2px solid #7FA3C0; outline-offset:1px; }
