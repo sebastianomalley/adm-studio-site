@@ -158,8 +158,9 @@ a{ color:inherit; }
   display:flex;
   justify-content:center;
   gap:28px;
-  padding:24px 40px 28px;
+  padding:14px var(--hud-gap) 0;
 }
+.sitenav a{ position:relative; top:10px; }
 .sitenav a{
   font-family:'JetBrains Mono', monospace;
   font-size:12px;
