@@ -1,14 +1,11 @@
 // ---------- iris intro ----------
-document.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('load', function(){
   var iris = document.getElementById('iris');
-  if (!iris) return;
   requestAnimationFrame(function(){
     setTimeout(function(){
       iris.classList.add('closed');
+      setTimeout(function(){ iris.classList.add('done'); }, 1200);
     }, 150);
-  });
-  iris.addEventListener('transitionend', function(){
-    iris.classList.add('done');
   });
 });
 
