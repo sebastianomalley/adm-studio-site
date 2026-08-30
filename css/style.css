@@ -23,6 +23,8 @@ body{
   overflow-x:hidden;
 }
 
+body.rates-page{ background:#1E2830; }
+
 ::selection{ background:var(--tally); color:var(--paper); }
 
 a{ color:inherit; }
@@ -516,7 +518,7 @@ footer a:hover{ color:var(--tally); }
 .site-frame section{ padding:8vh 6vw; border-bottom:1px solid var(--rt-line); position:relative; z-index:2; }
 
 .site-frame .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:46px; }
-.site-frame .sec-tag{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--rt-blue); letter-spacing:0.02em; margin-bottom:10px;}
+.site-frame .sec-tag{font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; color:var(--rt-blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;}
 .site-frame .sec-head h2{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,3.4vw,36px); color:var(--rt-ink);}
 .site-frame .sec-desc{max-width:38ch; color:var(--rt-ink-dim); font-size:14px;}
 
