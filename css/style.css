@@ -605,6 +605,13 @@ footer a:hover{ color:var(--tally); }
 .site-frame .retainer-card .price span{font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--rt-ink-dim); font-weight:400;}
 .site-frame .retainer-card .term{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--rt-green); letter-spacing:0.02em;}
 
+.site-frame .retainer-services{ display:flex; flex-direction:column; gap:30px; margin-top:8px; }
+.site-frame .retainer-service .service-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rt-blue); margin-bottom:6px; }
+.site-frame .retainer-service h3{ font-family:'Fraunces',serif; font-weight:500; font-size:18px; color:var(--rt-ink); margin-bottom:12px; }
+.site-frame .retainer-service ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+.site-frame .retainer-service ul li{ font-size:14px; color:var(--rt-ink-dim); padding-left:18px; position:relative; }
+.site-frame .retainer-service ul li::before{ content:"—"; position:absolute; left:0; color:var(--rt-green); }
+
 .site-frame .includes{ list-style:none; display:flex; flex-direction:column; gap:14px; margin-top:6px; }
 .site-frame .includes li{ display:flex; gap:14px; font-size:15px; color:var(--rt-ink); align-items:flex-start; }
 .site-frame .includes li::before{ content:"—"; color:var(--rt-green); flex-shrink:0; }
