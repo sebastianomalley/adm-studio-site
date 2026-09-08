@@ -1,0 +1,161 @@
+:root{
+  --black:#020b0f;
+  --cream:#f3ead9;
+  --cyan:#16dce2;
+  --pink:#ff2184;
+  --gold:#f5b65f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--black);color:var(--cream)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  min-height:100svh;
+  background:
+    radial-gradient(circle at 14% 4%,rgba(0,206,221,.09),transparent 23rem),
+    radial-gradient(circle at 94% 88%,rgba(255,33,132,.08),transparent 21rem),
+    #020b0f;
+}
+.page{
+  position:relative;
+  width:min(100%,480px);
+  min-height:100svh;
+  margin:0 auto;
+  padding:34px 24px 38px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.paint{
+  position:absolute;pointer-events:none;opacity:.75;z-index:0
+}
+.paint.one{
+  width:150px;height:22px;left:-85px;top:86px;
+  background:var(--cyan);transform:rotate(-17deg);
+  box-shadow:22px 15px 0 -7px rgba(255,33,132,.8),55px -8px 0 -8px rgba(245,182,95,.75)
+}
+.paint.two{
+  width:145px;height:19px;right:-88px;bottom:80px;
+  background:var(--pink);transform:rotate(-15deg);
+  box-shadow:-28px 18px 0 -7px rgba(22,220,226,.7),-60px -10px 0 -8px rgba(245,182,95,.55)
+}
+.content{position:relative;z-index:1;width:100%;text-align:center}
+.adm{
+  margin:0 auto;
+  font-size:72px;
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-.09em;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.adm .a{color:var(--gold)}
+.adm .d{color:var(--cyan)}
+.adm .m{color:var(--pink)}
+.studio{
+  margin-top:15px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:14px;
+  letter-spacing:.27em;
+  white-space:nowrap;
+}
+.brand-rule{
+  width:104px;height:2px;margin:15px auto 14px;border-radius:20px;
+  background:linear-gradient(90deg,var(--cyan) 0 31%,transparent 31% 67%,var(--gold) 67%)
+}
+.tag{
+  color:var(--cyan);
+  text-transform:uppercase;
+  letter-spacing:.34em;
+  font-size:11px;
+}
+.photo-ring{
+  width:232px;height:232px;
+  margin:29px auto 20px;
+  padding:4px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan) 0 45%,#6b65e8 54%,var(--pink) 70% 100%);
+  box-shadow:0 0 18px rgba(22,220,226,.08),0 0 20px rgba(255,33,132,.08);
+  position:relative;
+}
+.photo-ring:before{
+  content:"";position:absolute;inset:-7px;border-radius:50%;
+  border:2px solid transparent;
+  border-left-color:rgba(22,220,226,.72);
+  border-right-color:rgba(255,33,132,.72);
+  transform:rotate(-9deg);
+}
+.photo{
+  width:100%;height:100%;display:block;
+  border-radius:50%;object-fit:cover;
+  border:5px solid var(--black);
+}
+h1{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:38px;
+  line-height:1.08;
+  font-weight:500;
+  letter-spacing:-.025em;
+}
+.role{
+  margin:12px auto 0;
+  font-size:12px;
+  letter-spacing:.22em;
+  line-height:1.55;
+  text-transform:uppercase;
+  color:#d5d7d5;
+}
+.gold-rule{
+  width:50px;height:2px;background:var(--gold);
+  margin:17px auto 21px;border-radius:20px
+}
+.save{
+  width:100%;
+  min-height:70px;
+  display:flex;align-items:center;justify-content:center;gap:13px;
+  border:2px solid rgba(255,255,255,.9);
+  border-radius:36px;
+  color:white;text-decoration:none;
+  font-size:18px;font-weight:700;letter-spacing:.14em;
+  background:
+    linear-gradient(95deg,rgba(255,33,132,.94) 0%,rgba(165,25,115,.78) 37%,rgba(9,91,107,.8) 69%,rgba(22,220,226,.96) 100%);
+  box-shadow:
+    0 0 0 2px rgba(255,33,132,.20),
+    -12px 0 30px rgba(255,33,132,.25),
+    12px 0 30px rgba(22,220,226,.20);
+}
+.person{
+  width:23px;height:23px;position:relative;display:inline-block
+}
+.person:before{
+  content:"";position:absolute;width:10px;height:10px;border-radius:50%;
+  background:white;left:3px;top:0
+}
+.person:after{
+  content:"";position:absolute;width:17px;height:10px;border-radius:10px 10px 3px 3px;
+  background:white;left:0;bottom:0
+}
+.plus{font-size:18px;margin-left:-9px;margin-top:-13px}
+.make{
+  margin-top:37px;
+  color:var(--gold);
+  font-family:"Brush Script MT","Segoe Script","Snell Roundhand",cursive;
+  font-size:36px;
+  line-height:.95;
+  transform:rotate(-3deg);
+}
+.swash{
+  width:145px;height:3px;margin:11px auto 0;
+  background:linear-gradient(90deg,var(--pink),var(--pink) 67%,transparent);
+  transform:rotate(-6deg);
+  border-radius:50%
+}
+@media(max-width:380px){
+  .page{padding-left:18px;padding-right:18px}
+  .adm{font-size:64px}
+  .studio{font-size:12px;letter-spacing:.23em}
+  .photo-ring{width:210px;height:210px}
+  h1{font-size:34px}
+  .role{font-size:10px;letter-spacing:.18em}
+  .save{min-height:64px;font-size:16px}
+}
