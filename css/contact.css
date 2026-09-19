@@ -229,31 +229,20 @@ h1{
   z-index:0;pointer-events:none;
 }
 
-/* --- Entrance reveal ---------------------------------------
+/* --- Entrance: the whole card arrives at once ----------------
    Only hides content when JS is running, so the page is never
-   blank if a script fails to load. */
-.js .reveal{
+   blank if the script fails to load. */
+.js .content{
   opacity:0;
-  transform:translateY(16px);
+  transform:translateY(18px) scale(.985);
+  will-change:opacity,transform;
 }
-.js .reveal.in{
+.js .content.in{
   opacity:1;
   transform:none;
-  transition:opacity .85s cubic-bezier(.22,.8,.3,1),
-             transform .85s cubic-bezier(.22,.8,.3,1);
+  transition:opacity .9s cubic-bezier(.22,.8,.3,1),
+             transform 1s cubic-bezier(.22,.8,.3,1);
 }
-.js .brand-rule.reveal,
-.js .gold-rule.reveal{
-  transform:none;
-  clip-path:inset(0 100% 0 0);
-  transition:clip-path .9s cubic-bezier(.22,.8,.3,1),opacity .5s ease;
-}
-.js .brand-rule.reveal.in,
-.js .gold-rule.reveal.in{clip-path:inset(0 0 0 0)}
-.js .swash.reveal{transform:rotate(-7deg) scaleX(0);transform-origin:left center}
-.js .swash.reveal.in{transform:rotate(-7deg) scaleX(1);transition:transform .8s cubic-bezier(.22,.8,.3,1)}
-.js .make.reveal{transform:rotate(-4deg) translateY(16px)}
-.js .make.reveal.in{transform:rotate(-4deg)}
 
 /* --- ADM wordmark shimmer ----------------------------------- */
 .adm .a,.adm .d,.adm .m{
@@ -392,9 +381,7 @@ html.js .save-wrap:before{animation:halo 2.9s ease-out infinite}
 
 /* --- Respect the system setting ------------------------------ */
 @media(prefers-reduced-motion:reduce){
-  .js .reveal,.js .reveal.in{opacity:1;transform:none;clip-path:none;transition:none}
-  .js .swash.reveal,.js .swash.reveal.in{transform:rotate(-7deg)}
-  .js .make.reveal,.js .make.reveal.in{transform:rotate(-4deg)}
+  .js .content,.js .content.in{opacity:1;transform:none;transition:none}
   .js .adm.lit .a,.js .adm.lit .d,.js .adm.lit .m,
   .js .photo-ring:before,.js .photo-ring:after,
   html.js a.save,.js .save .gleam,.js .save-wrap:before{animation:none}
