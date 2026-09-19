@@ -387,3 +387,43 @@ html.js .save-wrap:before{animation:halo 2.9s ease-out infinite}
   html.js a.save,.js .save .gleam,.js .save-wrap:before{animation:none}
   .star,.sparks{display:none}
 }
+
+/* ============================================================
+   Real ADM logo mark (replaces the text wordmark)
+   ============================================================ */
+.logo-wrap{
+  position:relative;
+  display:block;
+  width:min(272px,74%);
+  margin:4px auto 2px;
+}
+.logomark{
+  display:block;width:100%;height:auto;
+  filter:drop-shadow(0 0 24px rgba(22,220,226,.16));
+}
+/* one slow pass of the brand colors through the mark, then back to white */
+.logo-wrap .sheen{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  background:linear-gradient(100deg,
+    transparent 38%,
+    rgba(22,220,226,.95) 46%,
+    rgba(255,33,132,.95) 52%,
+    rgba(245,182,95,.95) 58%,
+    transparent 66%);
+  background-size:260% 100%;
+  background-position:135% 0;
+  -webkit-mask:url(../images/logo.png) center/contain no-repeat;
+  mask:url(../images/logo.png) center/contain no-repeat;
+}
+.js .content.in .logo-wrap .sheen{animation:logosheen 2.6s ease-out .45s both}
+@keyframes logosheen{
+  0%  {opacity:0;background-position:135% 0}
+  18% {opacity:1}
+  78% {opacity:1}
+  100%{opacity:0;background-position:-45% 0}
+}
+@media(max-width:380px){.logo-wrap{width:min(240px,76%)}}
+@media(prefers-reduced-motion:reduce){
+  .js .content.in .logo-wrap .sheen{animation:none;opacity:0}
+}
