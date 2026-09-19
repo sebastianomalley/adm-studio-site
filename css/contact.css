@@ -288,53 +288,82 @@ h1{
 /* --- Shooting star ------------------------------------------ */
 .star{
   position:absolute;top:0;left:0;
-  width:150px;height:2px;
-  border-radius:2px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1) 30%,#fff 92%,#fff);
-  filter:drop-shadow(0 0 6px rgba(22,220,226,.9));
-  opacity:0;z-index:1;pointer-events:none;
-  transform:rotate(26deg);
+  width:190px;height:3px;
+  border-radius:3px;
+  background:linear-gradient(90deg,transparent,rgba(22,220,226,.25) 22%,rgba(255,255,255,.85) 80%,#fff 100%);
+  filter:drop-shadow(0 0 7px rgba(22,220,226,.95)) drop-shadow(0 0 16px rgba(255,255,255,.55));
+  opacity:0;z-index:5;pointer-events:none;
+  transform:rotate(24deg);
 }
-.star.go{animation:shoot 1.5s cubic-bezier(.3,.1,.2,1) forwards}
+.star:after{
+  content:"";position:absolute;right:-3px;top:-3px;
+  width:9px;height:9px;border-radius:50%;background:#fff;
+  box-shadow:0 0 12px 3px rgba(255,255,255,.85),0 0 22px 7px rgba(22,220,226,.6);
+}
+.star.go{animation:shoot 1.6s cubic-bezier(.35,.05,.2,1) forwards}
 @keyframes shoot{
-  0%{opacity:0;transform:translate3d(-170px,-40px,0) rotate(26deg) scaleX(.3)}
-  12%{opacity:1}
-  70%{opacity:1}
-  100%{opacity:0;transform:translate3d(120vw,54vh,0) rotate(26deg) scaleX(1)}
+  0%  {opacity:0;transform:translate3d(-210px,-60px,0) rotate(24deg) scaleX(.35)}
+  10% {opacity:1}
+  72% {opacity:1}
+  100%{opacity:0;transform:translate3d(var(--tx,520px),var(--ty,300px),0) rotate(24deg) scaleX(1)}
 }
 
 /* --- Save button -------------------------------------------- */
 .save{
   position:relative;
   overflow:hidden;
-  background-size:170% 100%;
+  background-size:230% 100%;
   background-position:0% 0;
-  transition:transform .18s ease,box-shadow .5s ease,background-position 1.2s ease;
+  transition:transform .18s ease;
 }
-.js .save{animation:breathe 4.6s ease-in-out infinite}
-.save:hover{background-position:100% 0}
-.save:active{transform:scale(.975)}
+html.js a.save{
+  animation:breathe 2.9s ease-in-out infinite,
+            slide 7s ease-in-out infinite alternate;
+}
+.save:active{transform:scale(.97)}
+
 /* light sweeping across the button */
 .save .gleam{
-  position:absolute;top:0;bottom:0;left:-40%;width:34%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
+  position:absolute;top:0;bottom:0;left:-50%;width:42%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
   transform:skewX(-18deg);
-  pointer-events:none;
+  pointer-events:none;z-index:1;
 }
-.js .save .gleam{animation:gleam 5.4s ease-in-out 2.2s infinite}
+html.js .save .gleam{animation:gleam 3.2s ease-in-out 1.6s infinite}
 @keyframes gleam{
-  0%{left:-45%}
-  26%{left:118%}
-  100%{left:118%}
+  0%  {left:-55%}
+  38% {left:125%}
+  100%{left:125%}
+}
+@keyframes slide{
+  0%  {background-position:0% 0}
+  100%{background-position:100% 0}
 }
 @keyframes breathe{
-  0%,100%{box-shadow:0 0 0 2px rgba(255,33,132,.16),
-                     -10px 0 27px rgba(255,33,132,.25),
-                      10px 0 27px rgba(22,220,226,.20)}
-  50%    {box-shadow:0 0 0 2px rgba(255,33,132,.26),
-                     -14px 0 38px rgba(255,33,132,.38),
-                      14px 0 38px rgba(22,220,226,.32)}
+  0%,100%{box-shadow:0 0 0 2px rgba(255,33,132,.18),
+                     -10px 0 24px rgba(255,33,132,.22),
+                      10px 0 24px rgba(22,220,226,.18);
+          transform:scale(1)}
+  50%    {box-shadow:0 0 0 3px rgba(255,255,255,.22),
+                     -18px 0 46px rgba(255,33,132,.55),
+                      18px 0 46px rgba(22,220,226,.48);
+          transform:scale(1.022)}
 }
+
+/* halo that pushes outward from the button */
+.save-wrap{position:relative;display:block;width:100%}
+.save-wrap:before{
+  content:"";position:absolute;inset:0;border-radius:36px;
+  border:2px solid rgba(22,220,226,.55);
+  pointer-events:none;opacity:0;
+}
+html.js .save-wrap:before{animation:halo 2.9s ease-out infinite}
+@keyframes halo{
+  0%  {opacity:.55;transform:scale(1)}
+  70% {opacity:0;transform:scale(1.13)}
+  100%{opacity:0;transform:scale(1.13)}
+}
+
 .save .label{position:relative;z-index:2}
 .save .person,.save .plus{position:relative;z-index:2}
 .save.saved .person,.save.saved .plus{display:none}
@@ -368,6 +397,6 @@ h1{
   .js .make.reveal,.js .make.reveal.in{transform:rotate(-4deg)}
   .js .adm.lit .a,.js .adm.lit .d,.js .adm.lit .m,
   .js .photo-ring:before,.js .photo-ring:after,
-  .js .save,.js .save .gleam{animation:none}
+  html.js a.save,.js .save .gleam,.js .save-wrap:before{animation:none}
   .star,.sparks{display:none}
 }
