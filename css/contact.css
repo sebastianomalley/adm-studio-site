@@ -216,3 +216,158 @@ h1{
   .save{min-height:64px;font-size:16px}
   .make{font-size:30px}
 }
+
+/* ============================================================
+   Motion layer
+   Everything below is additive. Removing this block returns the
+   page to its original static design.
+   ============================================================ */
+
+/* Ambient spark canvas, sits behind the content */
+.sparks{
+  position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+
+/* --- Entrance reveal ---------------------------------------
+   Only hides content when JS is running, so the page is never
+   blank if a script fails to load. */
+.js .reveal{
+  opacity:0;
+  transform:translateY(16px);
+}
+.js .reveal.in{
+  opacity:1;
+  transform:none;
+  transition:opacity .85s cubic-bezier(.22,.8,.3,1),
+             transform .85s cubic-bezier(.22,.8,.3,1);
+}
+.js .brand-rule.reveal,
+.js .gold-rule.reveal{
+  transform:none;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path .9s cubic-bezier(.22,.8,.3,1),opacity .5s ease;
+}
+.js .brand-rule.reveal.in,
+.js .gold-rule.reveal.in{clip-path:inset(0 0 0 0)}
+.js .swash.reveal{transform:rotate(-7deg) scaleX(0);transform-origin:left center}
+.js .swash.reveal.in{transform:rotate(-7deg) scaleX(1);transition:transform .8s cubic-bezier(.22,.8,.3,1)}
+.js .make.reveal{transform:rotate(-4deg) translateY(16px)}
+.js .make.reveal.in{transform:rotate(-4deg)}
+
+/* --- ADM wordmark shimmer ----------------------------------- */
+.adm .a,.adm .d,.adm .m{
+  background-size:220% 100%;
+  background-position:82% 0;
+}
+.js .adm.lit .a,
+.js .adm.lit .d,
+.js .adm.lit .m{
+  animation:sheen 2.6s cubic-bezier(.4,0,.2,1) both;
+}
+.js .adm.lit .d{animation-delay:.12s}
+.js .adm.lit .m{animation-delay:.24s}
+@keyframes sheen{
+  0%{background-position:100% 0}
+  55%{background-position:0% 0}
+  100%{background-position:82% 0}
+}
+
+/* --- Photo ring: slow counter-rotating arcs ------------------ */
+.js .photo-ring:before{animation:spin 26s linear infinite}
+.js .photo-ring:after{animation:spin-back 19s linear infinite}
+@keyframes spin{
+  from{transform:rotate(-5deg)}
+  to{transform:rotate(355deg)}
+}
+@keyframes spin-back{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(-360deg)}
+}
+
+/* --- Shooting star ------------------------------------------ */
+.star{
+  position:absolute;top:0;left:0;
+  width:150px;height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1) 30%,#fff 92%,#fff);
+  filter:drop-shadow(0 0 6px rgba(22,220,226,.9));
+  opacity:0;z-index:1;pointer-events:none;
+  transform:rotate(26deg);
+}
+.star.go{animation:shoot 1.5s cubic-bezier(.3,.1,.2,1) forwards}
+@keyframes shoot{
+  0%{opacity:0;transform:translate3d(-170px,-40px,0) rotate(26deg) scaleX(.3)}
+  12%{opacity:1}
+  70%{opacity:1}
+  100%{opacity:0;transform:translate3d(120vw,54vh,0) rotate(26deg) scaleX(1)}
+}
+
+/* --- Save button -------------------------------------------- */
+.save{
+  position:relative;
+  overflow:hidden;
+  background-size:170% 100%;
+  background-position:0% 0;
+  transition:transform .18s ease,box-shadow .5s ease,background-position 1.2s ease;
+}
+.js .save{animation:breathe 4.6s ease-in-out infinite}
+.save:hover{background-position:100% 0}
+.save:active{transform:scale(.975)}
+/* light sweeping across the button */
+.save .gleam{
+  position:absolute;top:0;bottom:0;left:-40%;width:34%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
+  transform:skewX(-18deg);
+  pointer-events:none;
+}
+.js .save .gleam{animation:gleam 5.4s ease-in-out 2.2s infinite}
+@keyframes gleam{
+  0%{left:-45%}
+  26%{left:118%}
+  100%{left:118%}
+}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 2px rgba(255,33,132,.16),
+                     -10px 0 27px rgba(255,33,132,.25),
+                      10px 0 27px rgba(22,220,226,.20)}
+  50%    {box-shadow:0 0 0 2px rgba(255,33,132,.26),
+                     -14px 0 38px rgba(255,33,132,.38),
+                      14px 0 38px rgba(22,220,226,.32)}
+}
+.save .label{position:relative;z-index:2}
+.save .person,.save .plus{position:relative;z-index:2}
+.save.saved .person,.save.saved .plus{display:none}
+.save .tick{
+  display:none;width:23px;height:23px;position:relative;z-index:2;
+}
+.save.saved .tick{display:inline-block;animation:pop .5s cubic-bezier(.2,1.5,.4,1) both}
+.save .tick:before,.save .tick:after{
+  content:"";position:absolute;background:#fff;border-radius:2px;
+}
+.save .tick:before{width:3px;height:10px;left:5px;top:8px;transform:rotate(-45deg)}
+.save .tick:after{width:3px;height:18px;left:14px;top:2px;transform:rotate(38deg)}
+@keyframes pop{
+  0%{transform:scale(.2);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+
+/* burst particles on tap */
+.burst{position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;
+  pointer-events:none;z-index:3;opacity:0}
+.burst.go{animation:burst .85s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes burst{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}
+  100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15)}
+}
+
+/* --- Respect the system setting ------------------------------ */
+@media(prefers-reduced-motion:reduce){
+  .js .reveal,.js .reveal.in{opacity:1;transform:none;clip-path:none;transition:none}
+  .js .swash.reveal,.js .swash.reveal.in{transform:rotate(-7deg)}
+  .js .make.reveal,.js .make.reveal.in{transform:rotate(-4deg)}
+  .js .adm.lit .a,.js .adm.lit .d,.js .adm.lit .m,
+  .js .photo-ring:before,.js .photo-ring:after,
+  .js .save,.js .save .gleam{animation:none}
+  .star,.sparks{display:none}
+}
