@@ -175,10 +175,36 @@
     }, { passive: true });
   }
 
+  /* ------------------------------------------------------------
+     5. Last-resort fit. The CSS sizes everything against the screen
+        height, but on a very short screen (landscape, or an older
+        small phone) the card can still run long. If it does, scale
+        it down so the whole thing is visible without scrolling.
+     ------------------------------------------------------------ */
+  function fitToScreen() {
+    if (!content || !page) return;
+    content.style.transform = '';
+    var cs = getComputedStyle(page);
+    var available = page.clientHeight
+      - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    var needed = content.scrollHeight;
+    if (needed > available && needed > 0) {
+      var s = Math.max(available / needed, 0.7);
+      content.style.transform = 'scale(' + s.toFixed(4) + ')';
+    }
+  }
+
   function init() {
     sparks();
     saveButton();
-    whenReady().then(showCard);
+    whenReady().then(function () {
+      fitToScreen();
+      showCard();
+    });
+    window.addEventListener('resize', fitToScreen);
+    window.addEventListener('orientationchange', function () {
+      setTimeout(fitToScreen, 250);
+    });
   }
 
   if (document.readyState === 'loading') {
