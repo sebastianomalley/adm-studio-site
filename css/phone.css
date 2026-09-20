@@ -21,7 +21,7 @@
 }
 .phone{
   /* everything below scales from this one value */
-  --pw:300px;
+  --pw:clamp(215px, 56vw, 310px);
   width:var(--pw);
   aspect-ratio:1206 / 2622;
   font-size:calc(var(--pw) / 100);      /* 1em = 1% of phone width */
@@ -128,6 +128,18 @@
   background:rgba(255,255,255,.9);
 }
 
-@media(max-width:520px){
-  .phone{--pw:265px}
+/* --- the card this sits in ---------------------------------
+   style.css only centers .retainer-card inside #retainer, so on
+   builds.html it needs centering here. */
+.site-frame #proof .retainer-card{
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.site-frame #proof .retainer-card .note-strip{text-align:left}
+
+@media(max-width:600px){
+  .site-frame #proof .retainer-card{padding-left:20px;padding-right:20px}
+  .phone-demo{padding-bottom:26px}
 }
