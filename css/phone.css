@@ -21,7 +21,7 @@
 }
 .phone{
   /* everything below scales from this one value */
-  --pw:clamp(215px, 56vw, 310px);
+  --pw:clamp(215px, 56vw, 320px);
   width:var(--pw);
   aspect-ratio:1206 / 2622;
   font-size:calc(var(--pw) / 100);      /* 1em = 1% of phone width */
@@ -128,41 +128,17 @@
   background:rgba(255,255,255,.9);
 }
 
-/* --- the card this sits in ---------------------------------
-   style.css only centers .retainer-card inside #retainer, so on
-   builds.html it needs centering here. */
+/* --- the section this sits in -------------------------------
+   Same treatment style.css already gives #retainer: heading and
+   card share one column, so the card never sprawls across a wide
+   monitor. Headings stay left-aligned inside that column. */
+.site-frame #proof .sec-head,
 .site-frame #proof .retainer-card{
-  max-width:none;          /* span the section like the other cards do */
-  width:100%;
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
 }
-/* keep the copy readable no matter how wide the screen gets */
-.site-frame #proof .retainer-card .note-strip{max-width:68ch}
-
-/* Wide screens: put the phone beside the copy instead of leaving
-   a tall empty box around it. Below 900px everything stacks. */
-@media(min-width:900px){
-  .site-frame #proof .retainer-card{
-    display:grid;
-    grid-template-columns:minmax(240px,360px) 1fr;
-    /* row 4 soaks up any slack so the two notes stay together
-       instead of being pushed apart by the tall phone */
-    grid-template-rows:auto auto auto 1fr;
-    column-gap:56px;
-    row-gap:0;
-  }
-  .site-frame #proof .retainer-card > .name{grid-column:1 / -1; grid-row:1}
-  .site-frame #proof .phone-demo{
-    grid-column:1; grid-row:2 / 5;
-    align-self:center;
-    padding-top:0;
-  }
-  .site-frame #proof .retainer-card > .note-strip:nth-of-type(1){
-    grid-column:2; grid-row:2; align-self:start; margin-bottom:16px;
-  }
-  .site-frame #proof .retainer-card > .note-strip:nth-of-type(2){
-    grid-column:2; grid-row:3; align-self:start;
-  }
-}
+.site-frame #proof .retainer-card{width:100%}
 
 @media(max-width:600px){
   .site-frame #proof .retainer-card{padding-left:20px;padding-right:20px}
