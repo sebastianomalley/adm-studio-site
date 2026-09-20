@@ -1,0 +1,133 @@
+/* iPhone lock-screen mockup. Used on builds.html. */
+
+/* ---- phone mockup ---------------------------------------- */
+.phone-demo{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  padding:10px 0 34px;
+  perspective:1600px;
+}
+/* soft contact shadow on the floor */
+.phone-demo:after{
+  content:"";
+  position:absolute;bottom:10px;left:50%;
+  transform:translateX(-50%);
+  width:62%;height:26px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);
+  filter:blur(6px);
+  pointer-events:none;
+}
+.phone{
+  /* everything below scales from this one value */
+  --pw:300px;
+  width:var(--pw);
+  aspect-ratio:1206 / 2622;
+  font-size:calc(var(--pw) / 100);      /* 1em = 1% of phone width */
+  position:relative;
+  border-radius:13em;
+  padding:1.1em;
+  background:
+    linear-gradient(112deg,
+      #6d7177 0%, #3a3d42 6%, #24262a 16%,
+      #16181b 50%,
+      #24262a 84%, #43464c 94%, #74787e 100%);
+  box-shadow:
+    0 3em 7em rgba(0,0,0,.62),
+    0 .6em 2em rgba(0,0,0,.5),
+    inset .25em 0 .5em rgba(255,255,255,.22),
+    inset -.25em 0 .5em rgba(255,255,255,.16),
+    inset 0 .3em .6em rgba(255,255,255,.12),
+    inset 0 -.3em .6em rgba(0,0,0,.55);
+  transform:rotateY(-4deg) rotateX(1.5deg);
+  transform-style:preserve-3d;
+}
+/* thin inner rim between metal and glass */
+.phone:before{
+  content:"";position:absolute;inset:.85em;
+  border-radius:12.4em;
+  background:#05070a;
+  box-shadow:inset 0 0 0 .12em rgba(255,255,255,.07);
+}
+/* side hardware */
+.phone .btn-mute,
+.phone .btn-vol,
+.phone .btn-power{
+  position:absolute;
+  border-radius:1.4em;
+  background:linear-gradient(90deg,#2a2d32,#55585f 45%,#1d1f23);
+}
+.phone .btn-mute{left:-.9em;top:23em;width:1.1em;height:6.4em}
+.phone .btn-vol{left:-1.1em;width:1.3em;height:11.6em}
+.phone .btn-vol.up{top:34em}
+.phone .btn-vol.down{top:48.5em}
+.phone .btn-power{right:-1.1em;top:41em;width:1.3em;height:19em;
+  background:linear-gradient(270deg,#2a2d32,#55585f 45%,#1d1f23)}
+
+.phone-screen{
+  position:relative;
+  z-index:1;
+  width:100%;height:100%;
+  border-radius:12em;
+  overflow:hidden;
+  background:#020b0f;
+}
+.phone-wall{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.phone-island{
+  position:absolute;top:2.2em;left:50%;
+  transform:translateX(-50%);
+  width:31em;height:9.2em;
+  border-radius:5em;
+  background:#000;
+}
+.phone-clock{
+  position:absolute;top:14em;left:0;right:0;
+  text-align:center;
+  color:#e8447f;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  text-shadow:0 0 2em rgba(232,68,127,.35);
+}
+.ph-date{
+  font-size:6.4em;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin-bottom:.1em;
+}
+.ph-time{
+  font-size:27em;
+  font-weight:200;
+  line-height:.95;
+  letter-spacing:-.02em;
+}
+/* glass: a broad diagonal reflection plus a tight edge catch */
+.phone-glare{
+  position:absolute;inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(108deg,
+      rgba(255,255,255,.16) 0%,
+      rgba(255,255,255,.07) 11%,
+      rgba(255,255,255,0) 26%,
+      rgba(255,255,255,0) 62%,
+      rgba(255,255,255,.05) 78%,
+      rgba(255,255,255,.11) 100%),
+    radial-gradient(120% 60% at 18% -8%,rgba(255,255,255,.14),transparent 55%);
+  mix-blend-mode:screen;
+}
+.phone-home{
+  position:absolute;bottom:2.6em;left:50%;
+  transform:translateX(-50%);
+  width:36em;height:1.4em;
+  border-radius:2em;
+  background:rgba(255,255,255,.9);
+}
+
+@media(max-width:520px){
+  .phone{--pw:265px}
+}
