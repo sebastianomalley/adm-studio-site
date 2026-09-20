@@ -132,12 +132,9 @@
    style.css only centers .retainer-card inside #retainer, so on
    builds.html it needs centering here. */
 .site-frame #proof .retainer-card{
-  max-width:760px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:center;
+  max-width:none;          /* span the section like the other cards do */
+  width:100%;
 }
-.site-frame #proof .retainer-card .note-strip{text-align:left}
 
 @media(max-width:600px){
   .site-frame #proof .retainer-card{padding-left:20px;padding-right:20px}
