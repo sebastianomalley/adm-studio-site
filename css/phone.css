@@ -143,14 +143,21 @@
 @media(min-width:900px){
   .site-frame #proof .retainer-card{
     display:grid;
-    grid-template-columns:minmax(260px,400px) 1fr;
-    column-gap:52px;
-    align-items:center;
+    grid-template-columns:minmax(240px,360px) 1fr;
+    /* row 4 soaks up any slack so the two notes stay together
+       instead of being pushed apart by the tall phone */
+    grid-template-rows:auto auto auto 1fr;
+    column-gap:56px;
+    row-gap:0;
   }
   .site-frame #proof .retainer-card > .name{grid-column:1 / -1; grid-row:1}
-  .site-frame #proof .phone-demo{grid-column:1; grid-row:2 / span 2; padding-top:4px}
+  .site-frame #proof .phone-demo{
+    grid-column:1; grid-row:2 / 5;
+    align-self:center;
+    padding-top:0;
+  }
   .site-frame #proof .retainer-card > .note-strip:nth-of-type(1){
-    grid-column:2; grid-row:2; align-self:end; margin-bottom:14px;
+    grid-column:2; grid-row:2; align-self:start; margin-bottom:16px;
   }
   .site-frame #proof .retainer-card > .note-strip:nth-of-type(2){
     grid-column:2; grid-row:3; align-self:start;
