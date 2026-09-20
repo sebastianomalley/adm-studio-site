@@ -21,7 +21,7 @@
 }
 .phone{
   /* everything below scales from this one value */
-  --pw:clamp(215px, 56vw, 320px);
+  --pw:clamp(215px, 52vw, 300px);
   width:var(--pw);
   aspect-ratio:1206 / 2622;
   font-size:calc(var(--pw) / 100);      /* 1em = 1% of phone width */
@@ -128,19 +128,15 @@
   background:rgba(255,255,255,.9);
 }
 
-/* --- the section this sits in -------------------------------
-   Same treatment style.css already gives #retainer: heading and
-   card share one column, so the card never sprawls across a wide
-   monitor. Headings stay left-aligned inside that column. */
-.site-frame #proof .sec-head,
-.site-frame #proof .retainer-card{
-  max-width:820px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.site-frame #proof .retainer-card{width:100%}
+/* --- the proof section -------------------------------------
+   The phone stands on its own: no panel, no border, just the
+   shadow underneath. The two cards below it use the site's
+   existing .compare-row treatment. */
+.site-frame #proof .compare-row{grid-template-columns:repeat(2,1fr)}
+.site-frame #proof .phone-demo{margin-bottom:34px}
 
-@media(max-width:600px){
-  .site-frame #proof .retainer-card{padding-left:20px;padding-right:20px}
+@media(max-width:760px){
+  .site-frame #proof .compare-row{grid-template-columns:1fr}
+  .site-frame #proof .phone-demo{margin-bottom:24px}
   .phone-demo{padding-bottom:26px}
 }
