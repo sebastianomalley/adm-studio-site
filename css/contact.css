@@ -435,19 +435,89 @@ html.js .save-wrap:before{animation:halo 2.9s ease-out infinite}
 
 
 /* ============================================================
-   Save hint: shown under the button after it is tapped
+   Step screen: shown on iPhone before Apple's contact sheet
    ============================================================ */
-.save-hint{
-  margin:14px auto 0;
-  max-width:26em;
-  font-size:13px;
-  line-height:1.45;
-  letter-spacing:.02em;
-  color:rgba(213,215,213,.62);        /* visible from the start, quietly */
-  transition:color .5s ease;
+html.step-open,html.step-open body{overflow:hidden}
+.step{
+  position:fixed;inset:0;z-index:60;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  padding-top:max(24px,env(safe-area-inset-top));
+  padding-bottom:max(24px,env(safe-area-inset-bottom));
+  background:rgba(2,11,15,.84);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility 0s linear .3s;
 }
-.save-hint b{color:var(--cyan);font-weight:600}
-.save-hint.show{color:#e6e7e5}         /* brighter once they have tapped */
+.step.open{opacity:1;visibility:visible;transition:opacity .3s ease}
+.step-card{
+  width:min(100%,400px);
+  text-align:center;
+  padding:34px 26px 22px;
+  border-radius:28px;
+  background:linear-gradient(180deg,#0b1a20,#061015);
+  border:1px solid rgba(22,220,226,.28);
+  box-shadow:0 0 0 1px rgba(255,33,132,.08),
+             0 30px 80px rgba(0,0,0,.6),
+             0 0 60px rgba(22,220,226,.10);
+  transform:translateY(14px) scale(.97);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.15);
+}
+.step.open .step-card{transform:none}
+.step-tag{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+.step-title{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(22px,6.4vw,27px);
+  font-weight:700;line-height:1.22;
+  color:#fff;letter-spacing:-.01em;
+}
+.step-title span{color:var(--cyan)}
+.step-warn{
+  display:flex;align-items:center;gap:12px;
+  margin:22px 0 24px;
+  padding:13px 15px;
+  border-radius:16px;
+  background:rgba(255,33,132,.10);
+  border:1px solid rgba(255,33,132,.35);
+  text-align:left;
+  font-size:15px;line-height:1.35;color:#f1dfe7;
+}
+.step-warn b{color:#fff}
+/* a drawing of Apple's blue checkmark, struck through */
+.step-check{
+  position:relative;flex:0 0 38px;height:38px;border-radius:50%;
+  background:#3b82f6;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
+}
+.step-check:before{
+  content:"";position:absolute;left:11px;top:9px;width:9px;height:15px;
+  border:solid #fff;border-width:0 3px 3px 0;transform:rotate(40deg);
+}
+.step-check:after{
+  content:"";position:absolute;left:-3px;top:17px;width:44px;height:3.5px;
+  background:var(--pink);border-radius:3px;transform:rotate(-38deg);
+  box-shadow:0 0 0 2px #0b1a20;
+}
+.step-go{
+  display:flex;align-items:center;justify-content:center;
+  min-height:60px;border-radius:32px;
+  border:2px solid rgba(255,255,255,.92);
+  color:#fff;text-decoration:none;
+  font-size:17px;font-weight:700;letter-spacing:.06em;
+  background:linear-gradient(95deg,#df0873 0%,#c01876 33%,#743c91 55%,#087f91 78%,#10cbd0 100%);
+  box-shadow:-10px 0 27px rgba(255,33,132,.25),10px 0 27px rgba(22,220,226,.20);
+}
+.step-go:active{transform:scale(.98)}
+.step-close{
+  margin-top:12px;padding:10px 16px;
+  background:none;border:0;cursor:pointer;
+  font:inherit;font-size:14px;color:rgba(243,234,217,.6);
+}
 @media(prefers-reduced-motion:reduce){
-  .save-hint{transition:none}
+  .step,.step-card{transition:none}
+  .step-card{transform:none}
 }
