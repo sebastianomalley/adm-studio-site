@@ -5,7 +5,8 @@ FN:Jason O'Malley
 ORG:A Digital Media Studio
 TITLE:Founder
 TEL;TYPE=CELL,VOICE:+19177532905
-EMAIL;TYPE=INTERNET,WORK:adigitalmediastudio@gmail.com
+item2.EMAIL;TYPE=INTERNET:adigitalmediastudio@gmail.com
+item2.X-ABLabel:email
 item1.URL:https://adigitalmediastudio.com
 item1.X-ABLabel:Website
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwQDAwQEBAQF
