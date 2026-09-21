@@ -118,12 +118,9 @@
   }
 
   /* ---------- 4. Save button ----------
-     On iPhone, Apple shows its own contact preview after the tap,
-     and the checkmark at the top of that preview closes it WITHOUT
-     saving. No website can change that screen. So on Apple devices
-     the button first opens a full-screen step that tells people
-     exactly what to do, and the real download link lives inside it.
-     Everywhere else the button downloads the contact directly. */
+     The link's own navigation downloads the vCard. Nothing here
+     touches it: no preventDefault, and the sparkle is deferred past
+     the click so it can never delay the download. */
   function saveButton() {
     var btn = document.querySelector('.save');
     if (!btn) return;
@@ -139,10 +136,7 @@
     gleam.className = 'gleam';
     btn.insertBefore(gleam, btn.firstChild);
 
-    var isApple = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-    function burst(el) {
+    function burst() {
       if (reduced) return;
       try {
         var colors = ['#16dce2', '#ff2184', '#f5b65f', '#ffffff'];
@@ -154,7 +148,7 @@
           p.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(1) + 'px');
           p.style.setProperty('--dy', (Math.sin(ang) * dist * 0.62).toFixed(1) + 'px');
           p.style.background = colors[i % colors.length];
-          el.appendChild(p);
+          btn.appendChild(p);
           (function (node) {
             requestAnimationFrame(function () { node.classList.add('go'); });
             setTimeout(function () { node.remove(); }, 950);
@@ -163,81 +157,9 @@
       } catch (e) {}
     }
 
-    if (!isApple) {
-      btn.addEventListener('click', function () {
-        setTimeout(function () { burst(btn); }, 0);
-      }, { passive: true });
-      return;
-    }
-
-    /* ---- the step screen, Apple devices only ---- */
-    var href = btn.getAttribute('href');
-    var step = document.createElement('div');
-    step.className = 'step';
-    step.setAttribute('role', 'dialog');
-    step.setAttribute('aria-modal', 'true');
-    step.setAttribute('aria-labelledby', 'stepTitle');
-    step.innerHTML =
-      '<div class="step-card">' +
-        '<div class="step-tag" id="stepTag">One more step</div>' +
-        '<h2 class="step-title" id="stepTitle">On the next screen,<br>scroll down and tap<br><span>Create New Contact</span></h2>' +
-        '<div class="step-warn" id="stepWarn">' +
-          '<span class="step-check" aria-hidden="true"></span>' +
-          '<span>The <b>checkmark at the top</b> closes without saving.</span>' +
-        '</div>' +
-        '<a class="step-go" id="stepGo" href="' + href + '">Got it, save contact</a>' +
-        '<button type="button" class="step-close" id="stepClose">Not now</button>' +
-      '</div>';
-    document.body.appendChild(step);
-
-    var tag = step.querySelector('#stepTag');
-    var title = step.querySelector('#stepTitle');
-    var go = step.querySelector('#stepGo');
-    var closeBtn = step.querySelector('#stepClose');
-    var firstCopy = {
-      tag: tag.innerHTML, title: title.innerHTML,
-      go: go.innerHTML, close: closeBtn.innerHTML
-    };
-
-    function open() {
-      tag.innerHTML = firstCopy.tag;
-      title.innerHTML = firstCopy.title;
-      go.innerHTML = firstCopy.go;
-      closeBtn.innerHTML = firstCopy.close;
-      step.classList.add('open');
-      document.documentElement.classList.add('step-open');
-      setTimeout(function () { go.focus({ preventScroll: true }); }, 50);
-    }
-    function close() {
-      step.classList.remove('open');
-      document.documentElement.classList.remove('step-open');
-    }
-
-    btn.addEventListener('click', function (ev) {
-      ev.preventDefault();
-      burst(btn);
-      open();
-    });
-
-    /* the real download: a plain link the person taps themselves.
-       Once Apple's sheet is up, swap this screen to the "did it
-       save?" version so it is waiting for them when they return. */
-    go.addEventListener('click', function () {
-      setTimeout(function () {
-        tag.innerHTML = 'Did it save?';
-        title.innerHTML = 'If you tapped the checkmark,<br>it <span>didn\u2019t save</span>.';
-        go.innerHTML = 'Try again';
-        closeBtn.innerHTML = 'It saved, all set';
-      }, 800);
+    btn.addEventListener('click', function () {
+      setTimeout(burst, 0);
     }, { passive: true });
-
-    closeBtn.addEventListener('click', close);
-    step.addEventListener('click', function (ev) {
-      if (ev.target === step) close();
-    });
-    document.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Escape') close();
-    });
   }
 
   /* ------------------------------------------------------------
