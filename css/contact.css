@@ -432,3 +432,24 @@ html.js .save-wrap:before{animation:halo 2.9s ease-out infinite}
 @media(prefers-reduced-motion:reduce){
   .js .content.in .logo-wrap .sheen{animation:none;opacity:0}
 }
+
+
+/* ============================================================
+   Save hint: shown under the button after it is tapped
+   ============================================================ */
+.save-hint{
+  margin:14px auto 0;
+  max-width:26em;
+  font-size:13px;
+  line-height:1.45;
+  letter-spacing:.02em;
+  color:#d5d7d5;
+  opacity:0;
+  transform:translateY(-4px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.save-hint b{color:var(--cyan);font-weight:600}
+.save-hint.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .save-hint{transition:none;transform:none}
+}
