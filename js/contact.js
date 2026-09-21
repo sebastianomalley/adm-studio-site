@@ -143,9 +143,17 @@
     hint.setAttribute('aria-live', 'polite');
     var isApple = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    hint.innerHTML = isApple
-      ? 'Scroll down and tap <b>Create New Contact</b>'
-      : 'Tap <b>Save</b> or <b>Import</b> to add the contact';
+    /* Two messages. The first primes people before Apple's sheet
+       appears, since nothing we write can show up on that sheet.
+       The second is for anyone who closed the sheet without saving
+       and landed back here. */
+    var before = isApple
+      ? 'On the next screen, scroll down and tap <b>Create New Contact</b>'
+      : 'On the next screen, tap <b>Save</b> or <b>Import</b>';
+    var after = isApple
+      ? 'Didn\'t save? Tap the button again, then scroll down and tap <b>Create New Contact</b>'
+      : 'Didn\'t save? Tap the button again, then tap <b>Save</b> or <b>Import</b>';
+    hint.innerHTML = before;
     var holder = btn.parentNode.classList.contains('save-wrap') ? btn.parentNode : btn;
     holder.parentNode.insertBefore(hint, holder.nextSibling);
 
@@ -172,7 +180,14 @@
            until the person taps Create New Contact on Apple's sheet.
            Instead, leave a hint on the page. It stays put, so anyone
            who closes the sheet by mistake sees it when they return. */
-        if (hint) hint.classList.add('show');
+        /* the sheet covers the page almost at once, so swapping the
+           text here means it is waiting for them when they return */
+        if (hint) {
+          setTimeout(function () {
+            hint.innerHTML = after;
+            hint.classList.add('show');
+          }, 700);
+        }
       } catch (e) { /* visuals are optional; the download is not */ }
     }
 
