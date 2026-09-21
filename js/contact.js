@@ -136,9 +136,18 @@
     gleam.className = 'gleam';
     btn.insertBefore(gleam, btn.firstChild);
 
-    var tick = document.createElement('span');
-    tick.className = 'tick';
-    btn.insertBefore(tick, btn.querySelector('.label') || null);
+    /* one line of guidance under the button, shown after a tap.
+       iPhone and Android word their save step differently. */
+    var hint = document.createElement('p');
+    hint.className = 'save-hint';
+    hint.setAttribute('aria-live', 'polite');
+    var isApple = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    hint.innerHTML = isApple
+      ? 'Scroll down and tap <b>Create New Contact</b>'
+      : 'Tap <b>Save</b> or <b>Import</b> to add the contact';
+    var holder = btn.parentNode.classList.contains('save-wrap') ? btn.parentNode : btn;
+    holder.parentNode.insertBefore(hint, holder.nextSibling);
 
     function celebrate() {
       try {
@@ -159,14 +168,11 @@
             })(p);
           }
         }
-        var label = btn.querySelector('.label');
-        var was = label ? label.textContent : '';
-        btn.classList.add('saved');
-        if (label) label.textContent = 'ADDED TO CONTACTS';
-        setTimeout(function () {
-          btn.classList.remove('saved');
-          if (label) label.textContent = was;
-        }, 4200);
+        /* No "added" message here: on iPhone the contact is not saved
+           until the person taps Create New Contact on Apple's sheet.
+           Instead, leave a hint on the page. It stays put, so anyone
+           who closes the sheet by mistake sees it when they return. */
+        if (hint) hint.classList.add('show');
       } catch (e) { /* visuals are optional; the download is not */ }
     }
 
