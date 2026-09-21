@@ -118,9 +118,12 @@
   }
 
   /* ---------- 4. Save button ----------
-     The link's own navigation downloads the vCard. Nothing here
-     touches it: no preventDefault, and every visual effect is
-     deferred past the click so it can never delay the download. */
+     On iPhone, Apple shows its own contact preview after the tap,
+     and the checkmark at the top of that preview closes it WITHOUT
+     saving. No website can change that screen. So on Apple devices
+     the button first opens a full-screen step that tells people
+     exactly what to do, and the real download link lives inside it.
+     Everywhere else the button downloads the contact directly. */
   function saveButton() {
     var btn = document.querySelector('.save');
     if (!btn) return;
@@ -136,64 +139,105 @@
     gleam.className = 'gleam';
     btn.insertBefore(gleam, btn.firstChild);
 
-    /* one line of guidance under the button, shown after a tap.
-       iPhone and Android word their save step differently. */
-    var hint = document.createElement('p');
-    hint.className = 'save-hint';
-    hint.setAttribute('aria-live', 'polite');
     var isApple = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    /* Two messages. The first primes people before Apple's sheet
-       appears, since nothing we write can show up on that sheet.
-       The second is for anyone who closed the sheet without saving
-       and landed back here. */
-    var before = isApple
-      ? 'On the next screen, scroll down and tap <b>Create New Contact</b>'
-      : 'On the next screen, tap <b>Save</b> or <b>Import</b>';
-    var after = isApple
-      ? 'Didn\'t save? Tap the button again, then scroll down and tap <b>Create New Contact</b>'
-      : 'Didn\'t save? Tap the button again, then tap <b>Save</b> or <b>Import</b>';
-    hint.innerHTML = before;
-    var holder = btn.parentNode.classList.contains('save-wrap') ? btn.parentNode : btn;
-    holder.parentNode.insertBefore(hint, holder.nextSibling);
 
-    function celebrate() {
+    function burst(el) {
+      if (reduced) return;
       try {
-        if (!reduced) {
-          var colors = ['#16dce2', '#ff2184', '#f5b65f', '#ffffff'];
-          for (var i = 0; i < 16; i++) {
-            var p = document.createElement('i');
-            var ang = (Math.PI * 2 * i) / 16 + Math.random() * 0.3;
-            var dist = 46 + Math.random() * 54;
-            p.className = 'burst';
-            p.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(1) + 'px');
-            p.style.setProperty('--dy', (Math.sin(ang) * dist * 0.62).toFixed(1) + 'px');
-            p.style.background = colors[i % colors.length];
-            btn.appendChild(p);
-            (function (node) {
-              requestAnimationFrame(function () { node.classList.add('go'); });
-              setTimeout(function () { node.remove(); }, 950);
-            })(p);
-          }
+        var colors = ['#16dce2', '#ff2184', '#f5b65f', '#ffffff'];
+        for (var i = 0; i < 16; i++) {
+          var p = document.createElement('i');
+          var ang = (Math.PI * 2 * i) / 16 + Math.random() * 0.3;
+          var dist = 46 + Math.random() * 54;
+          p.className = 'burst';
+          p.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(1) + 'px');
+          p.style.setProperty('--dy', (Math.sin(ang) * dist * 0.62).toFixed(1) + 'px');
+          p.style.background = colors[i % colors.length];
+          el.appendChild(p);
+          (function (node) {
+            requestAnimationFrame(function () { node.classList.add('go'); });
+            setTimeout(function () { node.remove(); }, 950);
+          })(p);
         }
-        /* No "added" message here: on iPhone the contact is not saved
-           until the person taps Create New Contact on Apple's sheet.
-           Instead, leave a hint on the page. It stays put, so anyone
-           who closes the sheet by mistake sees it when they return. */
-        /* the sheet covers the page almost at once, so swapping the
-           text here means it is waiting for them when they return */
-        if (hint) {
-          setTimeout(function () {
-            hint.innerHTML = after;
-            hint.classList.add('show');
-          }, 700);
-        }
-      } catch (e) { /* visuals are optional; the download is not */ }
+      } catch (e) {}
     }
 
-    btn.addEventListener('click', function () {
-      setTimeout(celebrate, 0);
+    if (!isApple) {
+      btn.addEventListener('click', function () {
+        setTimeout(function () { burst(btn); }, 0);
+      }, { passive: true });
+      return;
+    }
+
+    /* ---- the step screen, Apple devices only ---- */
+    var href = btn.getAttribute('href');
+    var step = document.createElement('div');
+    step.className = 'step';
+    step.setAttribute('role', 'dialog');
+    step.setAttribute('aria-modal', 'true');
+    step.setAttribute('aria-labelledby', 'stepTitle');
+    step.innerHTML =
+      '<div class="step-card">' +
+        '<div class="step-tag" id="stepTag">One more step</div>' +
+        '<h2 class="step-title" id="stepTitle">On the next screen,<br>scroll down and tap<br><span>Create New Contact</span></h2>' +
+        '<div class="step-warn" id="stepWarn">' +
+          '<span class="step-check" aria-hidden="true"></span>' +
+          '<span>The <b>checkmark at the top</b> closes without saving.</span>' +
+        '</div>' +
+        '<a class="step-go" id="stepGo" href="' + href + '">Got it, save contact</a>' +
+        '<button type="button" class="step-close" id="stepClose">Not now</button>' +
+      '</div>';
+    document.body.appendChild(step);
+
+    var tag = step.querySelector('#stepTag');
+    var title = step.querySelector('#stepTitle');
+    var go = step.querySelector('#stepGo');
+    var closeBtn = step.querySelector('#stepClose');
+    var firstCopy = {
+      tag: tag.innerHTML, title: title.innerHTML,
+      go: go.innerHTML, close: closeBtn.innerHTML
+    };
+
+    function open() {
+      tag.innerHTML = firstCopy.tag;
+      title.innerHTML = firstCopy.title;
+      go.innerHTML = firstCopy.go;
+      closeBtn.innerHTML = firstCopy.close;
+      step.classList.add('open');
+      document.documentElement.classList.add('step-open');
+      setTimeout(function () { go.focus({ preventScroll: true }); }, 50);
+    }
+    function close() {
+      step.classList.remove('open');
+      document.documentElement.classList.remove('step-open');
+    }
+
+    btn.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      burst(btn);
+      open();
+    });
+
+    /* the real download: a plain link the person taps themselves.
+       Once Apple's sheet is up, swap this screen to the "did it
+       save?" version so it is waiting for them when they return. */
+    go.addEventListener('click', function () {
+      setTimeout(function () {
+        tag.innerHTML = 'Did it save?';
+        title.innerHTML = 'If you tapped the checkmark,<br>it <span>didn\u2019t save</span>.';
+        go.innerHTML = 'Try again';
+        closeBtn.innerHTML = 'It saved, all set';
+      }, 800);
     }, { passive: true });
+
+    closeBtn.addEventListener('click', close);
+    step.addEventListener('click', function (ev) {
+      if (ev.target === step) close();
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') close();
+    });
   }
 
   /* ------------------------------------------------------------
