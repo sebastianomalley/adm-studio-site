@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Digital Media Studio — Washington, DC</title>
-<meta name="description" content="A Digital Media Studio helps small businesses and organizations grow through web design, app design, photography, and video. Based in Washington, DC.">
+<title>A Digital Media Studio | Washington, DC</title>
+<meta name="description" content="A Digital Media Studio helps small businesses and organizations grow through web design, app design, photography, film, and drone cinematography. Based in Washington, DC.">
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
@@ -12,55 +12,234 @@
 <link rel="preload" as="image" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,460;9..144,560&family=Work+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <meta property="og:title" content="A Digital Media Studio">
-<meta property="og:description" content="A Digital Media Studio helps small businesses and organizations grow through web design, app design, photography, videography, and drone cinematography.">
+<meta property="og:description" content="Web, app, photography, film, and drone cinematography for small businesses and organizations. Washington, DC.">
 <meta property="og:image" content="https://adigitalmediastudio.com/images/og-image.png">
 <meta property="og:url" content="https://adigitalmediastudio.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body class="rates-page home-page">
 
-<div class="grain"></div>
-  
-<nav class="sitenav">
-  <a href="index.html" class="active">Home</a>
-  <a href="photography.html">Photography</a>
-  <a href="builds.html">Custom Builds</a>
-  <a href="retainer.html">Retainer</a>
-</nav>
+<div class="site-frame">
 
-<div class="grain"></div>
+  <nav class="sitenav">
+    <a href="index.html" class="active">Home</a>
+    <a href="photography.html">Photography</a>
+    <a href="builds.html">Custom Builds</a>
+    <a href="retainer.html">Retainer</a>
+    <a href="#about">About</a>
+  </nav>
 
-<div class="hud">
-    <div class="hud-row">
-    <div style="display:flex; gap:14px; align-items:flex-start;">
-      <div class="corner tl"></div>
+  <!-- ==================== HERO ====================
+       Background loop: drop a short muted clip at media/hero-loop.mp4
+       and a still frame at images/hero-poster.jpg. Until then the
+       placeholder shows. See MEDIA.md for sizes. -->
+  <header class="home-hero">
+    <div class="hero-media" data-label="Hero loop · 8 to 15 sec, muted · media/hero-loop.mp4">
+      <video class="hero-video" src="media/hero-loop.mp4" poster="images/hero-poster.jpg"
+             autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
     </div>
-    <div style="display:flex; gap:14px; align-items:flex-start;">
-      <div class="corner tr"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="hero-top">
+      <span class="hero-dot" aria-hidden="true"></span>
+      <span>Media that matters.</span>
+      <span class="hero-loc">Washington, DC</span>
     </div>
-  </div>
 
-  <div class="hero-center">
-    <img src="images/logo.png" alt="A Digital Media Studio" class="logo-img">
-
-    <h1>Helping small businesses grow, <em>in focus.</em></h1>
-
-    <p class="lede">Web, app, photography, film, and creative technology for small businesses and organizations building something worth showing up well for.</p>
-    
-    <div class="cta-row">
-      <button type="button" class="btn primary" id="openContact">Start a project</button>
+    <div class="hero-body">
+      <img src="images/logo.png" alt="A Digital Media Studio" class="hero-logo">
+      <h1>Helping small businesses grow, <em>in focus.</em></h1>
+      <p>Web, apps, photography, film, and drone work for small businesses and organizations building something worth showing up well for.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-solid" data-contact="call">Book an intro call</button>
+        <button type="button" class="reel-btn" id="openReel">
+          <span class="reel-play" aria-hidden="true"></span>
+          <span class="reel-text"><span class="reel-kicker">The reel</span>Watch it</span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="hud-row hud-row--bottom">
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
-  </div>
+    <div class="hero-bottom">
+      <span>Web · Apps · Photo · Film · Drone</span>
+      <span>One studio. The whole picture.</span>
+    </div>
+  </header>
 
+  <main>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services">
+      <div class="sec-head">
+        <div class="sec-tag">What I do</div>
+        <h2>Four ways to work together</h2>
+      </div>
+      <div class="service-row">
+        <a class="service-card" href="photography.html">
+          <span class="service-num">01</span>
+          <span class="service-name">Photography</span>
+          <span class="service-desc">Headshots, portraits, events, and pets. Natural light, edited by hand, delivered in a private gallery.</span>
+          <span class="service-go">See rates</span>
+        </a>
+        <a class="service-card" href="#work">
+          <span class="service-num">02</span>
+          <span class="service-name">Film &amp; video</span>
+          <span class="service-desc">Short films, music videos, fundraising pieces, and drone footage for brands, campaigns, and causes.</span>
+          <span class="service-go">See the work</span>
+        </a>
+        <a class="service-card" href="builds.html">
+          <span class="service-num">03</span>
+          <span class="service-name">Custom builds</span>
+          <span class="service-desc">Websites, apps, and small digital tools designed around how your business actually runs.</span>
+          <span class="service-go">See a build</span>
+        </a>
+        <a class="service-card" href="retainer.html">
+          <span class="service-num">04</span>
+          <span class="service-name">Retainer</span>
+          <span class="service-desc">Ongoing web, photo, and video support from one person who already knows your brand.</span>
+          <span class="service-go">How it works</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== WORK ====================
+         Each tile: a still at images/work/<name>.jpg and a short silent
+         clip at media/work/<name>.mp4 that plays on hover. Missing files
+         just show the placeholder. -->
+    <section id="work">
+      <div class="sec-head">
+        <div class="sec-tag">Recent work</div>
+        <h2>Less explaining. More showing.</h2>
+      </div>
+      <div class="work-grid">
+        <a class="work-tile work-tile--lead" href="#" data-reel>
+          <div class="work-media" data-label="images/work/documentary.jpg + media/work/documentary.mp4">
+            <img src="images/work/documentary.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <video src="media/work/documentary.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
+          </div>
+          <div class="work-cap"><span class="work-title">Documentary</span><span class="work-kind">Film · Sugar Rat Productions</span></div>
+        </a>
+        <a class="work-tile" href="#" data-reel>
+          <div class="work-media" data-label="images/work/davi.jpg + media/work/davi.mp4">
+            <img src="images/work/davi.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <video src="media/work/davi.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
+          </div>
+          <div class="work-cap"><span class="work-title">Davi Music</span><span class="work-kind">Music video</span></div>
+        </a>
+        <a class="work-tile" href="#" data-reel>
+          <div class="work-media" data-label="images/work/chappo.jpg + media/work/chappo.mp4">
+            <img src="images/work/chappo.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <video src="media/work/chappo.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
+          </div>
+          <div class="work-cap"><span class="work-title">Chappo</span><span class="work-kind">Music video</span></div>
+        </a>
+        <a class="work-tile" href="#" data-reel>
+          <div class="work-media" data-label="images/work/cure.jpg + media/work/cure.mp4">
+            <img src="images/work/cure.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <video src="media/work/cure.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
+          </div>
+          <div class="work-cap"><span class="work-title">CURE Epilepsy</span><span class="work-kind">Fundraising film</span></div>
+        </a>
+        <a class="work-tile" href="#" data-reel>
+          <div class="work-media" data-label="images/work/short-film.jpg + media/work/short-film.mp4">
+            <img src="images/work/short-film.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <video src="media/work/short-film.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
+          </div>
+          <div class="work-cap"><span class="work-title">Short film title</span><span class="work-kind">Short film</span></div>
+        </a>
+        <a class="work-tile" href="photography.html">
+          <div class="work-media" data-label="images/work/soho-house.jpg">
+            <img src="images/work/soho-house.jpg" alt="" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="work-cap"><span class="work-title">Soho House</span><span class="work-kind">Restaurant photography</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== SELECTED WORK ====================
+         Names for now. To switch one to a logo, replace the text with
+         <img src="images/clients/name.svg" alt="Name">. -->
+    <section id="clients" class="clients">
+      <div class="sec-tag">Selected work</div>
+      <ul class="client-row">
+        <li>Soho House</li>
+        <li>American Museum of Natural History</li>
+        <li>Def Jam</li>
+        <li>Chappo</li>
+        <li>Davi Music</li>
+        <li>CURE Epilepsy</li>
+        <li>Virginia Mediation Network</li>
+        <li>Secret City</li>
+      </ul>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ====================
+         Placeholder until real quotes come in. Replace the text in each
+         figure, or delete the whole section if you go live without them. -->
+    <section id="words" class="quotes">
+      <div class="sec-head">
+        <div class="sec-tag">In their words</div>
+        <h2>What clients say</h2>
+      </div>
+      <div class="quote-row">
+        <figure class="quote">
+          <blockquote>Testimonial one goes here.</blockquote>
+          <figcaption>Name · Organization</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Testimonial two goes here.</blockquote>
+          <figcaption>Name · Organization</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Testimonial three goes here.</blockquote>
+          <figcaption>Name · Organization</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="about">
+      <div class="about-photo">
+        <img src="images/headshot.jpg" alt="Jason O'Malley" loading="lazy">
+      </div>
+      <div class="about-text">
+        <div class="sec-tag">About</div>
+        <h2>Hi, I'm Jason.</h2>
+        <p>I started A Digital Media Studio so small businesses and organizations could have one person who handles the camera and the code.</p>
+        <p>My background is in film. Through Sugar Rat Productions, my documentary company, I've spent years telling real people's stories, and that's still how I come at every project, whether it's a headshot, a music video, or a website.</p>
+        <p>I've also worked high-profile events, taught, and acted, so I know what it's like on both sides of the lens. Right now I'm working on a master's in Digital Media Design at Harvard Extension School and taking on clients across DC, Maryland, and Virginia.</p>
+        <p>If you're building something worth showing up well for, let's talk.</p>
+        <div class="about-actions">
+          <button type="button" class="btn btn-solid" data-contact="call">Book an intro call</button>
+          <a class="text-link" href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>Let's make something<br>worth showing up for.</h3>
+    <div class="foot-actions">
+      <button type="button" class="btn" id="openContact" data-contact="call">Book an intro call</button>
+      <button type="button" class="btn btn-line" data-contact="session">Book a photo session</button>
+    </div>
+    <div class="foot-meta">
+      <span>WASHINGTON, DC · <a href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">INSTAGRAM</a></span>
+      <span>© <span class="yr">2026</span> A DIGITAL MEDIA STUDIO</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ---------- reel modal ---------- -->
+<div class="modal-overlay reel-overlay" id="reelOverlay">
+  <div class="reel-frame" role="dialog" aria-modal="true" aria-label="Studio reel">
+    <button type="button" class="modal-close" id="closeReel" aria-label="Close">✕</button>
+    <div class="reel-embed" id="reelEmbed" data-label="Reel goes here · paste the Vimeo or YouTube link in js/main.js"></div>
+  </div>
 </div>
 
 <!-- ---------- contact modal ---------- -->
@@ -70,10 +249,9 @@
 
     <div id="formView">
       <h2 id="modalTitle">Start a project</h2>
-      <p class="modal-sub">Tell us a bit about what you need — we'll get back to you shortly.</p>
+      <p class="modal-sub">Tell me a bit about what you need and I'll get back to you soon.</p>
 
       <form id="contactForm">
-        <!-- Get a free access key at https://web3forms.com and paste it below -->
         <input type="hidden" name="access_key" value="19f84a20-0e99-46cd-95c0-8a7e95db971e">
         <input type="hidden" name="subject" value="New inquiry from adigitalmediastudio.com">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -93,19 +271,19 @@
 
         <button type="submit" class="btn" id="submitBtn">Send message</button>
         <p class="form-status" id="formStatus"></p>
-        <p class="form-note">Prefer email? Reach us directly at adigitalmediastudio@gmail.com.</p>
+        <p class="form-note">Prefer email? Reach me directly at adigitalmediastudio@gmail.com.</p>
       </form>
     </div>
 
     <div id="successView" class="success-view" hidden>
       <div class="success-mark" aria-hidden="true">
         <svg viewBox="0 0 40 40" width="40" height="40">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="#333F52" stroke-width="1.5"/>
-          <path d="M12 20.5l5.5 5.5L29 14" fill="none" stroke="#333F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="20" r="19" fill="none" stroke="#7FA3C0" stroke-width="1.5"/>
+          <path d="M12 20.5l5.5 5.5L29 14" fill="none" stroke="#7FA3C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <h2>Message sent</h2>
-      <p class="modal-sub">Thanks for reaching out — someone from the studio will be in touch soon.</p>
+      <p class="modal-sub">Thanks for reaching out. I'll be in touch soon.</p>
       <button type="button" class="btn" id="successClose">Close</button>
     </div>
 
@@ -113,6 +291,7 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/home.js"></script>
 
 </body>
 </html>
