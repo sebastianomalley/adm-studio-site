@@ -859,3 +859,22 @@ body.rates-page .form-note{ color:#5F6C71; }
   .photo-strip{ grid-template-columns:repeat(2,1fr); }
   .project-row{ grid-template-columns:1fr; }
 }
+
+/* ==================== about page ==================== */
+.site-frame .about-hero{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:6vw; align-items:center; padding-top:7vh; padding-bottom:8vh; }
+.about-hero-photo img{ width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; display:block; }
+.site-frame .about-hero h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(38px,5.2vw,62px); line-height:1.05; color:var(--rt-ink); margin-bottom:22px; }
+.about-lede{ font-size:17px; color:var(--rt-ink-dim); max-width:48ch; }
+.fact-list{ list-style:none; margin-top:32px; border-top:1px solid var(--rt-line); }
+.fact-list li{ display:grid; grid-template-columns:130px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--rt-line); font-size:14.5px; color:var(--rt-ink); }
+.fact-list li span{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rt-blue); padding-top:3px; }
+
+.site-frame .story{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7vh 6vw; }
+.story-block h2{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(24px,2.8vw,32px); color:var(--rt-ink); margin-bottom:16px; }
+.story-block p{ font-size:15.5px; color:var(--rt-ink-dim); margin-bottom:14px; max-width:54ch; }
+
+@media (max-width:760px){
+  .site-frame .about-hero{ grid-template-columns:1fr; }
+  .site-frame .story{ grid-template-columns:1fr; }
+  .fact-list li{ grid-template-columns:1fr; gap:4px; }
+}
