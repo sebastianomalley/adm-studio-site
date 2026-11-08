@@ -67,18 +67,22 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
+      text-align: center;
       padding: 72px 0;
-      max-width: 1000px;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
       animation: rise 1s ease-out both;
     }
     .hero-logo {
       height: clamp(56px, 7vw, 84px);
       width: auto;
       display: block;
-      align-self: flex-start;
+      align-self: center;
       object-fit: contain;
-      margin-bottom: 40px;
+      margin-bottom: 44px;
     }
     h1 {
       font-family: 'Fraunces', serif;
@@ -88,6 +92,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 34px;
     }
+    h1 .line { display: block; }
     h1 em {
       font-style: italic;
       font-weight: 500;
@@ -98,53 +103,60 @@
       font-size: clamp(1.05rem, 2vw, 1.3rem);
       line-height: 1.75;
       color: var(--muted);
-      max-width: 620px;
-      margin-bottom: 48px;
+      max-width: 560px;
+      margin: 0 auto 44px;
     }
     .actions {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
-      gap: 20px 36px;
+      gap: 28px;
     }
     .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       background: var(--button);
       color: #12181C;
-      border: 0;
+      border: 1px solid var(--button);
       cursor: pointer;
-      padding: 20px 40px;
+      padding: 18px 34px;
       border-radius: 2px;
-      transition: background 0.25s;
+      box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .btn-solid:hover, .btn-solid:focus-visible { background: var(--blue); }
-    .ig {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      text-decoration: none;
-      color: var(--cream);
+    .btn-solid .arrow { transition: transform 0.25s; }
+    .btn-solid:hover, .btn-solid:focus-visible {
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px -12px rgba(0, 0, 0, 0.7);
     }
-    .ig .ring {
-      width: 64px; height: 64px;
-      border: 1.5px solid var(--line);
+    .btn-solid:hover .arrow, .btn-solid:focus-visible .arrow { transform: translateX(4px); }
+    .socials { display: flex; gap: 14px; }
+    .socials a {
+      width: 44px; height: 44px;
+      border: 1px solid var(--line);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      transition: border-color 0.25s;
+      color: var(--muted);
+      transition: border-color 0.25s, color 0.25s;
     }
-    .ig:hover .ring, .ig:focus-visible .ring { border-color: var(--blue); }
-    .ig .label { color: var(--muted); font-size: 0.72rem; display: block; margin-bottom: 4px; }
-    .ig .big { font-size: 1.3rem; }
+    .socials a:hover, .socials a:focus-visible { border-color: var(--blue); color: var(--cream); }
+    .socials svg { width: 19px; height: 19px; }
     footer {
       border-top: 1px solid rgba(234, 228, 212, 0.14);
       padding: 32px 0 40px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 14px;
+      gap: 14px 24px;
       color: var(--muted);
     }
 
@@ -255,8 +267,11 @@
       50% { opacity: 0.35; }
     }
     @media (max-width: 600px) {
-      header { flex-direction: column; align-items: flex-start; }
+      header { flex-direction: column; align-items: center; gap: 10px; padding-top: 28px; }
+      h1 { font-size: 2.1rem; }
       main { padding: 48px 0; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+      footer .mono { letter-spacing: 0.16em; line-height: 1.9; }
     }
   </style>
 </head>
@@ -269,26 +284,25 @@
   <main>
     <img src="images/logo.png" alt="A Digital Media Studio" class="hero-logo">
 
-    <h1>Thanks for stopping by. We're <em>refocusing.</em></h1>
+    <h1><span class="line">Thanks for stopping by.</span><span class="line">We're <em>refocusing.</em></span></h1>
 
     <p class="lede">Our new website is in the works. Check back soon to see what we've been building. In the meantime, we'd love to hear from you.</p>
 
     <div class="actions">
-      <button type="button" class="btn-solid" id="openContact" data-contact="project">Get in touch</button>
-      <a class="ig" href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener">
-        <span class="ring" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EAE4D4" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="#EAE4D4"/></svg>
-        </span>
-        <span>
-          <span class="mono label">Instagram</span>
-          <span class="big">Follow along</span>
-        </span>
-      </a>
+      <button type="button" class="btn-solid" id="openContact" data-contact="project">Get in touch <span class="arrow" aria-hidden="true">→</span></button>
+      <div class="socials">
+        <a href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.7" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:adigitalmediastudio@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+        </a>
+      </div>
     </div>
   </main>
 
   <footer>
-    <div class="mono">Web · Apps · Photo · Film · Drone</div>
+    <div class="mono">Web · Apps · Photo · Film · Drone · Project Management</div>
     <div class="mono">Have a great day.</div>
   </footer>
 
