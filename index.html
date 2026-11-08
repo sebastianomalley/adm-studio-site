@@ -6,19 +6,25 @@
   <title>A Digital Media Studio | Back Soon</title>
   <meta name="description" content="A Digital Media Studio is updating its website. Check back soon.">
   <meta name="robots" content="noindex">
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" as="image" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #1d2731;
-      --bg-deep: #18212a;
-      --cream: #e9dfc8;
-      --muted: rgba(233, 223, 200, 0.62);
-      --faint: rgba(233, 223, 200, 0.38);
-      --blue: #6f91b5;
-      --button: #3f5d7d;
-      --line: rgba(233, 223, 200, 0.14);
+      --bg: #1E2830;
+      --bg-deep: #182027;
+      --cream: #EAE4D4;
+      --muted: #9FAAAE;
+      --faint: #5F6C71;
+      --blue: #7FA3C0;
+      --button: #4E7291;
+      --panel: #2C3944;
+      --line: #4E5D68;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { min-height: 100%; }
@@ -35,7 +41,7 @@
       padding: 0 clamp(20px, 5vw, 92px);
     }
     .mono {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       text-transform: uppercase;
       letter-spacing: 0.22em;
       font-size: 0.78rem;
@@ -66,26 +72,20 @@
       max-width: 1000px;
       animation: rise 1s ease-out both;
     }
-    .logo {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 2rem;
-      letter-spacing: 0.06em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .logo-sub {
-      color: var(--cream);
-      font-size: 0.62rem;
-      letter-spacing: 0.55em;
-      margin-bottom: 56px;
+    .hero-logo {
+      height: clamp(56px, 7vw, 84px);
+      width: auto;
+      display: block;
+      align-self: flex-start;
+      object-fit: contain;
+      margin-bottom: 40px;
     }
     h1 {
       font-family: 'Fraunces', serif;
       font-weight: 600;
-      font-size: clamp(2.6rem, 8vw, 6rem);
+      font-size: clamp(2.6rem, 7vw, 5.25rem);
       line-height: 1.02;
-      letter-spacing: -0.015em;
+      letter-spacing: -0.02em;
       margin-bottom: 34px;
     }
     h1 em {
@@ -95,10 +95,10 @@
     }
     .lede {
       font-weight: 300;
-      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
       line-height: 1.75;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 620px;
       margin-bottom: 48px;
     }
     .actions {
@@ -107,19 +107,19 @@
       align-items: center;
       gap: 20px 36px;
     }
-    .btn {
-      font-family: 'IBM Plex Mono', monospace;
+    .btn-solid {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 1rem;
       letter-spacing: 0.08em;
-      color: var(--bg-deep);
       background: var(--button);
-      color: var(--cream);
-      text-decoration: none;
+      color: #12181C;
+      border: 0;
+      cursor: pointer;
       padding: 20px 40px;
       border-radius: 2px;
       transition: background 0.25s;
     }
-    .btn:hover, .btn:focus { background: var(--blue); }
+    .btn-solid:hover, .btn-solid:focus-visible { background: var(--blue); }
     .ig {
       display: flex;
       align-items: center;
@@ -129,17 +129,17 @@
     }
     .ig .ring {
       width: 64px; height: 64px;
-      border: 1.5px solid var(--faint);
+      border: 1.5px solid var(--line);
       border-radius: 50%;
       display: grid;
       place-items: center;
       transition: border-color 0.25s;
     }
-    .ig:hover .ring, .ig:focus .ring { border-color: var(--blue); }
+    .ig:hover .ring, .ig:focus-visible .ring { border-color: var(--blue); }
     .ig .label { color: var(--muted); font-size: 0.72rem; display: block; margin-bottom: 4px; }
     .ig .big { font-size: 1.3rem; }
     footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(234, 228, 212, 0.14);
       padding: 32px 0 40px;
       display: flex;
       flex-wrap: wrap;
@@ -147,6 +147,105 @@
       gap: 14px;
       color: var(--muted);
     }
+
+    /* ---------- contact modal (same form as the main site) ---------- */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(12, 16, 20, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      max-width: 440px;
+      width: 100%;
+      padding: 34px;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 28px; height: 28px;
+      border: 1px solid var(--line);
+      background: none;
+      cursor: pointer;
+      color: var(--cream);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: var(--cream); color: var(--bg); }
+    .modal h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+    .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.5; }
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 11px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--cream);
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field input:-webkit-autofill,
+    .field input:-webkit-autofill:hover,
+    .field input:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--cream) !important;
+      -webkit-box-shadow: 0 0 0 1000px var(--bg) inset !important;
+      transition: background-color 9999s ease-in-out 0s;
+    }
+    .field input:focus, .field textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+    .modal .btn {
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      background: var(--button);
+      color: #12181C;
+      border: 1px solid var(--button);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      border-radius: 2px;
+    }
+    .modal .btn:hover { background: var(--blue); border-color: var(--blue); }
+    .modal .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-note { font-size: 11px; color: var(--faint); margin-top: 12px; line-height: 1.5; text-align: center; }
+    .form-status { font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 14px; display: none; }
+    .form-status.show { display: block; }
+    .form-status.err { color: #D98B6F; }
+    .success-view { text-align: center; padding: 12px 0 4px; }
+    .success-mark { display: inline-flex; margin-bottom: 18px; }
+    .success-view .modal-sub { margin-bottom: 24px; }
+    .success-view .btn { width: auto; padding: 12px 28px; }
+
     @keyframes rise {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
@@ -158,7 +257,6 @@
     @media (max-width: 600px) {
       header { flex-direction: column; align-items: flex-start; }
       main { padding: 48px 0; }
-      .logo-sub { margin-bottom: 40px; }
     }
   </style>
 </head>
@@ -169,18 +267,17 @@
   </header>
 
   <main>
-    <div class="logo">ADM</div>
-    <div class="mono logo-sub">Studio</div>
+    <img src="images/logo.png" alt="A Digital Media Studio" class="hero-logo">
 
     <h1>Thanks for stopping by. We're <em>refocusing.</em></h1>
 
     <p class="lede">Our new website is in the works. Check back soon to see what we've been building. In the meantime, we'd love to hear from you.</p>
 
     <div class="actions">
-      <a class="btn" href="mailto:adigitalmediastudio@gmail.com">Get in touch</a>
+      <button type="button" class="btn-solid" id="openContact" data-contact="project">Get in touch</button>
       <a class="ig" href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener">
         <span class="ring" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e9dfc8" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="#e9dfc8"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EAE4D4" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="#EAE4D4"/></svg>
         </span>
         <span>
           <span class="mono label">Instagram</span>
@@ -194,5 +291,54 @@
     <div class="mono">Web · Apps · Photo · Film · Drone</div>
     <div class="mono">Have a great day.</div>
   </footer>
+
+  <!-- ---------- contact modal ---------- -->
+  <div class="modal-overlay" id="contactOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" id="closeContact" aria-label="Close">✕</button>
+
+      <div id="formView">
+        <h2 id="modalTitle">Start a project</h2>
+        <p class="modal-sub">Tell me a bit about what you need and I'll get back to you soon.</p>
+
+        <form id="contactForm">
+          <input type="hidden" name="access_key" value="19f84a20-0e99-46cd-95c0-8a7e95db971e">
+          <input type="hidden" name="subject" value="New inquiry from adigitalmediastudio.com">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="message">What are you looking to build?</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="btn" id="submitBtn">Send message</button>
+          <p class="form-status" id="formStatus"></p>
+          <p class="form-note">Prefer email? Reach me directly at adigitalmediastudio@gmail.com.</p>
+        </form>
+      </div>
+
+      <div id="successView" class="success-view" hidden>
+        <div class="success-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <circle cx="20" cy="20" r="19" fill="none" stroke="#7FA3C0" stroke-width="1.5"/>
+            <path d="M12 20.5l5.5 5.5L29 14" fill="none" stroke="#7FA3C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Message sent</h2>
+        <p class="modal-sub">Thanks for reaching out. I'll be in touch soon.</p>
+        <button type="button" class="btn" id="successClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
