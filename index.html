@@ -1,295 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Digital Media Studio | Washington, DC</title>
-<meta name="description" content="A Digital Media Studio helps small businesses and organizations grow through web design, app design, photography, film, and drone cinematography. Based in Washington, DC.">
-<link rel="icon" href="images/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preload" as="image" href="images/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<meta property="og:title" content="A Digital Media Studio">
-<meta property="og:description" content="Web, app, photography, film, and drone cinematography for small businesses and organizations. Washington, DC.">
-<meta property="og:image" content="https://adigitalmediastudio.com/images/og-image.png">
-<meta property="og:url" content="https://adigitalmediastudio.com">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Digital Media Studio | Back Soon</title>
+  <meta name="description" content="A Digital Media Studio is updating its website. Check back soon.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1d2731;
+      --bg-deep: #18212a;
+      --cream: #e9dfc8;
+      --muted: rgba(233, 223, 200, 0.62);
+      --faint: rgba(233, 223, 200, 0.38);
+      --blue: #6f91b5;
+      --button: #3f5d7d;
+      --line: rgba(233, 223, 200, 0.14);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--cream);
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      background-image:
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.018) 0 2px, transparent 2px 22px),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      padding: 0 clamp(20px, 5vw, 92px);
+    }
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.78rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 40px 0 0;
+      color: var(--muted);
+    }
+    header .dot {
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      margin-right: 14px;
+      vertical-align: middle;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 0;
+      max-width: 1000px;
+      animation: rise 1s ease-out both;
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .logo-sub {
+      color: var(--cream);
+      font-size: 0.62rem;
+      letter-spacing: 0.55em;
+      margin-bottom: 56px;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(2.6rem, 8vw, 6rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      margin-bottom: 34px;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--blue);
+    }
+    .lede {
+      font-weight: 300;
+      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px 36px;
+    }
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--bg-deep);
+      background: var(--button);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 20px 40px;
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+    .btn:hover, .btn:focus { background: var(--blue); }
+    .ig {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+      color: var(--cream);
+    }
+    .ig .ring {
+      width: 64px; height: 64px;
+      border: 1.5px solid var(--faint);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: border-color 0.25s;
+    }
+    .ig:hover .ring, .ig:focus .ring { border-color: var(--blue); }
+    .ig .label { color: var(--muted); font-size: 0.72rem; display: block; margin-bottom: 4px; }
+    .ig .big { font-size: 1.3rem; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      main { padding: 48px 0; }
+      .logo-sub { margin-bottom: 40px; }
+    }
+  </style>
 </head>
-<body class="rates-page home-page">
-
-<div class="site-frame">
-
-  <nav class="sitenav">
-    <a href="index.html" class="active">Home</a>
-    <a href="photography.html">Photography</a>
-    <a href="builds.html">Custom Builds</a>
-    <a href="retainer.html">Retainer</a>
-    <a href="about.html">About</a>
-  </nav>
-
-  <!-- ==================== HERO ====================
-       Background loop: drop a short muted clip at media/hero-loop.mp4
-       and a still frame at images/hero-poster.jpg. Until then the
-       placeholder shows. See MEDIA.md for sizes. -->
-  <header class="home-hero">
-    <div class="hero-media" data-label="Hero loop · 8 to 15 sec, muted · media/hero-loop.mp4">
-      <video class="hero-video" src="media/hero-loop.mp4" poster="images/hero-poster.jpg"
-             autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-    </div>
-    <div class="hero-shade" aria-hidden="true"></div>
-
-    <div class="hero-top">
-      <span class="hero-dot" aria-hidden="true"></span>
-      <span>Media that matters.</span>
-      <span class="hero-loc">Washington, DC</span>
-    </div>
-
-    <div class="hero-body">
-      <img src="images/logo.png" alt="A Digital Media Studio" class="hero-logo">
-      <h1>Helping small businesses grow, <em>in focus.</em></h1>
-      <p>Web, apps, photography, film, and drone work for small businesses and organizations building something worth showing up well for.</p>
-      <div class="hero-actions">
-        <button type="button" class="btn btn-solid" data-contact="call">Book an intro call</button>
-        <button type="button" class="reel-btn" id="openReel">
-          <span class="reel-play" aria-hidden="true"></span>
-          <span class="reel-text"><span class="reel-kicker">The reel</span>Watch it</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="hero-bottom">
-      <span>Web · Apps · Photo · Film · Drone</span>
-      <span>One studio. The whole picture.</span>
-    </div>
+<body>
+  <header>
+    <div class="mono"><span class="dot"></span>Media that matters.</div>
+    <div class="mono">Washington, DC</div>
   </header>
 
   <main>
+    <div class="logo">ADM</div>
+    <div class="mono logo-sub">Studio</div>
 
-    <!-- ==================== SERVICES ==================== -->
-    <section id="services">
-      <div class="sec-head">
-        <div class="sec-tag">What I do</div>
-        <h2>Four ways to work together</h2>
-      </div>
-      <div class="service-row">
-        <a class="service-card" href="photography.html">
-          <span class="service-num">01</span>
-          <span class="service-name">Photography</span>
-          <span class="service-desc">Headshots, portraits, events, and pets. Natural light, edited by hand, delivered in a private gallery.</span>
-          <span class="service-go">See rates</span>
-        </a>
-        <a class="service-card" href="#work">
-          <span class="service-num">02</span>
-          <span class="service-name">Film &amp; video</span>
-          <span class="service-desc">Short films, music videos, fundraising pieces, and drone footage for brands, campaigns, and causes.</span>
-          <span class="service-go">See the work</span>
-        </a>
-        <a class="service-card" href="builds.html">
-          <span class="service-num">03</span>
-          <span class="service-name">Custom builds</span>
-          <span class="service-desc">Websites, apps, and small digital tools designed around how your business actually runs.</span>
-          <span class="service-go">See a build</span>
-        </a>
-        <a class="service-card" href="retainer.html">
-          <span class="service-num">04</span>
-          <span class="service-name">Retainer</span>
-          <span class="service-desc">Ongoing web, photo, and video support from one person who already knows your brand.</span>
-          <span class="service-go">How it works</span>
-        </a>
-      </div>
-    </section>
+    <h1>Thanks for stopping by. We're <em>refocusing.</em></h1>
 
-    <!-- ==================== WORK ====================
-         Each tile: a still at images/work/<name>.jpg and a short silent
-         clip at media/work/<name>.mp4 that plays on hover. Missing files
-         just show the placeholder. -->
-    <section id="work">
-      <div class="sec-head">
-        <div class="sec-tag">Recent work</div>
-        <h2>Less explaining. More showing.</h2>
-      </div>
-      <div class="work-grid">
-        <a class="work-tile work-tile--lead" href="#" data-reel>
-          <div class="work-media" data-label="images/work/documentary.jpg + media/work/documentary.mp4">
-            <img src="images/work/documentary.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <video src="media/work/documentary.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
-          </div>
-          <div class="work-cap"><span class="work-title">Documentary</span><span class="work-kind">Film · Sugar Rat Productions</span></div>
-        </a>
-        <a class="work-tile" href="#" data-reel>
-          <div class="work-media" data-label="images/work/davi.jpg + media/work/davi.mp4">
-            <img src="images/work/davi.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <video src="media/work/davi.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
-          </div>
-          <div class="work-cap"><span class="work-title">Davi Music</span><span class="work-kind">Music video</span></div>
-        </a>
-        <a class="work-tile" href="#" data-reel>
-          <div class="work-media" data-label="images/work/chappo.jpg + media/work/chappo.mp4">
-            <img src="images/work/chappo.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <video src="media/work/chappo.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
-          </div>
-          <div class="work-cap"><span class="work-title">Chappo</span><span class="work-kind">Music video</span></div>
-        </a>
-        <a class="work-tile" href="#" data-reel>
-          <div class="work-media" data-label="images/work/cure.jpg + media/work/cure.mp4">
-            <img src="images/work/cure.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <video src="media/work/cure.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
-          </div>
-          <div class="work-cap"><span class="work-title">CURE Epilepsy</span><span class="work-kind">Fundraising film</span></div>
-        </a>
-        <a class="work-tile" href="#" data-reel>
-          <div class="work-media" data-label="images/work/short-film.jpg + media/work/short-film.mp4">
-            <img src="images/work/short-film.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <video src="media/work/short-film.mp4" muted loop playsinline preload="metadata" onerror="this.remove()"></video>
-          </div>
-          <div class="work-cap"><span class="work-title">Short film title</span><span class="work-kind">Short film</span></div>
-        </a>
-        <a class="work-tile" href="photography.html">
-          <div class="work-media" data-label="images/work/soho-house.jpg">
-            <img src="images/work/soho-house.jpg" alt="" loading="lazy" onerror="this.remove()">
-          </div>
-          <div class="work-cap"><span class="work-title">Soho House</span><span class="work-kind">Restaurant photography</span></div>
-        </a>
-      </div>
-    </section>
+    <p class="lede">Our new website is in the works. Check back soon to see what we've been building. In the meantime, we'd love to hear from you.</p>
 
-    <!-- ==================== SELECTED WORK ====================
-         Names for now. To switch one to a logo, replace the text with
-         <img src="images/clients/name.svg" alt="Name">. -->
-    <section id="clients" class="clients">
-      <div class="sec-tag">Selected work</div>
-      <ul class="client-row">
-        <li>Soho House</li>
-        <li>American Museum of Natural History</li>
-        <li>Def Jam</li>
-        <li>Chappo</li>
-        <li>Davi Music</li>
-        <li>CURE Epilepsy</li>
-        <li>Virginia Mediation Network</li>
-        <li>Secret City</li>
-      </ul>
-    </section>
-
-    <!-- ==================== TESTIMONIALS ====================
-         Placeholder until real quotes come in. Replace the text in each
-         figure, or delete the whole section if you go live without them. -->
-    <section id="words" class="quotes">
-      <div class="sec-head">
-        <div class="sec-tag">In their words</div>
-        <h2>What clients say</h2>
-      </div>
-      <div class="quote-row">
-        <figure class="quote">
-          <blockquote>Testimonial one goes here.</blockquote>
-          <figcaption>Name · Organization</figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>Testimonial two goes here.</blockquote>
-          <figcaption>Name · Organization</figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>Testimonial three goes here.</blockquote>
-          <figcaption>Name · Organization</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ==================== ABOUT ==================== -->
-    <section id="about" class="about">
-      <div class="about-photo">
-        <img src="images/headshot.jpg" alt="Jason O'Malley" loading="lazy">
-      </div>
-      <div class="about-text">
-        <div class="sec-tag">About</div>
-        <h2>Hi, I'm Jason.</h2>
-        <p>I started A Digital Media Studio so small businesses and organizations could have one person who handles the camera and the code.</p>
-        <p>My roots are in documentary film and years of high-profile events in New York, from Soho House to the American Museum of Natural History. Now I bring that same eye to headshots, music videos, and websites for clients across DC, Maryland, and Virginia.</p>
-        <div class="about-actions">
-          <a class="btn btn-solid" href="about.html">More about me</a>
-          <a class="text-link" href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-    </section>
-
+    <div class="actions">
+      <a class="btn" href="mailto:adigitalmediastudio@gmail.com">Get in touch</a>
+      <a class="ig" href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener">
+        <span class="ring" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e9dfc8" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="#e9dfc8"/></svg>
+        </span>
+        <span>
+          <span class="mono label">Instagram</span>
+          <span class="big">Follow along</span>
+        </span>
+      </a>
+    </div>
   </main>
 
   <footer>
-    <h3>Let's make something<br>worth showing up for.</h3>
-    <div class="foot-actions">
-      <button type="button" class="btn" id="openContact" data-contact="call">Book an intro call</button>
-      <button type="button" class="btn btn-line" data-contact="session">Book a photo session</button>
-    </div>
-    <div class="foot-meta">
-      <span>WASHINGTON, DC · <a href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">INSTAGRAM</a></span>
-      <span>© <span class="yr">2026</span> A DIGITAL MEDIA STUDIO</span>
-    </div>
+    <div class="mono">Web · Apps · Photo · Film · Drone</div>
+    <div class="mono">Have a great day.</div>
   </footer>
-</div>
-
-<!-- ---------- reel modal ---------- -->
-<div class="modal-overlay reel-overlay" id="reelOverlay">
-  <div class="reel-frame" role="dialog" aria-modal="true" aria-label="Studio reel">
-    <button type="button" class="modal-close" id="closeReel" aria-label="Close">✕</button>
-    <div class="reel-embed" id="reelEmbed" data-label="Reel goes here · paste the Vimeo or YouTube link in js/main.js"></div>
-  </div>
-</div>
-
-<!-- ---------- contact modal ---------- -->
-<div class="modal-overlay" id="contactOverlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button type="button" class="modal-close" id="closeContact" aria-label="Close">✕</button>
-
-    <div id="formView">
-      <h2 id="modalTitle">Start a project</h2>
-      <p class="modal-sub">Tell me a bit about what you need and I'll get back to you soon.</p>
-
-      <form id="contactForm">
-        <input type="hidden" name="access_key" value="19f84a20-0e99-46cd-95c0-8a7e95db971e">
-        <input type="hidden" name="subject" value="New inquiry from adigitalmediastudio.com">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="message">What are you looking to build?</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-
-        <button type="submit" class="btn" id="submitBtn">Send message</button>
-        <p class="form-status" id="formStatus"></p>
-        <p class="form-note">Prefer email? Reach me directly at adigitalmediastudio@gmail.com.</p>
-      </form>
-    </div>
-
-    <div id="successView" class="success-view" hidden>
-      <div class="success-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="40" height="40">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="#7FA3C0" stroke-width="1.5"/>
-          <path d="M12 20.5l5.5 5.5L29 14" fill="none" stroke="#7FA3C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h2>Message sent</h2>
-      <p class="modal-sub">Thanks for reaching out. I'll be in touch soon.</p>
-      <button type="button" class="btn" id="successClose">Close</button>
-    </div>
-
-  </div>
-</div>
-
-<script src="js/main.js"></script>
-<script src="js/home.js"></script>
-
 </body>
 </html>
