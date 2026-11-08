@@ -70,19 +70,19 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 72px 0;
+      padding: 56px 0 48px;
       max-width: 900px;
       width: 100%;
       margin: 0 auto;
       animation: rise 1s ease-out both;
     }
     .hero-logo {
-      height: clamp(56px, 7vw, 84px);
+      height: clamp(96px, 11vw, 150px);
       width: auto;
       display: block;
       align-self: center;
       object-fit: contain;
-      margin-bottom: 44px;
+      margin-bottom: 36px;
     }
     h1 {
       font-family: 'Fraunces', serif;
@@ -151,10 +151,27 @@
     .socials a:hover, .socials a:focus-visible { border-color: var(--blue); color: var(--cream); }
     .socials svg { width: 19px; height: 19px; }
     footer {
-      padding: 0 0 40px;
-      text-align: center;
-      color: var(--faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 0 0 64px;
+      color: var(--muted);
     }
+    footer .ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      transition: color 0.25s;
+    }
+    footer .ig svg { width: 18px; height: 18px; }
+    footer .ig:hover, footer .ig:focus-visible { color: var(--cream); }
+    footer .sep { width: 1px; height: 16px; background: var(--line); }
 
     /* ---------- contact modal (same form as the main site) ---------- */
     .modal-overlay {
@@ -265,6 +282,8 @@
     @media (max-width: 600px) {
       header { flex-direction: column; align-items: center; gap: 10px; padding-top: 28px; }
       h1 { font-size: 2.1rem; }
+      footer { flex-direction: column; gap: 12px; padding-bottom: 44px; }
+      footer .sep { display: none; }
       main { padding: 48px 0; }
     }
   </style>
@@ -284,15 +303,15 @@
 
     <div class="actions">
       <button type="button" class="btn-solid" id="openContact" data-contact="project">Get in touch <span class="arrow" aria-hidden="true">→</span></button>
-      <div class="socials">
-        <a href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.7" fill="currentColor"/></svg>
-        </a>
-      </div>
     </div>
   </main>
 
   <footer>
+    <a class="ig" href="https://www.instagram.com/adigitalmediastudio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.7" fill="currentColor"/></svg>
+      <span>@adigitalmediastudio</span>
+    </a>
+    <span class="sep" aria-hidden="true"></span>
     <div class="mono">Have a great day!</div>
   </footer>
 
