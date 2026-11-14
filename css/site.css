@@ -437,3 +437,15 @@ body::after{
 
 /* ---------- one spotlight band on the homepage ---------- */
 .band.spotlight{background:var(--bg);color:var(--cream);border:0;padding-top:clamp(70px,8vw,110px);padding-bottom:clamp(70px,8vw,110px)}
+
+/* phone + text stay side by side down to small laptop windows;
+   on phones they stack with the phone centered */
+.feature{gap:40px clamp(32px,5vw,80px)}
+.feature .phone-demo{flex:0 0 auto;padding-bottom:20px}
+.feature .phone{--pw:clamp(190px,24vw,290px)}
+.feature .text{flex:1 1 280px;min-width:0}
+@media (max-width:640px){
+  .feature{justify-content:center}
+  .feature .phone-demo{flex-basis:100%;display:flex;justify-content:center}
+  .feature .phone{--pw:min(240px,62vw)}
+}
