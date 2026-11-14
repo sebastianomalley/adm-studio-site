@@ -417,3 +417,23 @@ body::after{
   .logo-grid img{max-width:150px}
 }
 .also{margin-top:22px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+
+/* ---------- homepage hero logo ---------- */
+.hero-logo{display:block;width:min(560px,78vw);height:auto;margin:0 auto 34px}
+.hero-logo--md{width:min(300px,60vw);margin-bottom:26px}
+.theme-paper .hero-logo{filter:brightness(0);opacity:.9}
+.home-h1--sub{font-size:clamp(30px,3.6vw,48px)}
+
+/* ---------- "Worked with" on a strip of masking tape ---------- */
+.taped-heading{text-align:center;margin:0 0 40px}
+.taped-heading span{
+  display:inline-block;position:relative;transform:rotate(-2deg);
+  font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(38px,5vw,64px);line-height:1;color:#1F1D18;
+  padding:14px 38px 12px;background:rgba(238,229,205,.92);
+  box-shadow:0 2px 6px rgba(0,0,0,.18);
+  clip-path:polygon(0 6%,2% 0,4% 7%,6% 0,8% 6%,92% 0,94% 7%,96% 0,98% 6%,100% 0,100% 94%,98% 100%,96% 93%,94% 100%,92% 94%,8% 100%,6% 93%,4% 100%,2% 94%,0 100%);
+}
+
+/* ---------- one spotlight band on the homepage ---------- */
+.band.spotlight{background:var(--bg);color:var(--cream);border:0;padding-top:clamp(70px,8vw,110px);padding-bottom:clamp(70px,8vw,110px)}
