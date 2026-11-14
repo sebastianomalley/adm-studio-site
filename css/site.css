@@ -406,7 +406,9 @@ body::after{
 /* client logo wall: even grid, every logo in the same size cell */
 .logo-grid{list-style:none;padding:0;margin:10px auto 0;max-width:1040px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px}
 .logo-grid li{flex:0 0 calc(25% - 18px);height:110px;display:flex;align-items:center;justify-content:center}
-.logo-grid img{width:auto;max-width:180px;opacity:.9;transition:opacity .2s ease}
+/* 13 logos sit 4 / 5 / 4 so the wall is symmetrical */
+@media (min-width:701px){.logo-grid li:nth-child(n+5):nth-child(-n+9){flex-basis:calc(20% - 19.2px)}}
+.logo-grid img{width:auto;max-width:100%;opacity:.9;transition:opacity .2s ease}
 .logo-grid li:hover img{opacity:1}
 .also{margin-top:22px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .logo-grid li{min-width:0}
