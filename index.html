@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
+<body class="theme-paper">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap">
@@ -35,23 +35,32 @@
   </div>
 </header>
 <main id="main">
-<section class="wrap home-hero">
-  <div class="home-hero-text">
+<section class="poster corners" aria-labelledby="hero-title">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="spray" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+      <feComposite in="SourceAlpha" in2="noise" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.7" result="sum"/>
+      <feComponentTransfer in="sum" result="mask"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+    </filter>
+  </svg>
+  <span class="spray s1" aria-hidden="true"></span>
+  <span class="spray s2" aria-hidden="true"></span>
+  <span class="spray s3" aria-hidden="true"></span>
+  <span class="crosshair ch1" aria-hidden="true"></span>
+  <span class="crosshair ch2" aria-hidden="true"></span>
+  <div class="wrap home-hero">
     <p class="eyebrow">Media that matters · Washington, DC</p>
-    <h1 class="home-h1">The camera <em>and</em> the code.</h1>
-    <p class="lede" style="max-width:46ch">I'm Jason. I photograph, film, and build websites for small businesses and organizations across DC, Maryland, and Virginia. One person from the shoot to the launch, so nothing gets lost in a hand-off.</p>
+    <h1 class="home-h1" id="hero-title">The camera <em>and</em> the code.</h1>
+    <p class="lede" style="max-width:48ch">Photography, video, and websites for small businesses and organizations across DC, Maryland, and Virginia. One person from the shoot to the launch, so nothing gets lost in a hand-off.</p>
     <div class="btn-row">
       <a class="btn" href="get-in-touch.html?need=photo">Book a photo session</a>
       <a class="btn btn-line" href="get-in-touch.html?need=web">Talk about a project</a>
     </div>
   </div>
-  <figure>
-    <img src="images/headshot-web.jpg" alt="Jason O'Malley, founder of A Digital Media Studio" width="900" height="900">
-    <figcaption>Jason O'Malley, founder</figcaption>
-  </figure>
 </section>
 
-<section class="wrap" style="padding-bottom:clamp(64px,8vw,110px)" aria-labelledby="what">
+<section class="wrap" style="padding-top:clamp(56px,7vw,90px);padding-bottom:clamp(64px,8vw,110px)" aria-labelledby="what">
   <h2 id="what" class="label">What I do</h2>
   <ul class="doors">
     <li><a class="door" href="photography.html">
