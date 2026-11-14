@@ -310,4 +310,8 @@ body::after{
   .poster .s3{width:60vw;height:60vw;right:-34vw;bottom:-36vw}
 }
 
-.client-logo{display:block;width:auto;opacity:.92}
+/* client logos: each one sits in the same size box so none can stretch
+   or overpower the others. Tune a single logo with its own class below. */
+.client-logo{display:block;width:auto;height:44px;max-width:180px;object-fit:contain;opacity:.92}
+.logo-defjam{height:58px}
+.logo-cure{height:40px}
