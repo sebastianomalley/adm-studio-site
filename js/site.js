@@ -131,6 +131,16 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
     }
   }
 
+  // ---------- polaroids: on touch screens, reveal color once in view ----------
+  if (window.matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.intersectionRatio > 0.7) { e.target.classList.add('seen'); pio.unobserve(e.target); }
+      });
+    }, { threshold: [0.7] });
+    document.querySelectorAll('.polaroid.bw').forEach(function (p) { pio.observe(p); });
+  }
+
   // ---------- keep the footer year current ----------
   document.querySelectorAll('.yr').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

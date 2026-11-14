@@ -16,11 +16,20 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611141406">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=202611141423">
 </head>
 <body class="theme-denim">
 <a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="spray" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+    <feComposite in="SourceAlpha" in2="noise" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.7" result="sum"/>
+    <feComponentTransfer in="sum" result="mask"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+  </filter>
+</svg>
+<div class="paint" aria-hidden="true"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="dot d4"></span></div>
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="ADM Studio home"><img src="images/logo-mark.png" alt="ADM Studio" width="85" height="46"></a>
@@ -42,15 +51,17 @@
 </section>
 
 <!-- GALLERY: drop photos into images/photography/ using these exact file names.
-     Each box shows its label until the photo is there. -->
+     Each Polaroid shows its file name until the photo is there.
+     They show in black and white and turn to color on hover. -->
 <section class="wrap" style="padding-bottom:80px" aria-label="Sample work">
-  <div class="gallery">
-    <figure class="slot ratio-portrait"><img src="images/photography/work-1.jpg" alt=""><span class="slot-label">work-1.jpg · best headshot</span></figure>
-    <figure class="slot ratio-portrait"><img src="images/photography/work-2.jpg" alt=""><span class="slot-label">work-2.jpg · event speaker</span></figure>
-    <figure class="slot ratio-portrait"><img src="images/photography/work-3.jpg" alt=""><span class="slot-label">work-3.jpg · outdoor portrait</span></figure>
-    <figure class="slot ratio-portrait"><img src="images/photography/work-4.jpg" alt=""><span class="slot-label">work-4.jpg · event candid</span></figure>
-    <figure class="slot ratio-portrait"><img src="images/photography/work-5.jpg" alt=""><span class="slot-label">work-5.jpg · team headshot</span></figure>
-    <figure class="slot ratio-portrait"><img src="images/photography/work-6.jpg" alt=""><span class="slot-label">work-6.jpg · gala or venue wide</span></figure>
+  <p class="note" style="margin-bottom:6px">hover for the color version <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M2 6 C18 4 34 10 42 26"/><path d="M42 26 L34 22 M42 26 L44 17"/></svg></p>
+  <div class="wall">
+    <figure class="polaroid bw" style="--tilt:-3deg;--tape:-4deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-1.jpg" alt=""><span class="slot-label">work-1.jpg</span></div><figcaption>best headshot</figcaption></figure>
+    <figure class="polaroid bw" style="--tilt:2.5deg;--tape:3deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-2.jpg" alt=""><span class="slot-label">work-2.jpg</span></div><figcaption>event speaker</figcaption></figure>
+    <figure class="polaroid bw" style="--tilt:-1.5deg;--tape:-4deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-3.jpg" alt=""><span class="slot-label">work-3.jpg</span></div><figcaption>outdoor portrait</figcaption></figure>
+    <figure class="polaroid bw" style="--tilt:3deg;--tape:3deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-4.jpg" alt=""><span class="slot-label">work-4.jpg</span></div><figcaption>event candid</figcaption></figure>
+    <figure class="polaroid bw" style="--tilt:-2.5deg;--tape:-4deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-5.jpg" alt=""><span class="slot-label">work-5.jpg</span></div><figcaption>team headshot</figcaption></figure>
+    <figure class="polaroid bw" style="--tilt:2deg;--tape:3deg;--w:300px"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-6.jpg" alt=""><span class="slot-label">work-6.jpg</span></div><figcaption>the room, wide</figcaption></figure>
   </div>
 </section>
 
@@ -130,6 +141,6 @@
     <span>© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611141406"></script>
+<script src="js/site.js?v=202611141423"></script>
 </body>
 </html>

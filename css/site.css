@@ -47,7 +47,7 @@ body,.theme-denim{
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
-  position:relative;margin:0;background:var(--bg);color:var(--cream);
+  position:relative;margin:0;overflow-x:clip;background:var(--bg);color:var(--cream);
   font-family:var(--sans);font-weight:300;line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
@@ -288,10 +288,6 @@ body::after{
 
 /* ---------- home hero: spray-paint poster ---------- */
 .poster{position:relative;overflow:hidden;isolation:isolate}
-.poster .spray{position:absolute;z-index:-1;border-radius:50%;filter:url(#spray)}
-.poster .s1{width:62vmax;height:62vmax;left:-30vmax;bottom:-36vmax;background:radial-gradient(circle,var(--denim) 0 55%,transparent 70%)}
-.poster .s2{width:46vmax;height:46vmax;right:-22vmax;top:-26vmax;background:radial-gradient(circle,var(--olive) 0 55%,transparent 70%)}
-.poster .s3{width:40vmax;height:40vmax;right:-20vmax;bottom:-26vmax;background:radial-gradient(circle,var(--mustard) 0 55%,transparent 70%)}
 .home-hero{flex-direction:column;align-items:center;text-align:center;min-height:calc(100svh - 87px);justify-content:center}
 .home-hero .lede{margin-left:auto;margin-right:auto}
 .home-hero .btn-row{justify-content:center}
@@ -304,10 +300,7 @@ body::after{
 @media (max-width:640px){.home-hero .crosshair{display:none}}
 .theme-paper .home-hero .btn-line{background:var(--bg)}
 @media (max-width:640px){
-  .home-hero{min-height:0;padding-top:96px;padding-bottom:120px}
-  .poster .s1{width:80vw;height:80vw;left:-46vw;bottom:-46vw}
-  .poster .s2{width:66vw;height:66vw;right:-38vw;top:-38vw}
-  .poster .s3{width:60vw;height:60vw;right:-34vw;bottom:-36vw}
+  .home-hero{min-height:0;padding-top:96px;padding-bottom:110px}
 }
 
 /* client logos: each one sits in the same size box so none can stretch
@@ -315,3 +308,97 @@ body::after{
 .client-logo{display:block;width:auto;height:44px;max-width:180px;object-fit:contain;opacity:.92}
 .logo-defjam{height:58px}
 .logo-cure{height:40px}
+
+
+/* =====================================================================
+   STUDIO WALL KIT
+   Things pinned above the workbench: one loud heading face, pencil notes,
+   taped Polaroids, spray-paint dots. Same parts on every page.
+   ===================================================================== */
+:root{--display:'Anton','Impact',sans-serif;--hand:'Caveat','Bradley Hand',cursive}
+
+/* one loud heading face; Fraunces italic stays for the soft accent words */
+.h1,.home-h1,.h2,.cta h2,.story h2,.sent p:first-child{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;
+}
+.h1{font-size:clamp(46px,6.4vw,84px)}
+.home-h1{font-size:clamp(54px,8vw,112px)}
+.h2{font-size:clamp(34px,4vw,52px)}
+.cta h2{font-size:clamp(38px,5vw,64px)}
+.story h2{font-size:30px}
+.h1 em,.home-h1 em,.h2 em,.cta h2 em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em;color:var(--accent-text)}
+.accent-line{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,26px);color:var(--accent-text)}
+
+/* pencil notes */
+.note{display:inline-flex;align-items:center;gap:8px;font-family:var(--hand);font-size:24px;line-height:1.1;color:var(--eyebrow)}
+.note svg{flex-shrink:0;width:48px;height:32px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+/* slanted solid buttons */
+.btn:not(.btn-line){clip-path:polygon(3% 0,100% 0,97% 100%,0 100%);padding-left:30px;padding-right:30px}
+
+/* ---------- taped Polaroids ----------
+   Hover one: it straightens, lifts and shows its color; the photos on
+   either side lean away as if bumped. */
+.wall{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:34px 26px;padding:24px 0}
+.polaroid{
+  --tilt:0deg;--w:250px;
+  position:relative;width:var(--w);max-width:100%;margin:0;
+  background:#F4ECDD;padding:11px 11px 0;
+  box-shadow:0 14px 28px -10px rgba(0,0,0,.45),0 2px 4px rgba(0,0,0,.15);
+  transform:rotate(var(--tilt));
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.2),box-shadow .35s ease;
+}
+.polaroid .tape{
+  position:absolute;z-index:2;top:-13px;left:50%;width:88px;height:26px;margin-left:-44px;
+  background:rgba(238,229,205,.82);transform:rotate(var(--tape,-4deg));
+  box-shadow:0 1px 2px rgba(0,0,0,.12);
+  clip-path:polygon(0 8%,6% 0,12% 10%,18% 0,24% 8%,30% 0,70% 0,76% 9%,82% 0,88% 10%,94% 0,100% 8%,100% 92%,94% 100%,88% 90%,82% 100%,76% 92%,70% 100%,30% 100%,24% 91%,18% 100%,12% 90%,6% 100%,0 92%);
+}
+.polaroid .photo{position:relative;overflow:hidden;aspect-ratio:var(--ratio,4/5);background:#2B2A26}
+.polaroid .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:filter .5s ease}
+.polaroid.bw .photo img{filter:grayscale(1) contrast(1.08)}
+.polaroid figcaption{min-height:50px;padding:9px 6px 12px;text-align:center;font-family:var(--hand);font-size:21px;line-height:1.15;color:#2D4A63}
+.polaroid .photo.slot{border:0}
+.polaroid .photo.slot:not(.has-media){background:repeating-linear-gradient(135deg,#3A3934 0 12px,#34332E 12px 24px)}
+.polaroid .photo .slot-label{color:#B9B3A3}
+
+@media (hover:hover){
+  .polaroid:hover{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:5;box-shadow:0 24px 40px -12px rgba(0,0,0,.55),0 2px 4px rgba(0,0,0,.15)}
+  .polaroid.bw:hover .photo img{filter:none}
+  .polaroid:hover + .polaroid{transform:rotate(calc(var(--tilt) + 4deg)) translateX(16px)}
+  .polaroid:has(+ .polaroid:hover){transform:rotate(calc(var(--tilt) - 4deg)) translateX(-16px)}
+}
+/* touch screens: show color once the photo is on screen (set by site.js) */
+.polaroid.bw.seen .photo img{filter:none}
+@media (hover:hover){.polaroid.bw.seen:not(:hover) .photo img{filter:grayscale(1) contrast(1.08)}}
+
+/* ---------- spray-paint dots ----------
+   Full circles that belong to the page, peeking in from the edges. */
+.paint{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.paint .dot{position:absolute;border-radius:50%;filter:url(#spray);opacity:.95}
+.paint .d1{width:380px;height:380px;top:150px;left:-230px;background:radial-gradient(circle,var(--dot1) 0 56%,transparent 71%)}
+.paint .d2{width:300px;height:300px;top:78vh;right:-180px;background:radial-gradient(circle,var(--dot2) 0 56%,transparent 71%)}
+.paint .d3{width:340px;height:340px;bottom:520px;left:-220px;background:radial-gradient(circle,var(--dot3) 0 56%,transparent 71%)}
+.paint .d4{width:260px;height:260px;bottom:90px;right:-150px;background:radial-gradient(circle,var(--dot1) 0 56%,transparent 71%)}
+.site-head,main,.site-foot{position:relative;z-index:1}
+.theme-paper{--dot1:var(--denim);--dot2:var(--olive);--dot3:var(--mustard)}
+.theme-denim{--dot1:var(--mustard);--dot2:var(--olive);--dot3:#C9B48F}
+.theme-ink{--dot1:var(--denim);--dot2:var(--mustard);--dot3:var(--olive)}
+@media (max-width:820px){
+  .paint .dot{transform:scale(.55)}
+  .paint .d1{left:-280px}.paint .d2{right:-200px}.paint .d3{left:-260px}.paint .d4{right:-180px}
+}
+
+/* fewer color changes: bands share the page color, separated by rules */
+.band{background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feature{background:color-mix(in srgb,var(--bg-deep) 70%,transparent)}
+
+/* contact form: open lines instead of boxes */
+.form-box{background:transparent;border:0;padding:0}
+.field input,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line-strong);border-radius:0;padding:12px 2px}
+.field input:focus,.field textarea:focus{outline:0;border-bottom:2px solid var(--accent-text)}
+.field textarea{min-height:110px}
+
+/* about: headshot as a pinned Polaroid */
+.about-hero .polaroid{flex:0 1 auto}
+.about-hero .note{margin-top:12px}
