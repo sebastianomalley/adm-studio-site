@@ -457,3 +457,13 @@ body::after{
 @media (max-width:1500px){
   .theme-denim .paint .d1{background:radial-gradient(circle,var(--olive) 0 56%,transparent 71%)}
 }
+
+/* ---------- centered title-card header (wide screens) ----------
+   Logo centered on top, one row of links under it, "Get in touch" at
+   the end of that row. Phones keep logo + Menu button. */
+@media (min-width:821px){
+  .site-head .wrap{flex-direction:column;justify-content:center;gap:10px;padding-top:22px;padding-bottom:14px}
+  .site-head .brand img{height:52px}
+  .nav{justify-content:center;gap:8px 34px}
+  .nav .btn{margin-left:6px;padding:11px 18px}
+}
