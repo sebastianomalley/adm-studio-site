@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get in touch | A Digital Media Studio</title>
+<meta name="description" content="Book a photo session or talk about a website, video, or ongoing project with A Digital Media Studio in Washington, DC.">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:title" content="Get in touch | A Digital Media Studio">
+<meta property="og:description" content="Book a photo session or talk about a website, video, or ongoing project with A Digital Media Studio in Washington, DC.">
+<meta property="og:image" content="https://adigitalmediastudio.com/images/og-image.png">
+<meta property="og:url" content="https://adigitalmediastudio.com/get-in-touch.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="ADM Studio home"><img src="images/logo-mark.png" alt="ADM Studio" width="85" height="46"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="photography.html">Photo &amp; Video</a>
+      <a href="builds.html">Websites &amp; Apps</a>
+      <a href="retainer.html">Ongoing Support</a>
+      <a href="about.html">About</a>
+      <a class="btn" href="get-in-touch.html" aria-current="page">Get in touch</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="wrap contact">
+  <div class="side">
+    <p class="eyebrow">Get in touch</p>
+    <h1 class="h1">Let's <em>talk.</em></h1>
+    <p class="lede">Tell me what you need and I'll get back to you within a day, usually with a couple of times for a short call.</p>
+    <dl>
+      <div><dt>Email</dt><dd><a href="mailto:adigitalmediastudio@gmail.com">adigitalmediastudio@gmail.com</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">@adigitalmediastudio</a></dd></div>
+      <div><dt>Based in</dt><dd>Washington, DC</dd></div>
+    </dl>
+  </div>
+
+  <div class="form-box">
+    <form id="contactForm">
+      <input type="hidden" name="access_key" value="19f84a20-0e99-46cd-95c0-8a7e95db971e">
+      <input type="hidden" name="subject" value="New inquiry from adigitalmediastudio.com">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <fieldset>
+        <legend>What do you need?</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="need" value="photo" checked><span>Photo session</span></label>
+          <label class="chip"><input type="radio" name="need" value="video"><span>Video</span></label>
+          <label class="chip"><input type="radio" name="need" value="web"><span>Website or app</span></label>
+          <label class="chip"><input type="radio" name="need" value="ongoing"><span>Ongoing support</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field-row">
+        <label class="field">Name<input type="text" name="name" autocomplete="name" required></label>
+        <label class="field">Email<input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label class="field"><span id="messageLabel">What kind of shoot, and roughly when?</span><textarea name="message" required></textarea></label>
+
+      <button class="btn" type="submit">Send message</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+
+    <div class="sent" id="sentView" hidden>
+      <p>Message sent.</p>
+      <p>Thanks for reaching out. I'll be in touch soon.</p>
+      <button class="btn btn-line" type="button" id="sendAnother">Send another</button>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>Washington, DC · DC / MD / VA</span>
+    <span><a href="mailto:adigitalmediastudio@gmail.com">adigitalmediastudio@gmail.com</a> · <a href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener">Instagram</a></span>
+    <span>© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>
