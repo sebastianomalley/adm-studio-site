@@ -451,13 +451,9 @@ body::after{
 }
 
 /* ---------- paint dots on narrower windows ----------
-   When the text column reaches the left edge, the top dot rolls over
-   to the open right side of the page instead of sitting under the
-   headline, and all dots get a little smaller. */
-@media (max-width:1400px) and (min-width:821px){
-  .paint .dot{transform:scale(.8)}
-  .paint .d1{left:auto;right:-250px;top:110px}
-  .paint .d2{top:auto;bottom:900px;left:-250px;right:auto}
-  .paint .d3{left:-260px}
-  .paint .d4{right:-190px}
+   Same dots, same places. Once the headline reaches the top-left dot,
+   that one dot switches to olive on the blue pages so the mustard
+   italic and sand headline still read on top of it. */
+@media (max-width:1500px){
+  .theme-denim .paint .d1{background:radial-gradient(circle,var(--olive) 0 56%,transparent 71%)}
 }
