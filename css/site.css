@@ -404,9 +404,10 @@ body::after{
 .about-hero .note{margin-top:12px}
 
 /* client logo wall: even grid, every logo in the same size cell */
-.logo-grid{list-style:none;padding:0;margin:10px auto 0;max-width:1040px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 24px}
-.logo-grid li{height:110px;display:flex;align-items:center;justify-content:center}
+.logo-grid{list-style:none;padding:0;margin:10px auto 0;max-width:1040px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px}
+.logo-grid li{flex:0 0 calc(25% - 18px);height:110px;display:flex;align-items:center;justify-content:center}
 .logo-grid img{width:auto;max-width:180px;opacity:.9;transition:opacity .2s ease}
 .logo-grid li:hover img{opacity:1}
 .also{margin-top:22px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-@media (max-width:700px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.logo-grid li{height:90px}.logo-grid img{max-width:140px}}
+.logo-grid li{min-width:0}
+@media (max-width:700px){.logo-grid li{flex-basis:calc(50% - 12px)}.logo-grid li{height:90px}.logo-grid img{max-width:140px}}
