@@ -1,5 +1,6 @@
 /* Live clock for the iPhone mockup on builds.html.
-   Shows the visitor's own time and date. No libraries. */
+   Shows the visitor's own time and date and flips the minute exactly
+   when their computer does. No libraries. */
 
 (function () {
   var t = document.getElementById('phTime');
@@ -15,6 +16,16 @@
       weekday: 'short', month: 'short', day: 'numeric'
     });
   }
+
+  // update now, then right on the next minute, then every minute after
   tick();
-  setInterval(tick, 20000);
+  var now = new Date();
+  var untilNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds() + 50;
+  setTimeout(function () {
+    tick();
+    setInterval(tick, 60000);
+  }, untilNextMinute);
+
+  // catch up if the tab was in the background
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) tick(); });
 })();

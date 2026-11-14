@@ -17,7 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611141604">
+<link rel="stylesheet" href="css/site.css?v=202611141613">
+<link rel="stylesheet" href="css/phone.css?v=202611141613">
 </head>
 <body class="theme-denim">
 <a class="skip" href="#main">Skip to content</a>
@@ -52,8 +53,24 @@
 
 <section class="wrap" style="padding-bottom:90px" aria-labelledby="card">
   <div class="feature">
-    <div class="phone-frame">
-      <img src="images/adm-lockscreen.jpg" alt="Phone lock screen showing a scannable QR code for Jason's digital contact card" width="900" height="1957">
+    <div class="phone-demo">
+      <div class="phone" role="img" aria-label="iPhone lock screen showing a scannable QR code for Jason O'Malley's digital contact card">
+        <i class="btn-mute" aria-hidden="true"></i>
+        <i class="btn-vol up" aria-hidden="true"></i>
+        <i class="btn-vol down" aria-hidden="true"></i>
+        <i class="btn-power" aria-hidden="true"></i>
+        <div class="phone-screen">
+          <img class="phone-wall" src="images/adm-lockscreen.jpg" alt="">
+          <div class="phone-island" aria-hidden="true"></div>
+          <!-- live clock: shows the visitor's own time, set by js/phone.js -->
+          <div class="phone-clock" aria-hidden="true">
+            <div class="ph-date" id="phDate"></div>
+            <div class="ph-time" id="phTime"></div>
+          </div>
+          <div class="phone-glare" aria-hidden="true"></div>
+          <div class="phone-home" aria-hidden="true"></div>
+        </div>
+      </div>
     </div>
     <div class="text">
       <p class="eyebrow" style="margin-bottom:12px">See one working</p>
@@ -136,6 +153,7 @@
     <span>© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611141604"></script>
+<script src="js/site.js?v=202611141613"></script>
+<script src="js/phone.js?v=202611141613"></script>
 </body>
 </html>
