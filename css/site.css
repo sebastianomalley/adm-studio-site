@@ -555,3 +555,7 @@ body::after{
   background:#11100C;color:var(--dim);border-top:0}
 .site-foot .foot-brand img,.theme-paper .site-foot .foot-brand img{filter:none;opacity:.85}
 .site-foot .wrap{padding-top:48px;padding-bottom:40px}
+
+/* contact page is short: keep one dot per side so they don't stack up */
+.page-get-in-touch .paint .d3{display:none}
+.book-line{margin-top:-8px;font-size:16px;color:var(--dim)}
