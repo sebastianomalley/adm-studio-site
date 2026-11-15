@@ -132,8 +132,8 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
   }
 
   // ---------- polaroids on touch screens ----------
-  // Color fades in once a photo has sat on screen for a moment, and a tap
-  // lifts and straightens it (like the desktop hover) for a couple of seconds.
+  // Color fades in once a photo has sat on screen for a moment, and pressing
+  // one lifts and straightens it (like the desktop hover) until you let go.
   if (window.matchMedia('(hover: none)').matches) {
     if ('IntersectionObserver' in window) {
       var timers = new WeakMap();
@@ -150,20 +150,29 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
       document.querySelectorAll('.polaroid.bw').forEach(function (p) { pio.observe(p); });
     }
 
-    var lifted = null, dropTimer;
-    function drop() { if (lifted) { lifted.classList.remove('lift'); lifted = null; } }
+    // Press to lift, let go to drop. A tiny delay means a finger that is
+    // starting to scroll the page doesn't flick every photo it passes.
     document.querySelectorAll('.polaroid').forEach(function (p) {
-      p.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-      p.addEventListener('click', function () {
-        clearTimeout(dropTimer);
-        if (lifted === p) { drop(); return; }
-        drop();
-        p.classList.add('lift', 'seen'); lifted = p;
-        dropTimer = setTimeout(drop, 2200);
+      var t, settle, x0, y0, pressed = false, moved = false;
+      function lift() { clearTimeout(settle); p.classList.add('lift', 'seen'); }
+      function drop() { clearTimeout(t); pressed = false; p.classList.remove('lift'); }
+      p.addEventListener('pointerdown', function (e) {
+        x0 = e.clientX; y0 = e.clientY; pressed = true; moved = false;
+        t = setTimeout(lift, 70);
       });
-    });
-    document.addEventListener('click', function (e) {
-      if (lifted && !lifted.contains(e.target)) { clearTimeout(dropTimer); drop(); }
+      p.addEventListener('pointermove', function (e) {
+        if (pressed && (Math.abs(e.clientX - x0) > 10 || Math.abs(e.clientY - y0) > 10)) { moved = true; drop(); }
+      });
+      p.addEventListener('pointerup', function () {
+        // a quick tap still gets a short lift so it never feels dead
+        if (pressed && !moved && !p.classList.contains('lift')) {
+          clearTimeout(t); pressed = false; lift(); settle = setTimeout(drop, 350); return;
+        }
+        drop();
+      });
+      // touch fires pointerleave right after pointerup, so only react while a finger is down
+      ['pointercancel', 'pointerleave'].forEach(function (ev) { p.addEventListener(ev, function () { if (pressed) drop(); }); });
+      p.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     });
   }
 
