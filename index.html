@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611141642">
+<link rel="stylesheet" href="css/site.css?v=202611150959">
 </head>
 <body class="theme-paper">
 <a class="skip" href="#main">Skip to content</a>
@@ -95,6 +95,43 @@
   </ul>
 </section>
 
+<!-- TESTIMONIALS: one <figure class="t-slide"> per quote. Add or remove
+     slides and dots in pairs; the timing and dots work for any number. -->
+<section class="testimonials" aria-roledescription="carousel" aria-label="What clients say">
+  <div class="wrap">
+    <svg class="t-mark" viewBox="0 0 112 82" aria-hidden="true"><path d="M0 82V44L22 0h26L32 36h16v46zM64 82V44L86 0h26L96 36h16v46z"/></svg>
+    <div class="t-slides" aria-live="polite">
+      <figure class="t-slide">
+        <blockquote>[What VMN said about the conference photos. Two or three sentences.]</blockquote>
+        <figcaption><span class="t-name">[Name]</span><span class="t-org">Virginia Mediation Network</span></figcaption>
+      </figure>
+      <figure class="t-slide" aria-hidden="true">
+        <blockquote>[What CRCMC said about the gala coverage.]</blockquote>
+        <figcaption><span class="t-name">[Name]</span><span class="t-org">CRCMC</span></figcaption>
+      </figure>
+      <figure class="t-slide" aria-hidden="true">
+        <blockquote>[A quote about a video or film project.]</blockquote>
+        <figcaption><span class="t-name">[Name]</span><span class="t-org">[Organization]</span></figcaption>
+      </figure>
+      <figure class="t-slide" aria-hidden="true">
+        <blockquote>[A quote from a website or contact card client.]</blockquote>
+        <figcaption><span class="t-name">[Name]</span><span class="t-org">[Organization]</span></figcaption>
+      </figure>
+      <figure class="t-slide" aria-hidden="true">
+        <blockquote>[A quote from a headshot or portrait client.]</blockquote>
+        <figcaption><span class="t-name">[Name]</span><span class="t-org">[Organization]</span></figcaption>
+      </figure>
+    </div>
+    <div class="t-dots">
+      <button class="t-dot" type="button" aria-label="Show quote 1"><span></span></button>
+      <button class="t-dot" type="button" aria-label="Show quote 2"><span></span></button>
+      <button class="t-dot" type="button" aria-label="Show quote 3"><span></span></button>
+      <button class="t-dot" type="button" aria-label="Show quote 4"><span></span></button>
+      <button class="t-dot" type="button" aria-label="Show quote 5"><span></span></button>
+    </div>
+  </div>
+</section>
+
 <section class="band spotlight theme-ink" aria-labelledby="worked">
   <div class="wrap">
     <h2 id="worked" class="taped-heading"><span>Worked with</span></h2>
@@ -115,22 +152,6 @@
       <li><img src="images/clients/davi-music-sand.png" alt="Davi Music" style="height:40px"></li>
       <li><img src="images/clients/secret-city-sand.png" alt="The Secret City" style="height:58px"></li>
     </ul>
-  </div>
-</section>
-
-<!-- TESTIMONIALS: hidden until you have real quotes.
-     To turn on: delete the "hidden" word on the next line, then replace the bracketed text. -->
-<section class="wrap" style="padding-top:clamp(64px,8vw,110px);padding-bottom:clamp(64px,8vw,110px)" aria-labelledby="words" hidden>
-  <h2 id="words" class="label" style="margin-bottom:30px">Kind words</h2>
-  <div class="quotes">
-    <figure class="quote">
-      <blockquote>[Client quote]</blockquote>
-      <figcaption>[Name, organization]</figcaption>
-    </figure>
-    <figure class="quote">
-      <blockquote>[Client quote]</blockquote>
-      <figcaption>[Name, organization]</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -155,6 +176,6 @@
     <span class="foot-copy">© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611141642"></script>
+<script src="js/site.js?v=202611150959"></script>
 </body>
 </html>

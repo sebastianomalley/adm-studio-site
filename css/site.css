@@ -504,3 +504,29 @@ body::after{
 .socials svg .fill{fill:currentColor;stroke:none}
 .socials a:hover{color:var(--cream);transform:translateY(-1px)}
 @media (max-width:1100px){.site-foot .foot-contact{flex-direction:column;justify-content:center}}
+
+/* ---------- testimonials: mustard band, auto-advancing quotes ----------
+   Each quote stays 6s. The current dot fills left to right in ink;
+   dots already shown stay a darker mustard; dots still to come are rings. */
+.testimonials{--t-bg:#C6994C;--t-deep:#8A6528;--t-ink:#1F1D18;
+  position:relative;z-index:1;background:var(--t-bg);color:var(--t-ink);
+  padding:clamp(80px,9vw,130px) 0;text-align:center}
+.t-mark{display:block;width:84px;height:62px;margin:0 auto 38px;fill:var(--t-deep)}
+.t-slides{display:grid;max-width:920px;margin:0 auto}
+.t-slide{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility 0s .7s}
+.t-slide.is-active{opacity:1;visibility:visible;transition:opacity .7s ease}
+.t-slide blockquote{margin:0;font-family:var(--sans);font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.4;letter-spacing:-.005em}
+.t-slide figcaption{margin-top:30px;display:flex;flex-direction:column;gap:6px}
+.t-name{font-weight:500;font-size:18px}
+.t-org{font-size:16px;opacity:.85}
+.t-dots{display:flex;justify-content:center;gap:16px;margin-top:52px}
+.t-dot{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.t-dot span{position:relative;display:block;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--t-deep);overflow:hidden}
+.t-dot span::after{content:"";position:absolute;inset:0;width:0;background:var(--t-ink)}
+.t-dot.done span{background:var(--t-deep)}
+.t-dot.is-active span{border-color:var(--t-ink)}
+.t-dot.is-active span::after{animation:t-fill var(--t-time,6s) linear forwards}
+.testimonials.paused .t-dot.is-active span::after{animation-play-state:paused}
+.t-dot:focus-visible{outline:2px solid var(--t-ink);outline-offset:2px;border-radius:50%}
+@keyframes t-fill{to{width:100%}}
+@media (prefers-reduced-motion:reduce){.t-dot.is-active span::after{animation:none;width:100%}}

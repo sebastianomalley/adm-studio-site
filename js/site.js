@@ -144,3 +144,49 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
   // ---------- keep the footer year current ----------
   document.querySelectorAll('.yr').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
+
+/* ---------- testimonials carousel ---------- */
+(function () {
+  var box = document.querySelector('.testimonials');
+  if (!box) return;
+  var slides = box.querySelectorAll('.t-slide');
+  var dots = box.querySelectorAll('.t-dot');
+  var TIME = 6000, cur = 0, timer = null, left = TIME, started = 0;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(i) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function (s, n) {
+      s.classList.toggle('is-active', n === cur);
+      s.setAttribute('aria-hidden', n === cur ? 'false' : 'true');
+    });
+    dots.forEach(function (d, n) {
+      d.classList.remove('is-active');
+      d.classList.toggle('done', n < cur);
+      d.setAttribute('aria-current', n === cur ? 'true' : 'false');
+    });
+    void dots[cur].offsetWidth;          // restart the fill animation
+    dots[cur].classList.add('is-active');
+    left = TIME; run();
+  }
+  function run() {
+    clearTimeout(timer);
+    if (still || box.classList.contains('paused')) return;
+    started = Date.now();
+    timer = setTimeout(function () { show(cur + 1); }, left);
+  }
+  function pause() {
+    if (box.classList.contains('paused')) return;
+    box.classList.add('paused'); clearTimeout(timer);
+    left = Math.max(0, left - (Date.now() - started));
+  }
+  function resume() { box.classList.remove('paused'); run(); }
+
+  dots.forEach(function (d, n) { d.addEventListener('click', function () { show(n); }); });
+  box.addEventListener('mouseenter', pause);
+  box.addEventListener('mouseleave', resume);
+  box.addEventListener('focusin', pause);
+  box.addEventListener('focusout', resume);
+  document.addEventListener('visibilitychange', function () { document.hidden ? pause() : resume(); });
+  show(0);
+})();
