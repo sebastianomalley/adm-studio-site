@@ -530,3 +530,28 @@ body::after{
 .t-dot:focus-visible{outline:2px solid var(--t-ink);outline-offset:2px;border-radius:50%}
 @keyframes t-fill{to{width:100%}}
 @media (prefers-reduced-motion:reduce){.t-dot.is-active span::after{animation:none;width:100%}}
+
+/* ---------- homepage bands ----------
+   sand hero / denim recent work / sand what I do / mustard reviews /
+   ink worked with / sand call to action / deep footer */
+.section-band{position:relative;z-index:1;background:var(--bg);color:var(--cream);padding:clamp(80px,9vw,120px) 0 clamp(70px,8vw,110px)}
+.section-plain{padding-top:clamp(80px,9vw,120px);padding-bottom:clamp(80px,9vw,120px)}
+.section-band .wall{padding-top:10px}
+
+/* taped label: the one heading style for homepage sections */
+.taped-heading{text-align:center;margin:0 0 48px}
+.taped-heading span{
+  transform:rotate(-1.2deg);
+  font-size:clamp(30px,3.6vw,46px);
+  color:#1F1D18;background:#EAD7B6;padding:12px 34px 10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+.theme-paper .section-plain .taped-heading span,
+.section-plain .taped-heading span{background:#1F1D18;color:#EAD7B6}
+
+/* footer: its own closing block, always deep ink */
+.site-foot{
+  --cream:#EAD7B6;--dim:#BDB6A4;--faint:#9D9786;--accent-text:#D9AE5E;--line:rgba(234,215,182,.14);
+  background:#11100C;color:var(--dim);border-top:0}
+.site-foot .foot-brand img,.theme-paper .site-foot .foot-brand img{filter:none;opacity:.85}
+.site-foot .wrap{padding-top:48px;padding-bottom:40px}
