@@ -131,14 +131,39 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
     }
   }
 
-  // ---------- polaroids: on touch screens, reveal color once in view ----------
-  if (window.matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
-    var pio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.intersectionRatio > 0.7) { e.target.classList.add('seen'); pio.unobserve(e.target); }
+  // ---------- polaroids on touch screens ----------
+  // Color fades in once a photo has sat on screen for a moment, and a tap
+  // lifts and straightens it (like the desktop hover) for a couple of seconds.
+  if (window.matchMedia('(hover: none)').matches) {
+    if ('IntersectionObserver' in window) {
+      var timers = new WeakMap();
+      var pio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var p = e.target;
+          if (e.intersectionRatio >= 0.9) {
+            timers.set(p, setTimeout(function () { p.classList.add('seen'); pio.unobserve(p); }, 700));
+          } else if (timers.has(p)) {
+            clearTimeout(timers.get(p)); timers.delete(p);
+          }
+        });
+      }, { threshold: [0, 0.9] });
+      document.querySelectorAll('.polaroid.bw').forEach(function (p) { pio.observe(p); });
+    }
+
+    var lifted = null, dropTimer;
+    function drop() { if (lifted) { lifted.classList.remove('lift'); lifted = null; } }
+    document.querySelectorAll('.polaroid').forEach(function (p) {
+      p.addEventListener('click', function () {
+        clearTimeout(dropTimer);
+        if (lifted === p) { drop(); return; }
+        drop();
+        p.classList.add('lift', 'seen'); lifted = p;
+        dropTimer = setTimeout(drop, 2200);
       });
-    }, { threshold: [0.7] });
-    document.querySelectorAll('.polaroid.bw').forEach(function (p) { pio.observe(p); });
+    });
+    document.addEventListener('click', function (e) {
+      if (lifted && !lifted.contains(e.target)) { clearTimeout(dropTimer); drop(); }
+    });
   }
 
   // ---------- keep the footer year current ----------

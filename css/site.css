@@ -368,9 +368,18 @@ body::after{
   .polaroid:hover + .polaroid{transform:rotate(calc(var(--tilt) + 4deg)) translateX(16px)}
   .polaroid:has(+ .polaroid:hover){transform:rotate(calc(var(--tilt) - 4deg)) translateX(-16px)}
 }
-/* touch screens: show color once the photo is on screen (set by site.js) */
+/* touch screens: color fades in slowly once the photo has been on screen a beat,
+   and a tap lifts and straightens it like the desktop hover (set by site.js) */
 .polaroid.bw.seen .photo img{filter:none}
 @media (hover:hover){.polaroid.bw.seen:not(:hover) .photo img{filter:grayscale(1) contrast(1.08)}}
+@media (hover:none){
+  .polaroid{-webkit-tap-highlight-color:transparent;cursor:pointer}
+  .polaroid.bw .photo img{transition:filter 1.8s ease}
+  .polaroid.lift{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:5;box-shadow:0 24px 40px -12px rgba(0,0,0,.55),0 2px 4px rgba(0,0,0,.15)}
+  .polaroid.lift .photo img{filter:none;transition-duration:.5s}
+  .polaroid.lift + .polaroid{transform:rotate(calc(var(--tilt) + 4deg)) translateX(16px)}
+  .polaroid:has(+ .polaroid.lift){transform:rotate(calc(var(--tilt) - 4deg)) translateX(-16px)}
+}
 
 /* ---------- spray-paint dots ----------
    Full circles that belong to the page, peeking in from the edges. */
