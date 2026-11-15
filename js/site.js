@@ -153,6 +153,7 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
     var lifted = null, dropTimer;
     function drop() { if (lifted) { lifted.classList.remove('lift'); lifted = null; } }
     document.querySelectorAll('.polaroid').forEach(function (p) {
+      p.addEventListener('contextmenu', function (e) { e.preventDefault(); });
       p.addEventListener('click', function () {
         clearTimeout(dropTimer);
         if (lifted === p) { drop(); return; }
