@@ -132,29 +132,14 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
   }
 
   // ---------- polaroids on touch screens ----------
-  // Color fades in once a photo has sat on screen for a moment, and pressing
-  // one lifts and straightens it (like the desktop hover) until you let go.
+  // Photos stay black and white. Pressing one lifts, straightens and colors it
+  // (like the desktop hover) until you let go; a quick tap flashes it.
   if (window.matchMedia('(hover: none)').matches) {
-    if ('IntersectionObserver' in window) {
-      var timers = new WeakMap();
-      var pio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          var p = e.target;
-          if (e.intersectionRatio >= 0.9) {
-            timers.set(p, setTimeout(function () { p.classList.add('seen'); pio.unobserve(p); }, 700));
-          } else if (timers.has(p)) {
-            clearTimeout(timers.get(p)); timers.delete(p);
-          }
-        });
-      }, { threshold: [0, 0.9] });
-      document.querySelectorAll('.polaroid.bw').forEach(function (p) { pio.observe(p); });
-    }
-
     // Press to lift, let go to drop. A tiny delay means a finger that is
     // starting to scroll the page doesn't flick every photo it passes.
     document.querySelectorAll('.polaroid').forEach(function (p) {
       var t, settle, x0, y0, pressed = false, moved = false;
-      function lift() { clearTimeout(settle); p.classList.add('lift', 'seen'); }
+      function lift() { clearTimeout(settle); p.classList.add('lift'); }
       function drop() { clearTimeout(t); pressed = false; p.classList.remove('lift'); }
       p.addEventListener('pointerdown', function (e) {
         x0 = e.clientX; y0 = e.clientY; pressed = true; moved = false;
@@ -166,7 +151,7 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
       p.addEventListener('pointerup', function () {
         // a quick tap still gets a short lift so it never feels dead
         if (pressed && !moved && !p.classList.contains('lift')) {
-          clearTimeout(t); pressed = false; lift(); settle = setTimeout(drop, 350); return;
+          clearTimeout(t); pressed = false; lift(); settle = setTimeout(drop, 650); return;
         }
         drop();
       });

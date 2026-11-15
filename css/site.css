@@ -376,9 +376,9 @@ body::after{
   .polaroid{-webkit-tap-highlight-color:transparent;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
   /* keep iOS from grabbing the photo itself on a press (the "open image" preview) */
   .polaroid .photo img{pointer-events:none;-webkit-touch-callout:none;-webkit-user-drag:none}
-  .polaroid.bw .photo img{transition:filter 1.8s ease}
+  .polaroid.bw .photo img{transition:filter .7s ease}
   .polaroid.lift{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:5;box-shadow:0 24px 40px -12px rgba(0,0,0,.55),0 2px 4px rgba(0,0,0,.15)}
-  .polaroid.lift .photo img{filter:none;transition-duration:.5s}
+  .polaroid.lift .photo img{filter:none;transition-duration:.35s}
   .polaroid.lift + .polaroid{transform:rotate(calc(var(--tilt) + 4deg)) translateX(16px)}
   .polaroid:has(+ .polaroid.lift){transform:rotate(calc(var(--tilt) - 4deg)) translateX(-16px)}
 }
