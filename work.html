@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Work | A Digital Media Studio</title>
+<meta name="description" content="Selected film, video, and animation work from A Digital Media Studio in Washington, DC.">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:title" content="Work | A Digital Media Studio">
+<meta property="og:description" content="Selected film, video, and animation work from A Digital Media Studio in Washington, DC.">
+<meta property="og:image" content="https://adigitalmediastudio.com/images/og-image.png">
+<meta property="og:url" content="https://adigitalmediastudio.com/work.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=202611171128">
+<link rel="stylesheet" href="css/work.css?v=202611171128">
+</head>
+<body class="theme-ink page-work">
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="spray" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+    <feComposite in="SourceAlpha" in2="noise" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.7" result="sum"/>
+    <feComponentTransfer in="sum" result="mask"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+  </filter>
+</svg>
+<div class="paint" aria-hidden="true"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="dot d4"></span></div>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="ADM Studio home"><img src="images/logo-mark-sand.png" alt="ADM Studio" width="85" height="46"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="work.html" aria-current="page">Work</a>
+      <a href="photography.html">Photo &amp; Video</a>
+      <a href="builds.html">Websites &amp; Apps</a>
+      <a href="retainer.html">Ongoing Support</a>
+      <a href="about.html">About</a>
+      <a class="btn nav-cta-mobile" href="get-in-touch.html">Get in touch</a>
+    </nav>
+    <a class="btn head-cta" href="get-in-touch.html">Get in touch</a>
+  </div>
+</header>
+<main id="main">
+<section class="wrap intro" style="padding-bottom:40px">
+  <p class="eyebrow">Selected Work</p>
+  <h1 class="h1" style="max-width:16ch">Stories, <em>start to finish.</em></h1>
+  <p class="lede">Films, video, and animation. Press play on anything below.</p>
+</section>
+
+<!-- WORK GRID: one <li class="reel"> per project.
+     data-yt = the YouTube video ID (the part after watch?v=).
+     For a private video, use data-private instead of data-yt and it shows a request button. -->
+<section class="wrap" style="padding-bottom:100px" aria-label="Projects">
+  <ul class="reels">
+    <li class="reel" data-yt="1ZAoogHaFr8">
+      <button class="reel-play" type="button" aria-label="Play Sugar Rat">
+        <span class="reel-thumb"><img alt="" loading="lazy"></span>
+        <span class="reel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+      </button>
+      <div class="reel-info">
+        <h2 class="reel-title">Sugar Rat</h2>
+        <p class="reel-meta">Animated short</p>
+      </div>
+    </li>
+    <li class="reel" data-yt="xI81tT1sWS8">
+      <button class="reel-play" type="button" aria-label="Play the film">
+        <span class="reel-thumb"><img alt="" loading="lazy"></span>
+        <span class="reel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+      </button>
+      <div class="reel-info">
+        <h2 class="reel-title">[Film title]</h2>
+        <p class="reel-meta">Psychological thriller · Director of photography</p>
+      </div>
+    </li>
+    <li class="reel" data-yt="bN5yv-IB6yI">
+      <button class="reel-play" type="button" aria-label="Play the music video">
+        <span class="reel-thumb"><img alt="" loading="lazy"></span>
+        <span class="reel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+      </button>
+      <div class="reel-info">
+        <h2 class="reel-title">[Song title]</h2>
+        <p class="reel-meta">Music video · Director &amp; director of photography</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="viewer" hidden>
+  <div class="viewer-box" role="dialog" aria-modal="true" aria-label="Video player">
+    <button class="viewer-close" type="button" aria-label="Close video">&times;</button>
+    <div class="viewer-frame"></div>
+  </div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="foot-place">Washington, DC · DC / MD / VA</span>
+    <a class="foot-brand" href="index.html" aria-label="ADM Studio home"><img src="images/logo-mark-sand.png" alt="ADM Studio" width="917" height="498"></a>
+    <span class="foot-contact">
+      <a href="mailto:adigitalmediastudio@gmail.com">adigitalmediastudio@gmail.com</a>
+      <span class="socials">
+        <a href="https://www.instagram.com/adigitalmediastudio/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="0.9" class="fill"/></svg></a>
+        <a href="https://www.linkedin.com/company/a-digital-media-studio/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M8 10.5V17M8 7.2v.1M11.5 17v-6.5M11.5 13.2c0-1.6 1.1-2.8 2.6-2.8s2.4 1 2.4 2.8V17"/></svg></a>
+        <a href="https://www.youtube.com/@adigitalmediastudio" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.4v5.2l4.5-2.6z"/></svg></a>
+      </span>
+    </span>
+    <span class="foot-copy">© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
+  </div>
+</footer>
+<script src="js/site.js?v=202611171128"></script>
+<script src="js/work.js?v=202611171128"></script>
+</body>
+</html>
