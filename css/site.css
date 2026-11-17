@@ -97,7 +97,7 @@ h1,h2,h3,p,ul,ol,dl,figure{margin:0}
 .nav .btn:hover{color:var(--on-accent)}
 .nav-toggle{display:none}
 
-@media (max-width:939px){
+@media (max-width:879px){
   .nav-toggle{
     display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid var(--line-strong);
     color:var(--cream);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
@@ -474,9 +474,9 @@ body::after{
 /* ---------- header: logo and "Get in touch" as bookends ----------
    Logo left (the way home), button right, links in between with the
    same space on both sides. Switches to the Menu button only once the
-   full row no longer fits (about 940px wide). */
+   full row no longer fits (about 880px wide). */
 .head-cta{display:none}
-@media (min-width:940px){
+@media (min-width:880px){
   .site-head .wrap{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:28px}
   .site-head .brand img{height:50px}
   .nav{display:flex;flex-wrap:nowrap;justify-content:center;gap:8px 34px}
@@ -486,7 +486,7 @@ body::after{
 
 
 
-@media (min-width:940px) and (max-width:1180px){.nav{gap:8px 20px}}
+@media (min-width:880px) and (max-width:1180px){.nav{gap:8px 20px}}
 
 /* ---------- footer ----------
    Wide: three even columns (place | logo | contact), copyright centered
