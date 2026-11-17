@@ -34,6 +34,19 @@
   document.querySelectorAll('.reel[data-yt] .reel-play').forEach(function (b) {
     b.addEventListener('click', function () { open(b.closest('.reel').getAttribute('data-yt'), b); });
   });
+
+  // Facebook videos: <li class="reel" data-fb="https://www.facebook.com/.../videos/123"> with its own still in the img
+  document.querySelectorAll('.reel[data-fb]').forEach(function (r) {
+    var img = r.querySelector('.reel-thumb img');
+    if (img) { if (img.complete && img.naturalWidth) img.classList.add('ok'); else img.onload = function () { img.classList.add('ok'); }; }
+    r.querySelector('.reel-play').addEventListener('click', function () {
+      lastFocus = this;
+      frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' +
+        encodeURIComponent(r.getAttribute('data-fb')) + '&show_text=false&autoplay=true" title="Video player" ' +
+        'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
+    });
+  });
   closeBtn.addEventListener('click', close);
   viewer.addEventListener('click', function (e) { if (e.target === viewer) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !viewer.hidden) close(); });
