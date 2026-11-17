@@ -203,10 +203,14 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
   function resume() { box.classList.remove('paused'); run(); }
 
   dots.forEach(function (d, n) { d.addEventListener('click', function () { show(n); }); });
-  box.addEventListener('mouseenter', pause);
-  box.addEventListener('mouseleave', resume);
-  box.addEventListener('focusin', pause);
-  box.addEventListener('focusout', resume);
+  // Pause while a mouse is over the quotes, or while someone is tabbing through
+  // the dots with a keyboard. A click or a phone tap should keep it running.
+  if (window.matchMedia('(hover: hover)').matches) {
+    box.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pause(); });
+    box.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') resume(); });
+  }
+  box.addEventListener('focusin', function (e) { if (e.target.matches(':focus-visible')) pause(); });
+  box.addEventListener('focusout', function () { if (!box.matches(':hover')) resume(); });
   document.addEventListener('visibilitychange', function () { document.hidden ? pause() : resume(); });
   show(0);
 })();

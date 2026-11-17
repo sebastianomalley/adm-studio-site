@@ -532,15 +532,22 @@ body::after{
 .t-slide figcaption{margin-top:30px;display:flex;flex-direction:column;gap:6px}
 .t-name{font-weight:500;font-size:18px}
 .t-org{font-size:16px;opacity:.85}
-.t-dots{display:flex;justify-content:center;gap:16px;margin-top:52px}
-.t-dot{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-.t-dot span{position:relative;display:block;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--t-deep);overflow:hidden}
-.t-dot span::after{content:"";position:absolute;inset:0;width:0;background:var(--t-ink)}
-.t-dot.done span{background:var(--t-deep)}
-.t-dot.is-active span{border-color:var(--t-ink)}
+.t-dots{display:flex;justify-content:center;gap:2px;margin-top:44px}
+.t-dot{width:30px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+/* each dot has its own color, a vintage set that sits with the spheres:
+   denim, brick, olive, plum, teal (repeats if there are more quotes) */
+.t-dot{--c:#2D4A63}
+.t-dot:nth-child(5n+2){--c:#8E3B2E}
+.t-dot:nth-child(5n+3){--c:#5C5A2B}
+.t-dot:nth-child(5n+4){--c:#5E3A57}
+.t-dot:nth-child(5n+5){--c:#2F5B57}
+.t-dot span{position:relative;display:block;width:9px;height:9px;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);overflow:hidden;transition:background .4s ease,border-color .4s ease}
+.t-dot span::after{content:"";position:absolute;inset:0;width:0;background:var(--c)}
+.t-dot.done span{background:var(--c);border-color:var(--c)}
+.t-dot.is-active span{border-color:var(--c)}
 .t-dot.is-active span::after{animation:t-fill var(--t-time,6s) linear forwards}
 .testimonials.paused .t-dot.is-active span::after{animation-play-state:paused}
-.t-dot:focus-visible{outline:2px solid var(--t-ink);outline-offset:2px;border-radius:50%}
+.t-dot:focus-visible{outline:2px solid var(--c);outline-offset:2px;border-radius:50%}
 @keyframes t-fill{to{width:100%}}
 @media (prefers-reduced-motion:reduce){.t-dot.is-active span::after{animation:none;width:100%}}
 
