@@ -53,3 +53,8 @@ body.viewing{overflow:hidden}
 .reel-locked.has-still::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,10,.88),rgba(14,13,10,.35) 45%,rgba(14,13,10,0) 70%);z-index:1}
 .reel-locked.has-still > img{z-index:0}
 .reel-locked.has-still > *:not(img){z-index:2}
+
+/* odd number of videos: center the last one instead of leaving a hole */
+@media (min-width:1000px){
+  .reels > .reel:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 16px)}
+}
