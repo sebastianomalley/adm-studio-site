@@ -17,7 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611171740">
+<link rel="stylesheet" href="css/site.css?v=202611171743">
+<link rel="stylesheet" href="css/work.css?v=202611171743">
 </head>
 <body class="theme-paper page-index">
 <a class="skip" href="#main">Skip to content</a>
@@ -64,10 +65,10 @@
   <div class="wrap">
   <h2 id="recent" class="taped-heading"><span>Recent work</span></h2>
   <div class="wall">
-    <figure class="polaroid bw" style="--tilt:-4deg;--tape:-5deg"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-1.jpg" alt="Headshot of Mei Miles"><span class="slot-label"></span></div><figcaption>Mei Miles, mediator</figcaption></figure>
-    <figure class="polaroid bw" style="--tilt:3deg;--tape:4deg;--ratio:4/3"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="https://i.ytimg.com/vi/1ZAoogHaFr8/maxresdefault.jpg" alt="A house under a starry sky, from the animated short Sugar Rat"><span class="slot-label"></span></div><figcaption>Sugar Rat, animated short</figcaption></figure>
-    <figure class="polaroid bw" style="--tilt:-2deg;--tape:-2deg;--ratio:4/3"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/work/eiaa-path.jpg" alt="A person and a horse walking a snowy path, from the documentary Everything Is Already Alright"><span class="slot-label"></span></div><figcaption>Everything Is Already Alright</figcaption></figure>
-    <figure class="polaroid bw" style="--tilt:5deg;--tape:3deg;--ratio:1/1"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/work/crcmc.jpg" alt="A violinist performing at the CRCMC gala"><span class="slot-label"></span></div><figcaption>CRCMC Peacemaker gala</figcaption></figure>
+    <figure data-view="img" data-src="images/photography/work-1.jpg" data-more="photography.html|See all photos" tabindex="0" role="button" class="polaroid bw" style="--tilt:-4deg;--tape:-5deg"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/photography/work-1.jpg" alt="Headshot of Mei Miles"><span class="slot-label"></span></div><figcaption>Mei Miles, mediator</figcaption></figure>
+    <figure data-view="yt" data-id="1ZAoogHaFr8" data-more="film.html|See all films" tabindex="0" role="button" class="polaroid bw" style="--tilt:3deg;--tape:4deg;--ratio:4/3"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="https://i.ytimg.com/vi/1ZAoogHaFr8/maxresdefault.jpg" alt="A house under a starry sky, from the animated short Sugar Rat"><span class="slot-label"></span></div><figcaption>Sugar Rat, animated short</figcaption></figure>
+    <figure data-view="private" data-src="images/work/eiaa-path.jpg" data-title="Everything Is Already Alright" data-more="film.html|See all films" tabindex="0" role="button" class="polaroid bw" style="--tilt:-2deg;--tape:-2deg;--ratio:4/3"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/work/eiaa-path.jpg" alt="A person and a horse walking a snowy path, from the documentary Everything Is Already Alright"><span class="slot-label"></span></div><figcaption>Everything Is Already Alright</figcaption></figure>
+    <figure data-view="img" data-src="images/work/crcmc.jpg" data-more="photography.html|See all photos" tabindex="0" role="button" class="polaroid bw" style="--tilt:5deg;--tape:3deg;--ratio:1/1"><span class="tape" aria-hidden="true"></span><div class="photo slot"><img src="images/work/crcmc.jpg" alt="A violinist performing at the CRCMC gala"><span class="slot-label"></span></div><figcaption>CRCMC Peacemaker gala</figcaption></figure>
   </div>
   <div class="btn-row" style="justify-content:center">
     <a class="btn" href="film.html">See the films</a>
@@ -172,6 +173,14 @@
     <a class="btn" href="get-in-touch.html">Get in touch</a>
   </div>
 </section>
+
+<div class="viewer" hidden>
+  <div class="viewer-box" role="dialog" aria-modal="true" aria-label="Viewer">
+    <button class="viewer-close" type="button" aria-label="Close">&times;</button>
+    <div class="viewer-frame"></div>
+    <a class="viewer-more" href="film.html"></a>
+  </div>
+</div>
 </main>
 <footer class="site-foot">
   <div class="wrap">
@@ -188,6 +197,7 @@
     <span class="foot-copy">© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611171740"></script>
+<script src="js/site.js?v=202611171743"></script>
+<script src="js/viewer.js?v=202611171743"></script>
 </body>
 </html>
