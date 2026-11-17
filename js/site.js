@@ -85,6 +85,14 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
       var radio = form.querySelector('input[name="need"][value="' + want + '"]');
       if (radio) radio.checked = true;
     }
+    // ?view=Film%20Title (from a private video on the Work page) fills in a request
+    var viewReq = new URLSearchParams(location.search).get('view');
+    if (viewReq) {
+      var vr = form.querySelector('input[name="need"][value="video"]');
+      if (vr) vr.checked = true;
+      var ta = form.querySelector('textarea[name="message"]');
+      if (ta && !ta.value) ta.value = 'Hi! I\'d like to request access to view "' + viewReq.slice(0, 120) + '."';
+    }
     var checked = form.querySelector('input[name="need"]:checked');
     setChoice(checked ? checked.value : 'photo');
 
