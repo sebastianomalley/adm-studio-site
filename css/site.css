@@ -580,3 +580,14 @@ body::after{
 /* contact page is short: keep one dot per side so they don't stack up */
 .page-get-in-touch .paint .d3{display:none}
 .book-line{margin-top:-8px;font-size:16px;color:var(--dim)}
+
+/* Photo page wall: an even 4-column grid on wide screens (portraits row, then event rows) */
+@media (min-width:1100px){
+  .wall.wall-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 30px;align-items:start;justify-items:center}
+  .wall.wall-4 .polaroid{width:100%;max-width:270px}
+}
+/* medium widths: two columns, so portraits pair up and events pair up */
+@media (min-width:640px) and (max-width:1099px){
+  .wall.wall-4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 34px;align-items:start;justify-items:center}
+  .wall.wall-4 .polaroid{width:100%;max-width:300px}
+}
