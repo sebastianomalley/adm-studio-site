@@ -39,12 +39,10 @@
   document.querySelectorAll('.reel[data-fb]').forEach(function (r) {
     var img = r.querySelector('.reel-thumb img');
     if (img) { if (img.complete && img.naturalWidth) img.classList.add('ok'); else img.onload = function () { img.classList.add('ok'); }; }
+    // Facebook won't embed this one (profile reels and friends-only posts can't be embedded),
+    // so open it on Facebook in a new tab instead of showing a broken player.
     r.querySelector('.reel-play').addEventListener('click', function () {
-      lastFocus = this;
-      frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' +
-        encodeURIComponent(r.getAttribute('data-fb')) + '&show_text=false&autoplay=true" title="Video player" ' +
-        'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-      viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
+      window.open(r.getAttribute('data-fb'), '_blank', 'noopener');
     });
   });
   closeBtn.addEventListener('click', close);
