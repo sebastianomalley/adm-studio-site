@@ -1,5 +1,5 @@
 /* ---------- Work page: video grid + player ---------- */
-.reels{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:44px 32px}
+.reels{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:72px}
 .reel-play{display:block;position:relative;width:100%;padding:0;border:0;background:#0E0D0A;cursor:pointer;
   aspect-ratio:16/9;overflow:hidden;box-shadow:0 18px 34px -16px rgba(0,0,0,.7);-webkit-tap-highlight-color:transparent}
 .reel-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
@@ -54,7 +54,9 @@ body.viewing{overflow:hidden}
 .reel-locked.has-still > img{z-index:0}
 .reel-locked.has-still > *:not(img){z-index:2}
 
-/* odd number of videos: center the last one instead of leaving a hole */
-@media (min-width:1000px){
-  .reels > .reel:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 16px)}
+/* single column: bigger titles and play button to match the larger frames */
+@media (min-width:900px){
+  .reel-title{font-size:clamp(34px,3.4vw,48px)}
+  .reel-icon{width:64px;height:64px;left:26px;bottom:24px}
+  .reel-icon svg{width:26px;height:26px}
 }
