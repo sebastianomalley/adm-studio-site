@@ -60,3 +60,6 @@ body.viewing{overflow:hidden}
   .reel-icon{width:64px;height:64px;left:26px;bottom:24px}
   .reel-icon svg{width:26px;height:26px}
 }
+
+/* the CURE video is a little wider than 16:9, so size its frame to match and avoid black bars */
+.viewer-frame.fb{aspect-ratio:1.82}

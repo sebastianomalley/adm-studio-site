@@ -27,7 +27,7 @@
     viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
   }
   function close() {
-    frame.innerHTML = ''; viewer.hidden = true; document.body.classList.remove('viewing');
+    frame.innerHTML = ''; frame.classList.remove('fb'); viewer.hidden = true; document.body.classList.remove('viewing');
     if (lastFocus) lastFocus.focus();
   }
 
@@ -44,6 +44,7 @@
       frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' +
         encodeURIComponent(r.getAttribute('data-fb')) + '&show_text=false&autoplay=true" title="Video player" ' +
         'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      frame.classList.add('fb');
       viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
     });
   });
