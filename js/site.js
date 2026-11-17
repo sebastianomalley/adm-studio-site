@@ -171,7 +171,15 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
   if (!box) return;
   var slides = box.querySelectorAll('.t-slide');
   var dots = box.querySelectorAll('.t-dot');
-  var TIME = 6000, cur = 0, timer = null, left = TIME, started = 0;
+  // Each quote stays up long enough to read: about 4 words a second plus a
+  // beat, never less than 6 seconds. Its dot fills over the same time.
+  var times = Array.prototype.map.call(slides, function (s) {
+    var words = s.querySelector('blockquote').textContent.trim().split(/\s+/).length;
+    return Math.max(6000, Math.round(words / 4 * 1000 + 1500));
+  });
+  dots.forEach(function (d, n) { if (times[n]) d.style.setProperty('--t-time', times[n] + 'ms'); });
+  slides.forEach(function (s, n) { if (times[n] > 12000) s.classList.add('t-long'); });
+  var cur = 0, timer = null, left = times[0], started = 0;
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function show(i) {
@@ -187,7 +195,7 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
     });
     void dots[cur].offsetWidth;          // restart the fill animation
     dots[cur].classList.add('is-active');
-    left = TIME; run();
+    left = times[cur]; run();
   }
   function run() {
     clearTimeout(timer);
