@@ -35,3 +35,11 @@ body.viewing{overflow:hidden}
   box-shadow:0 18px 34px -16px rgba(0,0,0,.7);text-align:center;padding:20px}
 .reel-locked svg{width:34px;height:34px;fill:none;stroke:var(--accent);stroke-width:1.6}
 .reel-locked p{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+
+/* a private video with its own still: the photo sits behind the lock and the button */
+.reel-locked.has-still{position:relative;overflow:hidden;background:#0E0D0A;border:0}
+.reel-locked.has-still > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.55);transition:filter .6s ease,transform .8s ease}
+.reel-locked.has-still > :not(img){position:relative}
+.reel-locked.has-still:hover > img,.reel.lift .reel-locked.has-still > img{filter:brightness(.6);transform:scale(1.03)}
+.reel-locked.has-still p{color:var(--cream)}
+.reel-locked.has-still .btn-line{background:rgba(22,21,15,.55)}
