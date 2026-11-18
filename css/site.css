@@ -622,3 +622,27 @@ body::after{
 .plus-list strong{color:var(--text);font-weight:600}
 .phone-only-note{margin-top:18px;font-size:15px;color:var(--dim)}
 @media (hover:hover) and (pointer:fine){.phone-only-note{display:none}}
+
+/* ---------- Websites & Apps: space game in two steps ---------- */
+.section-head h2 em{font-style:italic;color:var(--accent-text)}
+.space-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:44px 36px;margin-top:8px}
+.space-shot{display:block;position:relative;width:100%;padding:0;border:0;background:#0E0D0A;cursor:pointer;aspect-ratio:16/10;overflow:hidden;
+  box-shadow:0 18px 34px -16px rgba(0,0,0,.7);-webkit-tap-highlight-color:transparent}
+.space-shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.space-shot:hover img,.space-shot:focus-visible img{transform:scale(1.04)}
+.space-go{position:absolute;left:18px;bottom:16px;padding:12px 18px;background:var(--mustard);color:#16150F;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
+.space-shot:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.space-step .step{margin:20px 0 4px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
+.space-step h3{font-family:var(--serif);font-weight:500;font-size:26px;margin:0 0 8px}
+.space-step p:last-child{color:var(--dim);max-width:46ch}
+.space-mobile{margin-top:34px;font-size:15px;color:var(--dim);border-left:3px solid var(--mustard);padding:6px 0 6px 14px;max-width:62ch;transition:background .4s}
+.space-mobile.flash{background:rgba(224,178,92,.15)}
+.touch-only .space-step:nth-child(2) .space-go{background:#B9AC90}
+.touch-only .space-step:nth-child(2) .space-go::after{content:" \00B7  on a computer"}
+.app-viewer{position:fixed;inset:0;z-index:400;background:#0A0907;display:flex;flex-direction:column}
+.app-viewer[hidden]{display:none}
+.app-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px max(18px,env(safe-area-inset-right)) 10px max(18px,env(safe-area-inset-left));border-bottom:1px solid rgba(234,215,182,.15)}
+.app-title{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#E0B25C}
+.app-close{width:44px;height:44px;border:0;background:none;color:#EAD7B6;font-size:34px;line-height:1;cursor:pointer}
+.app-frame{flex:1;width:100%;border:0;background:#000}
