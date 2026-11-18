@@ -105,3 +105,7 @@ body.viewing{overflow:hidden}
   .viewer-nav{top:auto;bottom:max(18px,env(safe-area-inset-bottom));transform:none;width:48px;height:48px}
   .viewer-frame.is-img img{max-height:calc(100vh - 260px)}
 }
+
+/* Facebook SDK player fills the frame */
+.viewer-frame.fb .fb-video,.viewer-frame.fb .fb-video > span{position:absolute!important;inset:0;width:100%!important;height:100%!important}
+.viewer-frame.fb .fb-video iframe{width:100%!important;height:100%!important;border:0}

@@ -39,6 +39,45 @@
   function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function txt(el, sel) { var n = el.querySelector(sel); return n ? n.textContent.trim() : ''; }
 
+
+  // Facebook: a plain embed starts paused and muted. Their video SDK lets us press
+  // play and turn the sound up once it's ready; if it can't load, fall back to the plain embed.
+  var fbState = 0, fbQueue = [];
+  function fbPlain(href, title) {
+    frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(href) +
+      '&show_text=false&autoplay=true" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  }
+  function fbLoad(cb) {
+    if (fbState === 2) return cb(true);
+    fbQueue.push(cb);
+    if (fbState === 1) return;
+    fbState = 1;
+    var done = function (ok) { fbState = ok ? 2 : 0; var q = fbQueue; fbQueue = []; q.forEach(function (f) { f(ok); }); };
+    var timer = setTimeout(function () { done(false); }, 5000);
+    window.fbAsyncInit = function () {
+      FB.init({ xfbml: false, version: 'v19.0' });
+      FB.Event.subscribe('xfbml.ready', function (msg) {
+        if (msg.type !== 'video') return;
+        var pl = msg.instance;
+        try { pl.unmute(); pl.setVolume(1); pl.play(); } catch (e) {}
+      });
+      clearTimeout(timer); done(true);
+    };
+    var sc = document.createElement('script');
+    sc.async = true; sc.defer = true; sc.crossOrigin = 'anonymous';
+    sc.src = 'https://connect.facebook.net/en_US/sdk.js';
+    sc.onerror = function () { clearTimeout(timer); done(false); };
+    document.body.appendChild(sc);
+  }
+  function fbEmbed(href, title) {
+    var w = Math.round(frame.clientWidth || box.clientWidth || 960);
+    frame.innerHTML = '<div class="fb-video" data-href="' + esc(href) + '" data-width="' + w + '" data-autoplay="true" data-show-text="false" data-allowfullscreen="true"></div>';
+    fbLoad(function (ok) {
+      if (!frame.querySelector('.fb-video')) return;   // moved on to another item
+      if (ok && window.FB) FB.XFBML.parse(frame); else fbPlain(href, title);
+    });
+  }
+
   function show(i) {
     cur = (i + items.length) % items.length;
     var el = items[cur], kind = el.getAttribute('data-view');
@@ -54,8 +93,7 @@
         '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
     } else if (kind === 'fb') {
       frame.classList.add('fb');
-      frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(el.getAttribute('data-fb')) +
-        '&show_text=false&autoplay=true" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      fbEmbed(el.getAttribute('data-fb'), title);
     } else if (kind === 'private') {
       frame.classList.add('is-private');
       frame.innerHTML = '<img src="' + esc(el.getAttribute('data-src') || (img && img.getAttribute('src'))) + '" alt="">' +
