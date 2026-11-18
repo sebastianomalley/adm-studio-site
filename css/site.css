@@ -665,3 +665,8 @@ body::after{
 .space-step h3{margin:0 0 18px}
 .space-step .space-shot + p{margin-top:18px}
 .space-steps{gap:48px clamp(28px,4vw,56px)}
+.space-why{margin-top:40px;max-width:760px}
+.space-why .eyebrow{margin-bottom:6px}
+.space-why h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.4vw,30px);line-height:1.2;margin:0 0 12px}
+.space-why p:last-child{color:var(--dim);font-size:17px;line-height:1.65}
+.section-head p{max-width:62ch}
