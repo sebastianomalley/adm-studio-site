@@ -1,10 +1,5 @@
-/* Work page: thumbnails, touch color, and the video player overlay */
+/* Film page: thumbnails and touch color (the player itself is viewer.js) */
 (function () {
-  var viewer = document.querySelector('.viewer');
-  if (!viewer) return;
-  var frame = viewer.querySelector('.viewer-frame');
-  var closeBtn = viewer.querySelector('.viewer-close');
-  var lastFocus = null;
 
   // YouTube thumbnails: use the big one, fall back if a video doesn't have it
   document.querySelectorAll('.reel[data-yt]').forEach(function (r) {
@@ -19,38 +14,9 @@
     img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
   });
 
-  function open(id, btn) {
-    lastFocus = btn;
-    frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
-      '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Video player" ' +
-      'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-    viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
-  }
-  function close() {
-    frame.innerHTML = ''; frame.classList.remove('fb'); viewer.hidden = true; document.body.classList.remove('viewing');
-    if (lastFocus) lastFocus.focus();
-  }
-
-  document.querySelectorAll('.reel[data-yt] .reel-play').forEach(function (b) {
-    b.addEventListener('click', function () { open(b.closest('.reel').getAttribute('data-yt'), b); });
+  document.querySelectorAll('.reel[data-fb] .reel-thumb img').forEach(function (img) {
+    if (img.complete && img.naturalWidth) img.classList.add('ok'); else img.onload = function () { img.classList.add('ok'); };
   });
-
-  // Facebook videos: <li class="reel" data-fb="https://www.facebook.com/.../videos/123"> with its own still in the img
-  document.querySelectorAll('.reel[data-fb]').forEach(function (r) {
-    var img = r.querySelector('.reel-thumb img');
-    if (img) { if (img.complete && img.naturalWidth) img.classList.add('ok'); else img.onload = function () { img.classList.add('ok'); }; }
-    r.querySelector('.reel-play').addEventListener('click', function () {
-      lastFocus = this;
-      frame.innerHTML = '<iframe src="https://www.facebook.com/plugins/video.php?href=' +
-        encodeURIComponent(r.getAttribute('data-fb')) + '&show_text=false&autoplay=true" title="Video player" ' +
-        'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-      frame.classList.add('fb');
-      viewer.hidden = false; document.body.classList.add('viewing'); closeBtn.focus();
-    });
-  });
-  closeBtn.addEventListener('click', close);
-  viewer.addEventListener('click', function (e) { if (e.target === viewer) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !viewer.hidden) close(); });
 
   // phones: color shows while a finger is on the thumbnail
   if (window.matchMedia('(hover: none)').matches) {
