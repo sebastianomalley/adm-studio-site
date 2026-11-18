@@ -608,3 +608,13 @@ body::after{
 .hero-video .eyebrow{color:#E0B25C}
 .hero-video .lede{color:#E9DFC9}
 .hero-video .btn-line{color:#F3E9D2;border-color:rgba(243,233,210,.7)}
+
+/* ---------- About page ---------- */
+.about-intro{max-width:56ch;margin-top:18px;color:var(--dim)}
+.prose{max-width:760px}
+.prose h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3vw,38px);line-height:1.15;margin:10px 0 22px}
+.prose p{color:var(--dim);font-size:18px;line-height:1.7;margin:0 0 1.1em}
+.prose .eyebrow{margin-bottom:0}
+.about-work .prose p{color:var(--text)}
+.about-work .taped-heading{margin-bottom:34px}
+.about-pull{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,28px)!important;line-height:1.35!important;color:var(--accent-text)!important;margin-top:1.6em!important}
