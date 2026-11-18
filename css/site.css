@@ -646,8 +646,6 @@ body::after{
 .space-step p:last-child{color:var(--dim)}
 .space-mobile{margin-top:34px;font-size:15px;color:var(--dim);border-left:3px solid var(--mustard);padding:6px 0 6px 14px;max-width:62ch;transition:background .4s}
 .space-mobile.flash{background:rgba(224,178,92,.15)}
-.touch-only .space-step:nth-child(2) .space-go{background:#B9AC90}
-.touch-only .space-step:nth-child(2) .space-go::after{content:" \00B7  on a computer"}
 .app-viewer{position:fixed;inset:0;z-index:400;background:#0A0907;display:flex;flex-direction:column}
 .app-viewer[hidden]{display:none}
 .app-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px max(18px,env(safe-area-inset-right)) 10px max(18px,env(safe-area-inset-left));border-bottom:1px solid rgba(234,215,182,.15)}
