@@ -45,7 +45,12 @@ body,.theme-denim{
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:#11100C;overscroll-behavior-y:none}
+/* The page canvas is footer ink, so a bounce past the bottom shows more footer
+   instead of the page color. Body fills the screen and the footer sits at the
+   bottom even on short pages. */
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+body>main{flex:1 0 auto}
 body{
   position:relative;margin:0;overflow-x:clip;background:var(--bg);color:var(--cream);
   font-family:var(--sans);font-weight:300;line-height:1.6;
