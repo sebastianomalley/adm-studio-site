@@ -635,7 +635,7 @@ body::after{
 .space-shot:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .space-step .step{margin:20px 0 4px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
 .space-step h3{font-family:var(--serif);font-weight:500;font-size:26px;margin:0 0 8px}
-.space-step p:last-child{color:var(--dim);max-width:46ch}
+.space-step p:last-child{color:var(--dim)}
 .space-mobile{margin-top:34px;font-size:15px;color:var(--dim);border-left:3px solid var(--mustard);padding:6px 0 6px 14px;max-width:62ch;transition:background .4s}
 .space-mobile.flash{background:rgba(224,178,92,.15)}
 .touch-only .space-step:nth-child(2) .space-go{background:#B9AC90}
@@ -658,3 +658,10 @@ body::after{
   font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;animation:hintPulse 2s ease-in-out infinite}
 .app-hint kbd{font-family:inherit;color:#E0B25C}
 @keyframes hintPulse{50%{opacity:.6}}
+/* space game card: same panel as the phone feature, step label above each image */
+.space-card{background:color-mix(in srgb,var(--bg-deep) 70%,transparent);border:1px solid var(--line);padding:clamp(28px,4.5vw,56px)}
+.space-steps{margin-top:0}
+.space-step .step{margin:0 0 4px}
+.space-step h3{margin:0 0 18px}
+.space-step .space-shot + p{margin-top:18px}
+.space-steps{gap:48px clamp(28px,4vw,56px)}
