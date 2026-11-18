@@ -4,6 +4,7 @@
   // YouTube thumbnails: use the big one, fall back if a video doesn't have it
   document.querySelectorAll('.reel[data-yt]').forEach(function (r) {
     var id = r.getAttribute('data-yt'), img = r.querySelector('.reel-thumb img');
+    if (img.getAttribute('src')) { if (img.complete && img.naturalWidth) img.classList.add('ok'); else img.onload = function () { img.classList.add('ok'); }; return; }
     var fallback = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
     // YouTube answers a missing big thumbnail with a tiny gray one, so check the size
     img.onload = function () {
