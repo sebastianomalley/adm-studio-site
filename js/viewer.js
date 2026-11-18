@@ -100,7 +100,7 @@
       frame.innerHTML = '<img src="' + esc(el.getAttribute('data-src') || (img && img.getAttribute('src'))) + '" alt="' + esc(img && img.alt) + '">';
     } else if (kind === 'yt') {
       frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(el.getAttribute('data-id')) +
-        '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
     } else if (kind === 'fb') {
       frame.classList.add('fb');
       fbEmbed(el.getAttribute('data-fb'), title);
