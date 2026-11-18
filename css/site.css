@@ -646,3 +646,8 @@ body::after{
 .app-title{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#E0B25C}
 .app-close{width:44px;height:44px;border:0;background:none;color:#EAD7B6;font-size:34px;line-height:1;cursor:pointer}
 .app-frame{flex:1;width:100%;border:0;background:#000}
+/* bullet = bold title on its own line, description underneath, one clean column */
+.plus-list{gap:16px}
+.plus-list li{display:block;position:relative;padding-left:26px;line-height:1.55}
+.plus-list li::before{position:absolute;left:0;top:0;font-weight:600}
+.plus-list li strong{display:block;margin-bottom:2px}
