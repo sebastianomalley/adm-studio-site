@@ -11,6 +11,8 @@
     title.textContent = btn.getAttribute('data-title');
     frame.title = btn.getAttribute('data-title');
     frame.src = btn.getAttribute('data-app');
+    var hint = v.querySelector('.app-hint');
+    hint.hidden = !btn.hasAttribute('data-keys');
     v.hidden = false; document.body.classList.add('viewing');
     // the game listens for keys, so hand it the keyboard as soon as it loads
     frame.onload = function () { try { frame.focus(); } catch (e) {} };
@@ -31,5 +33,10 @@
     });
   });
   v.querySelector('.app-close').addEventListener('click', close);
+  // the hint lets clicks pass through to the game; once the game has focus
+  // (this page loses it), the sound is unlocked and the hint can go
+  window.addEventListener('blur', function () {
+    if (!v.hidden && document.activeElement === frame) v.querySelector('.app-hint').hidden = true;
+  });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) close(); });
 })();

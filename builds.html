@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611181255">
-<link rel="stylesheet" href="css/phone.css?v=202611181255">
+<link rel="stylesheet" href="css/site.css?v=202611181259">
+<link rel="stylesheet" href="css/phone.css?v=202611181259">
 </head>
 <body class="theme-denim page-builds">
 <a class="skip" href="#main">Skip to content</a>
@@ -101,7 +101,7 @@
     <div class="space-steps">
       <article class="space-step">
         <button class="space-shot" type="button" data-app="https://sebastianomalley.github.io/apod-viewer/" data-title="Step 1 · Choose your backgrounds">
-          <img src="images/builds/space-apod.jpg" alt="The NASA photo gallery app" loading="lazy">
+          <img src="images/builds/space-apod.jpg?v=2" alt="The NASA photo gallery app" loading="lazy">
           <span class="space-go">Open the gallery</span>
         </button>
         <p class="step">Step 01</p>
@@ -110,7 +110,7 @@
       </article>
       <article class="space-step">
         <button class="space-shot" type="button" data-app="https://sebastianomalley.github.io/space-game/" data-title="Step 2 · Play Defender" data-keys>
-          <img src="images/builds/space-play.jpg" alt="The boss level of the Defender space game" loading="lazy">
+          <img src="images/builds/space-play.jpg?v=2" alt="A spaceship flying past Earth toward an asteroid field" loading="lazy">
           <span class="space-go">Launch the game</span>
         </button>
         <p class="step">Step 02</p>
@@ -124,7 +124,10 @@
 
 <div class="app-viewer" hidden>
   <div class="app-bar"><span class="app-title"></span><button class="app-close" type="button" aria-label="Close">&times;</button></div>
-  <iframe class="app-frame" title="" allow="autoplay; fullscreen"></iframe>
+  <div class="app-stage">
+    <iframe class="app-frame" title="" allow="autoplay; fullscreen"></iframe>
+    <div class="app-hint" hidden><span>Click anywhere in the game to turn on sound, then press <kbd>Space</kbd> to start</span></div>
+  </div>
 </div>
 
 <section class="section" aria-labelledby="how">
@@ -175,8 +178,8 @@
     <span class="foot-copy">© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611181255"></script>
-<script src="js/phone.js?v=202611181255"></script>
-<script src="js/apps.js?v=202611181255"></script>
+<script src="js/site.js?v=202611181259"></script>
+<script src="js/phone.js?v=202611181259"></script>
+<script src="js/apps.js?v=202611181259"></script>
 </body>
 </html>

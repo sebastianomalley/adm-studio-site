@@ -651,3 +651,10 @@ body::after{
 .plus-list li{display:block;position:relative;padding-left:26px;line-height:1.55}
 .plus-list li::before{position:absolute;left:0;top:0;font-weight:600}
 .plus-list li strong{display:block;margin-bottom:2px}
+.app-stage{position:relative;flex:1;display:flex}
+.app-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);pointer-events:none;z-index:2}
+.app-hint[hidden]{display:none}
+.app-hint span{display:inline-block;padding:12px 18px;background:rgba(22,21,15,.85);border:1px solid #E0B25C;color:#EAD7B6;
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;animation:hintPulse 2s ease-in-out infinite}
+.app-hint kbd{font-family:inherit;color:#E0B25C}
+@keyframes hintPulse{50%{opacity:.6}}
