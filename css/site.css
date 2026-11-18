@@ -51,6 +51,9 @@ html{scroll-behavior:smooth;background:#11100C;overscroll-behavior-y:none}
    bottom even on short pages. */
 body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 body>main{flex:1 0 auto}
+/* Safari's bottom toolbar takes its tint from the body's background-color, so that
+   color is footer ink; the page color is painted on top as an image. */
+body{background:linear-gradient(var(--bg),var(--bg)) #11100C}
 body{
   position:relative;margin:0;overflow-x:clip;background:var(--bg);color:var(--cream);
   font-family:var(--sans);font-weight:300;line-height:1.6;
