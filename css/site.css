@@ -55,7 +55,7 @@ body>main{flex:1 0 auto}
    color is footer ink; the page color is painted on top as an image. */
 body{background:linear-gradient(var(--bg),var(--bg)) #11100C}
 body{
-  position:relative;margin:0;overflow-x:clip;background:var(--bg);color:var(--cream);
+  position:relative;margin:0;overflow-x:clip;color:var(--cream);
   font-family:var(--sans);font-weight:300;line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
