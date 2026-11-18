@@ -58,8 +58,18 @@
       FB.init({ xfbml: false, version: 'v19.0' });
       FB.Event.subscribe('xfbml.ready', function (msg) {
         if (msg.type !== 'video') return;
-        var pl = msg.instance;
-        try { pl.unmute(); pl.setVolume(1); pl.play(); } catch (e) {}
+        var pl = msg.instance, tries = 0;
+        // browsers let a video start on its own only when it's muted, so start it muted,
+        // then turn the sound up the moment it's actually playing
+        try {
+          pl.subscribe('startedPlaying', function () { try { pl.unmute(); pl.setVolume(1); } catch (e) {} });
+          pl.mute(); pl.play();
+          // some browsers ignore the first play() while the player is still settling
+          var kick = setInterval(function () {
+            tries++;
+            try { if (pl.getCurrentPosition() > 0 || tries > 8) clearInterval(kick); else pl.play(); } catch (e) { clearInterval(kick); }
+          }, 400);
+        } catch (e) {}
       });
       clearTimeout(timer); done(true);
     };
