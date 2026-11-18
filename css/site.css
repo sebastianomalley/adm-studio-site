@@ -618,3 +618,7 @@ body::after{
 .about-work .prose p{color:var(--text)}
 .about-work .taped-heading{margin-bottom:34px}
 .about-pull{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,28px)!important;line-height:1.35!important;color:var(--accent-text)!important;margin-top:1.6em!important}
+
+.plus-list strong{color:var(--text);font-weight:600}
+.phone-only-note{margin-top:18px;font-size:15px;color:var(--dim)}
+@media (hover:hover) and (pointer:fine){.phone-only-note{display:none}}
