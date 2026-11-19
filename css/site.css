@@ -678,3 +678,13 @@ body::after{
 .space-why h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.4vw,30px);line-height:1.2;margin:0 0 12px}
 .space-why p:last-child{color:var(--dim);font-size:17px;line-height:1.65}
 .section-head p{max-width:62ch}
+
+/* ---------- About: the studio crew ---------- */
+.studio-crew{margin-top:34px;text-align:center}
+.studio-crew .wall{gap:30px 34px;padding-bottom:6px}
+.crew-note{margin:18px auto 0;max-width:48ch;font-size:16px;color:var(--dim)}
+@media (max-width:640px){
+  .studio-crew .wall{gap:26px 18px}
+  .studio-crew .polaroid{--w:calc(50% - 12px)!important}
+  .studio-crew .polaroid:last-child{--w:min(60%,250px)!important}
+}
