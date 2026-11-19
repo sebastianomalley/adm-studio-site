@@ -109,7 +109,7 @@
     var el = items[cur], kind = el.getAttribute('data-view');
     var img = el.querySelector('img');
     var title = el.getAttribute('data-title') || txt(el, '.reel-title') || txt(el, 'figcaption');
-    var meta = txt(el, '.reel-meta');
+    var meta = el.getAttribute('data-meta') || txt(el, '.reel-meta');
     frame.className = 'viewer-frame';
     if (kind === 'img') {
       frame.classList.add('is-img');
@@ -123,6 +123,11 @@
       // player just enough to push them outside the frame.
       var zEl = el.closest ? el.closest('[data-zoom]') : null;
       if (zEl) { frame.classList.add('zoom'); frame.querySelector('iframe').style.transform = 'scale(' + zEl.getAttribute('data-zoom') + ')'; }
+    } else if (kind === 'clip') {
+      // A short silent loop hosted on the site (no player chrome).
+      var src = (window.innerWidth < 900 && el.getAttribute('data-src-sm')) || el.getAttribute('data-src');
+      frame.innerHTML = '<video src="' + esc(src) + '" poster="' + esc(img && img.getAttribute('src')) + '" autoplay muted loop playsinline preload="auto"></video>';
+      frame.classList.add('is-clip');
     } else if (kind === 'fb') {
       frame.classList.add('fb');
       fbEmbed(el.getAttribute('data-fb'), title);
