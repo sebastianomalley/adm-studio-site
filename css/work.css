@@ -115,3 +115,7 @@ body.viewing{overflow:hidden}
 /* letterboxed videos: solid black surround so baked-in bars disappear */
 .viewer.letterbox{background:#000;transition:background .3s}
 .viewer.letterbox .viewer-frame{background:#000}
+
+/* letterboxed uploads: crop the baked-in bars out of the thumbnail */
+.reel[data-letterbox] .reel-thumb img{transform:scale(1.08)}
+.reel[data-letterbox] .reel-play:hover .reel-thumb img,.reel[data-letterbox] .reel-play:focus-visible .reel-thumb img,.reel.lift[data-letterbox] .reel-thumb img{transform:scale(1.14)}
