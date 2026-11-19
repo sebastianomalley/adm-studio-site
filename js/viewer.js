@@ -119,6 +119,10 @@
         '?autoplay=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3&enablejsapi=1&origin=' + encodeURIComponent(location.origin) +
         '" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
       captionsOff(frame.querySelector('iframe'));
+      // Some uploads have thin black bars baked into the picture; zoom the
+      // player just enough to push them outside the frame.
+      var zEl = el.closest ? el.closest('[data-zoom]') : null;
+      if (zEl) { frame.classList.add('zoom'); frame.querySelector('iframe').style.transform = 'scale(' + zEl.getAttribute('data-zoom') + ')'; }
     } else if (kind === 'fb') {
       frame.classList.add('fb');
       fbEmbed(el.getAttribute('data-fb'), title);
