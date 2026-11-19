@@ -538,6 +538,8 @@ body::after{
 .t-slide.is-active{opacity:1;visibility:visible;transition:opacity .7s ease}
 .t-slide blockquote{margin:0;font-family:var(--sans);font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.4;letter-spacing:-.005em}
 .t-slide.t-long blockquote{font-size:clamp(19px,2vw,26px);line-height:1.5}
+.t-slide.t-xlong blockquote{font-size:clamp(17px,1.55vw,21px);line-height:1.55}
+.t-slide{align-self:center}  /* shorter quotes sit centered in the space the longest one sets */
 .t-slide figcaption{margin-top:30px;display:flex;flex-direction:column;gap:6px}
 .t-name{font-weight:500;font-size:18px}
 .t-org{font-size:16px;opacity:.85}

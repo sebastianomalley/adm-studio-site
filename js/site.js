@@ -186,7 +186,10 @@ var STUDIO_EMAIL = 'adigitalmediastudio@gmail.com';
     return Math.max(6000, Math.round(words / 4 * 1000 + 1500));
   });
   dots.forEach(function (d, n) { if (times[n]) d.style.setProperty('--t-time', times[n] + 'ms'); });
-  slides.forEach(function (s, n) { if (times[n] > 12000) s.classList.add('t-long'); });
+  slides.forEach(function (s, n) {
+    if (times[n] > 12000) s.classList.add('t-long');
+    if (times[n] > 40000) s.classList.add('t-xlong');   // 150+ words: a size smaller still
+  });
   var cur = 0, timer = null, left = times[0], started = 0;
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
