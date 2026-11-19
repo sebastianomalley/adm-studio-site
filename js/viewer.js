@@ -79,6 +79,22 @@
     sc.onerror = function () { clearTimeout(timer); done(false); };
     document.body.appendChild(sc);
   }
+  // YouTube turns captions on by itself for some viewers (their own YouTube
+  // setting, or a track marked default). Ask the player to drop them. The
+  // caption module loads a moment after playback starts, so ask a few times.
+  function captionsOff(ifr) {
+    if (!ifr) return;
+    function send(func, args) {
+      try { ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*'); } catch (e) {}
+    }
+    ifr.addEventListener('load', function () {
+      try { ifr.contentWindow.postMessage(JSON.stringify({ event: 'listening' }), '*'); } catch (e) {}
+      [300, 1000, 2000, 3500, 6000, 10000].forEach(function (ms) {
+        setTimeout(function () { if (ifr.isConnected) { send('unloadModule', ['captions']); send('unloadModule', ['cc']); } }, ms);
+      });
+    });
+  }
+
   function fbEmbed(href, title) {
     var w = Math.round(frame.clientWidth || box.clientWidth || 960);
     frame.innerHTML = '<div class="fb-video" data-href="' + esc(href) + '" data-width="' + w + '" data-autoplay="true" data-show-text="false" data-allowfullscreen="true"></div>';
@@ -100,7 +116,9 @@
       frame.innerHTML = '<img src="' + esc(el.getAttribute('data-src') || (img && img.getAttribute('src'))) + '" alt="' + esc(img && img.alt) + '">';
     } else if (kind === 'yt') {
       frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(el.getAttribute('data-id')) +
-        '?autoplay=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3&enablejsapi=1&origin=' + encodeURIComponent(location.origin) +
+        '" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      captionsOff(frame.querySelector('iframe'));
     } else if (kind === 'fb') {
       frame.classList.add('fb');
       fbEmbed(el.getAttribute('data-fb'), title);
