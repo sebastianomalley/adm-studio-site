@@ -111,6 +111,7 @@
     var title = el.getAttribute('data-title') || txt(el, '.reel-title') || txt(el, 'figcaption');
     var meta = el.getAttribute('data-meta') || txt(el, '.reel-meta');
     frame.className = 'viewer-frame';
+    viewer.classList.remove('letterbox');
     if (kind === 'img') {
       frame.classList.add('is-img');
       frame.innerHTML = '<img src="' + esc(el.getAttribute('data-src') || (img && img.getAttribute('src'))) + '" alt="' + esc(img && img.alt) + '">';
@@ -123,6 +124,10 @@
       // player just enough to push them outside the frame.
       var zEl = el.closest ? el.closest('[data-zoom]') : null;
       if (zEl) { frame.classList.add('zoom'); frame.querySelector('iframe').style.transform = 'scale(' + zEl.getAttribute('data-zoom') + ')'; }
+      // Letterboxed uploads: go pure black around the player so the bars
+      // baked into the video blend into the background instead.
+      var lb = el.closest ? el.closest('[data-letterbox]') : null;
+      viewer.classList.toggle('letterbox', !!lb);
     } else if (kind === 'clip') {
       // A short silent loop hosted on the site (no player chrome).
       var src = (window.innerWidth < 900 && el.getAttribute('data-src-sm')) || el.getAttribute('data-src');

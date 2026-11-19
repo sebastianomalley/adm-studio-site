@@ -111,3 +111,7 @@ body.viewing{overflow:hidden}
 /* Facebook SDK player fills the frame */
 .viewer-frame.fb .fb-video,.viewer-frame.fb .fb-video > span{position:absolute!important;inset:0;width:100%!important;height:100%!important}
 .viewer-frame.fb .fb-video iframe{width:100%!important;height:100%!important;border:0}
+
+/* letterboxed videos: solid black surround so baked-in bars disappear */
+.viewer.letterbox{background:#000;transition:background .3s}
+.viewer.letterbox .viewer-frame{background:#000}
