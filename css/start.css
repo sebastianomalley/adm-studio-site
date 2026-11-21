@@ -69,24 +69,26 @@
 .print-copy{display:none}
 @media print{
   @page{size:letter;margin:.7in .75in}
-  html,body{background:#fff !important}
-  body *{visibility:hidden}
-  .print-copy,.print-copy *{visibility:visible}
-  .print-copy{display:block;position:absolute;inset:0 auto auto 0;width:100%;color:#1F1D18;font:10.5pt/1.5 Inter,Arial,sans-serif}
+  html,body{background:#fff !important;min-height:0 !important;height:auto !important;display:block !important}
+  .skip,.site-head,.site-foot,.paint,.start-head,.start-form,.signed,body>svg{display:none !important}
+  body>main{padding:0 !important;margin:0 !important}
+  .start{padding:0 !important;margin:0 !important;max-width:none !important}
+  .print-copy{display:block !important;color:#1F1D18;font:10.5pt/1.5 Inter,Arial,sans-serif}
   .print-copy img{width:120px;height:auto;margin-bottom:18px}
-  .print-copy h1{font:500 22pt Fraunces,Georgia,serif;margin:0 0 4px}
+  .print-copy h1{font:500 22pt Fraunces,Georgia,serif;margin:0 0 4px;color:#1F1D18}
   .print-copy .pc-sub{color:#5E5747;margin:0 0 18px}
   .print-copy h3{display:none}
   .print-copy h4{font:600 9pt Inter,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2D4A63;margin:16px 0 6px;break-after:avoid}
-  .print-copy p{margin:0 0 6px}
+  .print-copy p{margin:0 0 6px;color:#1F1D18}
+  .print-copy b{color:#1F1D18}
   .print-copy table{width:100%;border-collapse:collapse;margin:8px 0 14px}
-  .print-copy td,.print-copy th{border:1px solid #CFC4AE;padding:6px 8px;text-align:left;vertical-align:top}
+  .print-copy td,.print-copy th{border:1px solid #CFC4AE;padding:6px 8px;text-align:left;vertical-align:top;color:#1F1D18}
   .print-copy th{background:#F1E9DA;width:34%;font-weight:600}
+  .print-copy th.pc-party{background:#E3D6BD;width:auto;letter-spacing:.06em;text-transform:uppercase;font-size:8.5pt}
+  .print-copy .pc-blank{height:34px}
   .print-copy .pc-sig{font-family:Caveat,cursive;font-size:24pt;line-height:1}
   .print-copy .pc-block{break-inside:avoid}
-  .site-head,.site-foot,.paint{display:none !important}
 }
-
 /* phone and alignment fixes */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .start,.start-form,.step,.plans,.plan,.agreement{min-width:0}

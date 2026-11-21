@@ -73,24 +73,31 @@
   function buildPrint(signed) {
     var c = current();
     var f = form;
+    var client = [esc(f.organization.value), esc(f.name.value) + (f.title.value ? ', ' + esc(f.title.value) : '')].filter(Boolean).join('<br>');
     var rows = [
-      ['Plan', c.name + ', ' + money(c.fee) + ' per month' + (c.nonprofit ? ' (nonprofit rate)' : '')],
-      ['Client', [f.organization.value, f.name.value && (f.name.value + (f.title.value ? ', ' + f.title.value : ''))].filter(Boolean).join('<br>') || '&nbsp;'],
-      ['Email and phone', [f.email.value, f.phone.value].filter(Boolean).map(esc).join(' &middot; ') || '&nbsp;'],
-      ['Billing address', esc(f.address.value) || '&nbsp;'],
+      ['Plan', esc(c.name) + ', ' + money(c.fee) + ' per month' + (c.nonprofit ? ' (nonprofit rate)' : '')],
+      ['Client', client],
+      ['Email and phone', [esc(f.email.value), esc(f.phone.value)].filter(Boolean).join(' &middot; ')],
+      ['Billing address', esc(f.address.value)],
       ['Start date', esc(fmtDate(f.start_date.value))],
       ['Portfolio', f.portfolio_opt_out.checked ? 'Client opts out of portfolio use' : 'Portfolio use allowed']
     ];
     var html = '<h1>Monthly Retainer Agreement</h1><p class="pc-sub">A Digital Media Studio, LLC &middot; adigitalmediastudio.com</p>';
-    html += '<h4>Schedule A: Plan and client</h4><table>' + rows.map(function (r) { return '<tr><th>' + r[0] + '</th><td>' + (r[0] === 'Client' ? esc(r[1]).replace(/&lt;br&gt;/g, '<br>') : r[1]) + '</td></tr>'; }).join('') + '</table>';
+    html += '<h4>Schedule A: Plan and client</h4><table>' + rows.map(function (r) { return '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>'; }).join('') + '</table>';
     html += document.getElementById('agreementText').innerHTML;
     html += '<div class="pc-block"><h4>Signatures</h4><table>';
+    html += '<tr><th colspan="2" class="pc-party">Client</th></tr>';
     if (signed) {
-      html += '<tr><th>Client signature</th><td><span class="pc-sig">' + esc(f.signature.value || signed.sig) + '</span><br>' + esc(signed.name) + ', signed electronically ' + esc(signed.when) + '</td></tr>';
+      html += '<tr><th>Signature</th><td><span class="pc-sig">' + esc(signed.sig) + '</span></td></tr>';
+      html += '<tr><th>Name and title</th><td>' + esc(signed.name) + (f.title.value ? ', ' + esc(f.title.value) : '') + '</td></tr>';
+      html += '<tr><th>Date</th><td>Signed electronically ' + esc(signed.when) + '</td></tr>';
     } else {
-      html += '<tr><th>Client signature</th><td style="height:46px"></td></tr><tr><th>Name, title, date</th><td style="height:30px"></td></tr>';
+      html += '<tr><th>Signature</th><td class="pc-blank"></td></tr><tr><th>Name and title</th><td class="pc-blank"></td></tr><tr><th>Date</th><td class="pc-blank"></td></tr>';
     }
-    html += '<tr><th>A Digital Media Studio, LLC</th><td>Jason O\'Malley, countersigned by email confirmation</td></tr></table></div>';
+    html += '<tr><th colspan="2" class="pc-party">A Digital Media Studio, LLC</th></tr>';
+    html += '<tr><th>Name and title</th><td>Jason O\'Malley, Owner</td></tr>';
+    html += '<tr><th>Signature</th><td>Countersigned by email when the start date is confirmed (section 5.8)</td></tr>';
+    html += '</table></div>';
     document.getElementById('printFields').innerHTML = html;
   }
 
