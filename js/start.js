@@ -1,16 +1,16 @@
 /* Hidden plan-and-sign page.
    Link options (combine with &):
-     ?plan=care|standard|plus     preselect a plan
+     ?plan=care|essentials|standard|plus     preselect a plan
      ?only=standard               show just that plan
-     ?standard=3200               set a custom monthly price for a plan (same for care / plus)
+     ?standard=3200               set a custom monthly price for a plan (same for care / essentials / plus)
      ?org=Smooth%20Press          prefill the organization
 */
 (function () {
   var form = document.getElementById('signForm');
   if (!form) return;
   var q = new URLSearchParams(location.search);
-  var names = { care: 'Website care', standard: 'Standard', plus: 'Plus' };
-  var prices = { care: 500, standard: 3000, plus: 5500 };
+  var names = { care: 'Website care', essentials: 'Essentials', standard: 'Standard', plus: 'Plus' };
+  var prices = { care: 500, essentials: 1800, standard: 3000, plus: 5500 };
 
   function money(n) { return '$' + Number(n).toLocaleString('en-US'); }
 
