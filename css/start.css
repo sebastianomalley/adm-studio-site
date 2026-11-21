@@ -86,3 +86,26 @@
   .print-copy .pc-block{break-inside:avoid}
   .site-head,.site-foot,.paint{display:none !important}
 }
+
+/* phone and alignment fixes */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.start,.start-form,.step,.plans,.plan,.agreement{min-width:0}
+.start .field input,.start .field textarea{width:100%;box-sizing:border-box;min-width:0}
+.start .field input{height:48px;line-height:1.2;-webkit-appearance:none;appearance:none}
+.start .field input[type=date]{display:block;text-align:left}
+.start .field input[type=date]::-webkit-date-and-time-value{text-align:left}
+.start .field-row{align-items:end}
+.addons td:last-child{white-space:normal;min-width:7em}
+@media (max-width:600px){
+  .step{padding:22px 18px}
+  .plans{grid-template-columns:1fr}
+  .plan-price b{font-size:32px}
+  .agreement{padding:18px;max-height:360px}
+  .addons table,.addons tbody,.addons tr,.addons td{display:block;width:100%}
+  .addons thead{display:none}
+  .addons tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .addons td{border:0;padding:0;text-align:left !important}
+  .addons td:last-child{padding:4px 0 0;color:var(--accent-text)}
+  .summary{grid-template-columns:1fr 1fr}
+  .sig-preview{font-size:36px}
+}
