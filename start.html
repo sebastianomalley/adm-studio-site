@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202611210858">
-<link rel="stylesheet" href="css/start.css?v=202611210858">
+<link rel="stylesheet" href="css/site.css?v=202611210910">
+<link rel="stylesheet" href="css/start.css?v=202611210910">
 </head>
 <body class="theme-denim page-start">
 <a class="skip" href="#main">Skip to content</a>
@@ -117,6 +117,7 @@
           </ul>
         </label>
       </div>
+      <p class="deal-note" id="dealNote" hidden></p>
       <p class="fine">Every plan: 3-month start, then month to month with 30 days' notice. One round of revisions included. The mix can shift each month. <a class="linkish" href="media/adm-pricing-sheet.pdf" target="_blank" rel="noopener">Download the pricing sheet (PDF)</a></p>
 
       <details class="addons">
@@ -180,6 +181,7 @@
         <p><b>2.6 Expenses.</b> Travel more than 30 miles from Washington, DC, location or permit fees, props, and paid stock or music are billed at cost, with the Client's approval first.</p>
         <p><b>2.7 Rescheduling.</b> The Client may reschedule a shoot at no charge with at least 48 hours' notice. A shoot cancelled with less notice counts as delivered for that month, unless it can be rebooked the same month. The Studio reschedules at no cost if it must cancel, including for illness or unsafe weather.</p>
         <p><b>2.8 Price changes.</b> The Studio may change the monthly fee with sixty (60) days' written notice, and not during the initial term.</p>
+        <p><b>2.9 Discounts.</b> If Schedule A shows a discounted rate, it applies only for the period stated there. After that period the regular monthly fee for the plan applies. The end of a discount is not a price change under 2.8. Discounts do not combine beyond 15% in total.</p>
 
         <h4>3. Deliverables and revisions</h4>
         <p><b>3.1 Turnaround.</b> Edited photos within five (5) business days of a shoot, videos within seven to ten (7&ndash;10) business days, and website changes within three (3) business days of a complete request. Rush delivery is available at 25% extra.</p>
@@ -221,6 +223,7 @@
       </div>
       <input type="hidden" name="plan_name">
       <input type="hidden" name="monthly_fee">
+      <input type="hidden" name="discount">
       <input type="hidden" name="signed_at">
       <input type="hidden" name="agreement_version" value="v1, November 2026">
       <p class="form-status" id="signStatus" role="status"></p>
@@ -255,7 +258,7 @@
     <span class="foot-copy">© <span class="yr">2026</span> A Digital Media Studio, LLC</span>
   </div>
 </footer>
-<script src="js/site.js?v=202611210858"></script>
-<script src="js/start.js?v=202611210858"></script>
+<script src="js/site.js?v=202611210910"></script>
+<script src="js/start.js?v=202611210910"></script>
 </body>
 </html>

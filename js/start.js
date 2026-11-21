@@ -21,6 +21,35 @@
     if (el) el.textContent = money(prices[k]);
   });
 
+  // Discount: preset pages (friends.html etc.) set window.ADM_DEAL; ?off=10 works too
+  var deal = window.ADM_DEAL || null;
+  var offQ = parseInt(q.get('off'), 10);
+  if (offQ > 0 && offQ <= 30) deal = { pct: offQ, label: 'Special rate', term: 'your first 12 months' };
+  var CAP = 15;
+
+  function regularFee(k) { return prices[k]; }
+  function pctFor(np) {
+    var p = (deal ? deal.pct : 0) + (np ? 10 : 0);
+    return Math.min(p, deal ? Math.max(CAP, deal.pct) : 10);
+  }
+
+  if (deal) {
+    Object.keys(prices).forEach(function (k) {
+      var el = document.querySelector('[data-price="' + k + '"]');
+      if (!el) return;
+      var was = document.createElement('s');
+      was.className = 'was';
+      was.textContent = money(prices[k]);
+      el.parentNode.insertBefore(was, el);
+      el.textContent = money(Math.round(prices[k] * (1 - deal.pct / 100)));
+    });
+    var dn = document.getElementById('dealNote');
+    dn.textContent = deal.label + ': ' + deal.pct + '% off for ' + deal.term + '. After that, the regular price applies.';
+    dn.hidden = false;
+    var npLabel = form.nonprofit.parentNode;
+    npLabel.lastChild.textContent = " We're a registered nonprofit (discounts combine up to 15% total)";
+  }
+
   var only = q.get('only');
   if (only && names[only]) {
     document.querySelectorAll('.plan').forEach(function (p) {
@@ -41,10 +70,17 @@
   function current() {
     var r = form.querySelector('input[name="plan"]:checked');
     var k = r ? r.value : 'standard';
-    var fee = prices[k];
     var np = form.nonprofit.checked;
-    if (np) fee = Math.round(fee * 0.9);
-    return { key: k, name: names[k], fee: fee, nonprofit: np };
+    var pct = pctFor(np);
+    var reg = regularFee(k);
+    var parts = [];
+    if (deal) parts.push(deal.label);
+    if (np) parts.push('nonprofit');
+    return { key: k, name: names[k], regular: reg, pct: pct, fee: Math.round(reg * (1 - pct / 100)), nonprofit: np,
+             label: parts.join(' + '), term: deal ? deal.term : 'as long as the organization stays a registered nonprofit' };
+  }
+  function feeText(c) {
+    return c.pct ? money(c.fee) + ' (regular ' + money(c.regular) + ', ' + c.pct + '% off: ' + c.label + ')' : money(c.fee);
   }
 
   function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -59,7 +95,7 @@
     var c = current();
     summary.innerHTML =
       '<div><dt>Plan</dt><dd>' + esc(c.name) + '</dd></div>' +
-      '<div><dt>Monthly fee</dt><dd>' + money(c.fee) + (c.nonprofit ? ' <small>(nonprofit rate)</small>' : '') + '</dd></div>' +
+      '<div><dt>Monthly fee</dt><dd>' + (c.pct ? '<s class="was">' + money(c.regular) + '</s> ' : '') + money(c.fee) + (c.pct ? ' <small>(' + c.pct + '% off)</small>' : '') + '</dd></div>' +
       '<div><dt>Start date</dt><dd>' + esc(fmtDate(form.start_date.value)) + '</dd></div>' +
       '<div><dt>Initial term</dt><dd>3 months</dd></div>';
   }
@@ -75,7 +111,8 @@
     var f = form;
     var client = [esc(f.organization.value), esc(f.name.value) + (f.title.value ? ', ' + esc(f.title.value) : '')].filter(Boolean).join('<br>');
     var rows = [
-      ['Plan', esc(c.name) + ', ' + money(c.fee) + ' per month' + (c.nonprofit ? ' (nonprofit rate)' : '')],
+      ['Plan', esc(c.name) + ', ' + money(c.regular) + ' per month regular price'],
+      ['Monthly fee', c.pct ? money(c.fee) + ' per month: ' + c.pct + '% off (' + esc(c.label) + ') for ' + esc(c.term) + ', then ' + money(c.regular) : money(c.fee) + ' per month'],
       ['Client', client],
       ['Email and phone', [esc(f.email.value), esc(f.phone.value)].filter(Boolean).join(' &middot; ')],
       ['Billing address', esc(f.address.value)],
@@ -123,7 +160,8 @@
     var when = new Date();
     var whenText = when.toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
     form.plan_name.value = c.name;
-    form.monthly_fee.value = money(c.fee) + (c.nonprofit ? ' (nonprofit rate applied)' : '');
+    form.monthly_fee.value = money(c.fee);
+    form.discount.value = c.pct ? c.pct + '% off (' + c.label + ') for ' + c.term + '; regular price ' + money(c.regular) : 'None';
     form.signed_at.value = whenText + ' (' + when.toISOString() + ')';
     form.subject.value = 'Signed agreement: ' + form.organization.value + ', ' + c.name + ' plan';
     lastSigned = { sig: form.signature.value, name: form.name.value, when: whenText };
