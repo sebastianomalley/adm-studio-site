@@ -1,0 +1,32 @@
+.desk{max-width:860px;padding-top:clamp(36px,6vw,80px);padding-bottom:100px;display:flex;flex-direction:column;gap:26px}
+.desk-head{text-align:center}
+.desk-head .lede{margin:0 auto}
+.seg{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.seg legend{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--eyebrow);margin-bottom:10px;width:100%}
+.seg label{cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:inline-block;padding:10px 14px;border:1px solid var(--line-strong);font-size:14px;color:var(--dim);transition:border-color .15s,color .15s,background .15s}
+.seg label:hover span{border-color:var(--accent-text);color:var(--cream)}
+.seg input:checked+span{border-color:var(--accent);background:rgba(217,174,94,.12);color:var(--cream)}
+.seg input:focus-visible+span{outline:2px solid var(--accent-text);outline-offset:2px}
+.sign-only{display:flex;flex-direction:column;gap:20px}
+.sign-only[hidden]{display:none}
+.field input:disabled{opacity:.45}
+.out{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.out-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--eyebrow)}
+.out-link{font-family:var(--mono);font-size:15px;color:var(--cream);word-break:break-all;background:var(--bg);border:1px solid var(--line);padding:14px 16px}
+.out-preview{font-size:14px;color:var(--dim)}
+.out-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.out-btns .btn{border:0;margin:0}
+.btn-ghost{background:transparent !important;border:1px solid var(--line-strong) !important;color:var(--cream) !important}
+.quick-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.quick-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.quick-list .q-name{flex:1;min-width:0}
+.quick-list .q-name b{display:block;color:var(--cream);font-weight:500}
+.quick-list .q-name small{color:var(--faint);font-family:var(--mono);font-size:12px;word-break:break-all}
+.quick-list button{background:none;border:1px solid var(--line-strong);color:var(--cream);padding:8px 12px;font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;flex:none}
+.quick-list button.done,.out-btns .done{border-color:var(--accent) !important;color:var(--accent-text) !important}
+.out-btns .btn{clip-path:none !important;transform:none !important;border-radius:0}
+.out-btns .btn::before,.out-btns .btn::after{display:none !important}
+.out-btns .btn-ghost{padding:14px 20px}
+@media (max-width:600px){.out-btns{display:grid;grid-template-columns:1fr 1fr}.out-btns .btn{text-align:center;justify-content:center}}
